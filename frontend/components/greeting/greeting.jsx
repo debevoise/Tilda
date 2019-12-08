@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Greeting = ({ currentUser, logout }) => {
     const loggedIn = (typeof currentUser.id === 'number');
+    
     const sessionLinks = (
         <div className='greeting'>
             <Link to='/login'>Login</Link>

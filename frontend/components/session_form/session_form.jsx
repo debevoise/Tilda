@@ -5,15 +5,23 @@ export default class SessionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = { email: "", password: "" }
-        // if (this.props.isSignup) this.state.username = "";
+        if (this.props.isSignup) {
+            this.state.name = "";
+            this.state.gender = "";
+            this.state.birthDate = new Date();
+        }
+        
         this.closeModal = this.closeModal.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     update(field) {
-        return e => this.setState({
-            [field]: e.currentTarget.value
-        }); 
+        return e => {
+            this.setState({
+                [field]: e.currentTarget.value
+            }); 
+
+        }
     }
 
     handleSubmit(e) {
@@ -21,6 +29,45 @@ export default class SessionForm extends React.Component {
         this.props.processForm(this.state).then(() => {
             this.resetFields();
         });
+    }
+
+    renderLoginFormFields() {
+        let { email, password } = this.state;
+        return (
+            <>
+                <label>Email:
+                    <input type="text" onChange={this.update("email")} value={email}/>
+                </label>
+                <label>Password:
+                    <input type="password" onChange={this.update("password")} value={password}/>
+                </label>
+            </>
+        )
+    }
+
+    renderSignupFormFields() {
+        let { email, password, name, birthDate, gender } = this.state;
+        return (
+          <>
+            <label>What should we call you?
+                <input type="text" onChange={this.update("name")} value={name}/>
+            </label>
+            <label>Email:
+                <input type="text" onChange={this.update("email")} value={email}/>
+            </label>
+            <label>When were you born?
+                <input type="date" onChange={this.update("date")} value={birthDate}/>
+            </label>
+            <label>Gender:
+                <input type="radio" onClick={this.update("gender")} value="female"/>Female
+                <input type="radio" onClick={this.update("gender")} value="male"/>Male
+                <input type="radio" onClick={this.update("gender")} value="non-binary"/>Non-Binary
+            </label>
+            <label>Password:
+                <input type="password" onChange={this.update("password")} value={password}/>
+            </label>
+          </>
+        );
     }
 
     renderErrors() {
@@ -49,32 +96,18 @@ export default class SessionForm extends React.Component {
     
     render() {
         let { isSignup, errors } = this.props;
-        let usernameField = null;
+        let formFields = isSignup ? 
+            this.renderSignupFormFields() : this.renderLoginFormFields();
         let prettyFormType = isSignup ? 'Sign Up' : 'Log In';
 
-        if (isSignup) {
-            usernameField = (
-                <label>Username:
-                    <input 
-                        type="text"
-                        onChange={this.update('username')}
-                    />
-                </label>
-            )
-        }
 
         return (
             <div className="session-form-modal" onClick={this.closeModal}>
                 <form className="session-form"  onClick={(e) => e.stopPropagation()}>
                     <h2>{prettyFormType} to Tilda</h2>
                     <SessionErrorsIndex errors={errors}/>
-                    {usernameField}
-                    <label>Email:
-                        <input type="text" onChange={this.update("email")} />
-                    </label>
-                    <label>Password:
-                        <input type="password" onChange={this.update("password")} />
-                    </label>
+                    { formFields }
+                    <br/>
                     <button onClick={this.handleSubmit}>{prettyFormType}</button>
                 </form>
             </div>

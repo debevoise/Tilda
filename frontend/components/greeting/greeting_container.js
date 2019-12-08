@@ -5,7 +5,6 @@ import Greeting from './greeting';
 const msp = (state) => {
     let { id } = state.session
     let currentUser = id ? state.entities.users[id] : {}
-    debugger
     return {
         currentUser 
     }
