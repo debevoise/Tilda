@@ -9,9 +9,10 @@ export default class SessionForm extends React.Component {
         if (this.props.isSignup) {
             this.state.name = "";
             this.state.gender = "";
-            this.state.birth_date = '';
+            this.state.year = '';
+            this.state.month = '';
+            this.state.day = '';
         }
-        
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -49,7 +50,8 @@ export default class SessionForm extends React.Component {
         );
     }
 
-    renderGenderButtons(gender) {
+    renderGenderButtons() {
+        const {gender} = this.state;
         return (
           <div className="gender-options">
             <label>
@@ -86,36 +88,99 @@ export default class SessionForm extends React.Component {
         );
     }
 
-    renderSignupFormFields() {
-        let { email, password, name, birthDate, gender } = this.state;
+    renderBirthDateFields() {
+        const { month, day, year } = this.state;
         return (
-          <>
+          <label>
+            When were you born?
+            <select onChange={this.update("month")}>
+              <option value="">Month</option>
+              <option selected={month === "January"} value="January">
+                January
+              </option>
+              <option selected={month === "February"} value="Febuary">
+                Febuary
+              </option>
+              <option selected={month === "March"} value="March">
+                March
+              </option>
+              <option selected={month === "April"} value="April">
+                April
+              </option>
+              <option selected={month === "May"} value="May">
+                May
+              </option>
+              <option selected={month === "June"} value="June">
+                June
+              </option>
+              <option selected={month === "July"} value="July">
+                July
+              </option>
+              <option selected={month === "August"} value="August">
+                August
+              </option>
+              <option selected={month === "September"} value="September">
+                September
+              </option>
+              <option selected={month === "October"} value="October">
+                October
+              </option>
+              <option selected={month === "November"} value="November">
+                November
+              </option>
+              <option selected={month === "December"} value="December">
+                December
+              </option>
+            </select>
             <input
-              type="text"
-              onChange={this.update("name")}
-              placeholder="What should we call you?"
-              value={name}
+              type="number"
+              onChange={this.update("day")}
+              placeholder="Day"
+              value={day}
             />
             <input
-              type="text"
-              onChange={this.update("email")}
-              placeholder="Email"
-              value={email}
+              type="number"
+              onChange={this.update("year")}
+              placeholder="Year"
+              value={year}
             />
-            <input
-              type="date"
-              onChange={this.update("birth_date")}
-              placeholder="When were you born?"
-              value={birthDate}
-            />
-            {this.renderGenderButtons(gender)}
-            <input
-                type="password"
-                onChange={this.update("password")}
-                placeholder='Password'
-                value={password}
-            />
+          </label>
+        );
+    }
 
+    renderSignupFormFields() {
+        let { email, password, name, gender } = this.state;
+        return (
+            <>
+            <li>
+
+                <input
+                type="text"
+                onChange={this.update("name")}
+                placeholder="What should we call you?"
+                value={name}
+                />
+            </li>
+            <li>
+
+                <input
+                type="text"
+                onChange={this.update("email")}
+                placeholder="Email"
+                value={email}
+                />
+            </li>
+            {this.renderBirthDateFields()}
+            {this.renderGenderButtons()}
+            <li>
+                <input
+                    type="password"
+                    onChange={this.update("password")}
+                    placeholder='Password'
+                    value={password}
+                    />
+
+            </li>
           </>
         );
     }
@@ -149,15 +214,15 @@ export default class SessionForm extends React.Component {
 
         return (
           <div className="session-form-modal">
-            <section className="session-form">
-                <h1>Tilda</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <h2>{prettyFormType} to Tilda</h2>
-                    <SessionErrorsIndex errors={errors} />
-                    {formFields}
-                    <br />
-                    <button>{prettyFormType}</button>
-                </form>
+            <section>
+              <h1 className="session-form-header">Tilda</h1>
+              <form className="session-form" onSubmit={this.handleSubmit}>
+                <h2>{prettyFormType} to Tilda</h2>
+                <SessionErrorsIndex errors={errors} />
+                {formFields}
+                <br />
+                <button>{prettyFormType}</button>
+              </form>
             </section>
           </div>
         );
