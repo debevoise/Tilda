@@ -12,6 +12,15 @@
     flex-direction: column;
     align-items: center;
 
+    h1 {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-weight: 800;
+        font-size: 40px;
+        padding-bottom: 10px;
+        color: black;
+    }
 }
 
 .session-form {
@@ -19,12 +28,16 @@
     color: black;
     padding: 20px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    h1 {
-        font-weight: 800;
-        font-size: 16px;
-        padding-bottom: 10px;
-        letter-spacing: 2px;
+    
+
+    li {
+        flex-grow: 1;
+        width: 100%;
+        padding-top: 10px ;
     }
 
     input {
@@ -36,21 +49,32 @@
         font-size: inherit;
     }
 
+    label {
+            margin-right: 20px;
+    }
+
     .radio-input {
+        padding-top: 20px;
         float: left;
+        display: inline-block;
+        height: 16px;
+        top: -2px;
+        
+    }
+
+    
+}
+
+.session-form li {
+    display: flex;
+
+    input {
+        flex-grow: 1;
     }
 }
 
-.session-form > input {
-    height: none;
-    width: 100%;
-}
-
 .gender-options {
-    display: flex;        
-    justify-content: space-between; 
+    // display: flex;        
+    // justify-content: left; 
 }
 
-.radio-input {
-
-}

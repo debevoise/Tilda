@@ -22,6 +22,8 @@ export default class SessionForm extends React.Component {
             this.setState({
                 [field]: e.currentTarget.value
             }); 
+            //TODO
+            console.log(this.state)
         }
     }
 
@@ -34,18 +36,24 @@ export default class SessionForm extends React.Component {
         let { email, password } = this.state;
         return (
           <>
+          <li>
+
             <input
                 type="text"
                 onChange={this.update("email")}
                 value={email}
                 placeholder="Email"
-            />
+                />
+            </li>
+            <li>
+
             <input
                 type="password"
                 onChange={this.update("password")}
                 value={password}
                 placeholder="Password"
-            />
+                />
+            </li>
           </>
         );
     }
@@ -53,7 +61,8 @@ export default class SessionForm extends React.Component {
     renderGenderButtons() {
         const {gender} = this.state;
         return (
-          <div className="gender-options">
+          <li className="gender-options">
+              Please select your gender
             <label>
               Female
               <input
@@ -84,51 +93,52 @@ export default class SessionForm extends React.Component {
                 checked={gender === "non-binary"}
               />
             </label>
-          </div>
+          </li>
         );
     }
 
     renderBirthDateFields() {
         const { month, day, year } = this.state;
         return (
+          <li>
           <label>
             When were you born?
-            <select onChange={this.update("month")}>
+            <select className='month-select' value={this.state.month} onChange={this.update("month")}>
               <option value="">Month</option>
-              <option selected={month === "January"} value="January">
+              <option value="January">
                 January
               </option>
-              <option selected={month === "February"} value="Febuary">
+              <option value="Febuary">
                 Febuary
               </option>
-              <option selected={month === "March"} value="March">
+              <option value="March">
                 March
               </option>
-              <option selected={month === "April"} value="April">
+              <option value="April">
                 April
               </option>
-              <option selected={month === "May"} value="May">
+              <option value="May">
                 May
               </option>
-              <option selected={month === "June"} value="June">
+              <option value="June">
                 June
               </option>
-              <option selected={month === "July"} value="July">
+              <option value="July">
                 July
               </option>
-              <option selected={month === "August"} value="August">
+              <option  value="August">
                 August
               </option>
-              <option selected={month === "September"} value="September">
+              <option value="September">
                 September
               </option>
-              <option selected={month === "October"} value="October">
+              <option value="October">
                 October
               </option>
-              <option selected={month === "November"} value="November">
+              <option  value="November">
                 November
               </option>
-              <option selected={month === "December"} value="December">
+              <option value="December">
                 December
               </option>
             </select>
@@ -137,14 +147,15 @@ export default class SessionForm extends React.Component {
               onChange={this.update("day")}
               placeholder="Day"
               value={day}
-            />
+              />
             <input
               type="number"
               onChange={this.update("year")}
               placeholder="Year"
               value={year}
-            />
+              />
           </label>
+          </li>
         );
     }
 
@@ -221,7 +232,7 @@ export default class SessionForm extends React.Component {
                 <SessionErrorsIndex errors={errors} />
                 {formFields}
                 <br />
-                <button>{prettyFormType}</button>
+                <button className="submit-button">{prettyFormType}</button>
               </form>
             </section>
           </div>
