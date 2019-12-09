@@ -14,27 +14,4 @@
 *= require_self
 */
 
-html, body {
-    height: 100%;
-}
 
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-main {  
-    flex-grow: 1;
-    display: flex;
-}
-
-#nav-bar, #content-window, #media-player {
-    box-sizing: border-box;
-}
-
-footer {
-    min-height: 90px;
-    width: 100%;
-    bottom: 0;
-    background-color: #282828;
-}

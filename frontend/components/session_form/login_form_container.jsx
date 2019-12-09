@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
 
 
-const msp = (state) => ({
+const msp = (state, ownProps) => ({
     errors: state.errors.session,
     formType: 'login',
     isSignup: false,
+    ownProps
 })
 
 const mdp = (dispatch) => ({

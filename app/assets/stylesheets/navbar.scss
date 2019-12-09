@@ -1,0 +1,40 @@
+
+#nav-bar {
+    width: 230px;
+    height: 100%;
+    background-color: #030303;
+    padding-top: 24px;
+}
+
+#nav-bar .logo {
+    height: 40px;
+    padding-bottom: 18px;
+    padding-left: 24px;
+}
+
+#nav-bar li {
+    font-size: 14px;
+    font-weight: 600;
+    height: 40px;
+    display: flex;
+    align-items: center;
+
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+#nav-bar .active {
+    border-left: 3px solid red;
+}
+
+#nav-bar li:hover {
+    background-color: grey;
+}
+
+#nav-bar h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding-left: 24px;
+    padding-top: 24px;
+}

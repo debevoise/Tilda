@@ -15,7 +15,7 @@
 }
 
 .session-form {
-    width: 300px;
+    max-width: 430px;
     background-color: rgb(94, 159, 221);
 
     padding: 20px;
@@ -27,13 +27,18 @@
         padding-bottom: 10px;
         letter-spacing: 2px;
     }
+}
 
-    label {
-        padding-bottom: 12px;
-        
+.session-form > input {
+    width: 100%;
+}
 
-        input {
-            display: block;
-        }
-    }
+.gender-options {
+    display: flex;        
+    justify-content: space-between;
+    
+}
+
+.radio-input {
+    float: left;
 }

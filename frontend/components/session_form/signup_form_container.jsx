@@ -2,10 +2,11 @@ import SessionForm from "./session_form";
 import { connect } from "react-redux";
 import { signup } from "../../actions/session_actions";
 
-const msp = ({ errors }) => ({
-  errors: errors.session,
+const msp = (state, ownProps) => ({
+  errors: state.errors.session,
   formType: "signup",
   isSignup: true,
+  ownProps
 });
 
 const mdp = dispatch => ({

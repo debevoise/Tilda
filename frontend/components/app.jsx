@@ -5,21 +5,31 @@ import { Route, Redirect, Switch, Link } from "react-router-dom";
 import { AuthRoute } from '../util/route_util'
 
 import NavBar from './navbar/navbar';
+import ContentWindow from './content_window/content_window';
+import MediaPlayer from './media_player/media_player';
+import SessionModal from './session_form/session_modal';
 
 const App = () => {
 
     return (
-        <>
-            <main>
-                <NavBar />    
-                
-                <AuthRoute exact path='/login' component={LoginFormContainer}/>
-                <AuthRoute exact path='/signup' component={SignupFormContainer}/>
-            </main>
-            <footer>
-                Media player
-            </footer>
-        </>
+      <>
+        <main>
+          <NavBar />
+          <ContentWindow />
+
+          <AuthRoute
+            exact
+            path="/login"
+            component={() => <SessionModal formType="login" />}
+          />
+          <AuthRoute
+            exact
+            path="/signup"
+            component={() => <SessionModal formType="signup" />}
+          />
+        </main>
+        <MediaPlayer />
+      </>
     );
 }
 

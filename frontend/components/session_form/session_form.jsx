@@ -1,5 +1,6 @@
 import React from 'react';
 import SessionErrorsIndex from './session_errors_index';
+import { Redirect } from 'react-router-dom'
 
 export default class SessionForm extends React.Component {
     constructor(props) {
@@ -8,7 +9,7 @@ export default class SessionForm extends React.Component {
         if (this.props.isSignup) {
             this.state.name = "";
             this.state.gender = "";
-            this.state.birthDate = new Date();
+            this.state.birth_date = '';
         }
         
         this.closeModal = this.closeModal.bind(this)
@@ -21,51 +22,106 @@ export default class SessionForm extends React.Component {
                 [field]: e.currentTarget.value
             }); 
 
+            console.log(this.state);
         }
+    }
+
+    updateDate(field) {
+
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.processForm(this.state).then(() => {
-            this.resetFields();
-        });
+        this.props.processForm(this.state);
     }
 
     renderLoginFormFields() {
         let { email, password } = this.state;
         return (
-            <>
-                <label>Email:
-                    <input type="text" onChange={this.update("email")} value={email}/>
-                </label>
-                <label>Password:
-                    <input type="password" onChange={this.update("password")} value={password}/>
-                </label>
-            </>
-        )
+          <>
+            <input
+                type="text"
+                onChange={this.update("email")}
+                value={email}
+                placeholder="Email"
+            />
+            <input
+                type="password"
+                onChange={this.update("password")}
+                value={password}
+                placeholder="Password"
+            />
+          </>
+        );
+    }
+
+    renderGenderButtons(gender) {
+        return (
+          <div className="gender-options">
+            <label>
+              Female
+              <input
+                className="radio-input"
+                type="radio"
+                value="female"
+                onChange={this.update("gender")}
+                checked={gender === "female"}
+              />
+            </label>
+            <label>
+              Male
+              <input
+                className="radio-input"
+                type="radio"
+                value="male"
+                onChange={this.update("gender")}
+                checked={gender === "male"}
+              />
+            </label>
+            <label>
+              Non-binary
+              <input
+                className="radio-input"
+                type="radio"
+                value="non-binary"
+                onChange={this.update("gender")}
+                checked={gender === "non-binary"}
+              />
+            </label>
+          </div>
+        );
     }
 
     renderSignupFormFields() {
         let { email, password, name, birthDate, gender } = this.state;
         return (
           <>
-            <label>What should we call you?
-                <input type="text" onChange={this.update("name")} value={name}/>
-            </label>
-            <label>Email:
-                <input type="text" onChange={this.update("email")} value={email}/>
-            </label>
-            <label>When were you born?
-                <input type="date" onChange={this.update("date")} value={birthDate}/>
-            </label>
-            <label>Gender:
-                <input type="radio" onClick={this.update("gender")} value="female"/>Female
-                <input type="radio" onClick={this.update("gender")} value="male"/>Male
-                <input type="radio" onClick={this.update("gender")} value="non-binary"/>Non-Binary
-            </label>
-            <label>Password:
-                <input type="password" onChange={this.update("password")} value={password}/>
-            </label>
+            <input
+              type="text"
+              onChange={this.update("name")}
+              placeholder="What should we call you?"
+              value={name}
+            />
+            <input
+              type="text"
+              onChange={this.update("email")}
+              placeholder="Email"
+              value={email}
+            />
+            <input
+              type="date"
+              onChange={this.update("birth_date")}
+              placeholder="When were you born?"
+              value={birthDate}
+            />
+            {this.renderGenderButtons(gender)}
+            <input
+                type="password"
+                onChange={this.update("password")}
+                placeholder='Password'
+                value={password}
+            />
+
           </>
         );
     }
@@ -89,10 +145,7 @@ export default class SessionForm extends React.Component {
         this.setState(emptyState);
     }
 
-    closeModal(e) {
-        this.props.history.push("/");
-        this.resetFields();
-    }
+    
     
     render() {
         let { isSignup, errors } = this.props;
@@ -102,15 +155,13 @@ export default class SessionForm extends React.Component {
 
 
         return (
-            <div className="session-form-modal" onClick={this.closeModal}>
-                <form className="session-form"  onClick={(e) => e.stopPropagation()}>
-                    <h2>{prettyFormType} to Tilda</h2>
-                    <SessionErrorsIndex errors={errors}/>
-                    { formFields }
-                    <br/>
-                    <button onClick={this.handleSubmit}>{prettyFormType}</button>
-                </form>
-            </div>
+            <form className="session-form"  onClick={(e) => e.stopPropagation()}>
+                <h2>{prettyFormType} to Tilda</h2>
+                <SessionErrorsIndex errors={errors}/>
+                { formFields }
+                <br/>
+                <button onClick={this.handleSubmit}>{prettyFormType}</button>
+            </form>
         );
     }
 }
