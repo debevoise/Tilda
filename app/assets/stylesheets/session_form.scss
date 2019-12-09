@@ -6,18 +6,17 @@
     width: 100%; 
     height: 100%; 
     overflow: auto; 
-    background-color: rgba(0,0,0,0.4); 
+    background-color: rgb(255, 255, 255); 
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+
 }
 
 .session-form {
     max-width: 430px;
-    background-color: rgb(94, 159, 221);
-
+    color: black;
     padding: 20px;
     border-radius: 10px;
 
@@ -35,8 +34,7 @@
 
 .gender-options {
     display: flex;        
-    justify-content: space-between;
-    
+    justify-content: space-between; 
 }
 
 .radio-input {

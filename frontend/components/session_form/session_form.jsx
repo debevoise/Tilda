@@ -5,14 +5,14 @@ import { Redirect } from 'react-router-dom'
 export default class SessionForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { email: "", password: "" }
+        this.state = { email: "", password: "" };
         if (this.props.isSignup) {
             this.state.name = "";
             this.state.gender = "";
             this.state.birth_date = '';
         }
         
-        this.closeModal = this.closeModal.bind(this)
+
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -21,13 +21,7 @@ export default class SessionForm extends React.Component {
             this.setState({
                 [field]: e.currentTarget.value
             }); 
-
-            console.log(this.state);
         }
-    }
-
-    updateDate(field) {
-
     }
 
     handleSubmit(e) {
@@ -138,15 +132,14 @@ export default class SessionForm extends React.Component {
         )
     }
 
-    resetFields() {
-        let emptyState = {};
-        let fields = Object.keys(this.state);
-        fields.forEach(field => (emptyState[field] = ""));
-        this.setState(emptyState);
-    }
+    // resetFields() {
+    //     let emptyState = {};
+    //     let fields = Object.keys(this.state);
+    //     fields.forEach(field => (emptyState[field] = ""));
+    //     this.setState(emptyState);
+    // }
 
-    
-    
+
     render() {
         let { isSignup, errors } = this.props;
         let formFields = isSignup ? 
@@ -155,13 +148,18 @@ export default class SessionForm extends React.Component {
 
 
         return (
-            <form className="session-form"  onClick={(e) => e.stopPropagation()}>
-                <h2>{prettyFormType} to Tilda</h2>
-                <SessionErrorsIndex errors={errors}/>
-                { formFields }
-                <br/>
-                <button onClick={this.handleSubmit}>{prettyFormType}</button>
-            </form>
+          <div className="session-form-modal">
+            <section className="session-form">
+                <h1>Tilda</h1>
+                <form onSubmit={this.handleSubmit}>
+                    <h2>{prettyFormType} to Tilda</h2>
+                    <SessionErrorsIndex errors={errors} />
+                    {formFields}
+                    <br />
+                    <button>{prettyFormType}</button>
+                </form>
+            </section>
+          </div>
         );
     }
 }

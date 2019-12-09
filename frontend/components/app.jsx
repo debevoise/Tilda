@@ -20,12 +20,12 @@ const App = () => {
           <AuthRoute
             exact
             path="/login"
-            component={() => <SessionModal formType="login" />}
+            component={LoginFormContainer}
           />
           <AuthRoute
             exact
             path="/signup"
-            component={() => <SessionModal formType="signup" />}
+            component={SignupFormContainer}
           />
         </main>
         <MediaPlayer />
