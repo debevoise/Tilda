@@ -1,6 +1,11 @@
 import React from 'react';
 import SessionErrorsIndex from './session_errors_index';
-import { Redirect } from 'react-router-dom'
+import { 
+    validDay, 
+    validEmail, 
+    validPassword, 
+    validYear,
+    formatState } from '../../util/session_form_util'
 
 export default class SessionForm extends React.Component {
     constructor(props) {
@@ -29,7 +34,9 @@ export default class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.processForm(this.state);
+        
+        let submitState = formatState(this.state);
+        this.props.processForm(submitState);
     }
 
     renderLoginFormFields() {
@@ -105,40 +112,40 @@ export default class SessionForm extends React.Component {
             When were you born?
             <select className='month-select' value={this.state.month} onChange={this.update("month")}>
               <option value="">Month</option>
-              <option value="January">
+              <option value="01">
                 January
               </option>
-              <option value="Febuary">
+              <option value="02">
                 Febuary
               </option>
-              <option value="March">
+              <option value="03">
                 March
               </option>
-              <option value="April">
+              <option value="04">
                 April
               </option>
-              <option value="May">
+              <option value="05">
                 May
               </option>
-              <option value="June">
+              <option value="06">
                 June
               </option>
-              <option value="July">
+              <option value="07">
                 July
               </option>
-              <option  value="August">
+              <option  value="08">
                 August
               </option>
-              <option value="September">
+              <option value="09">
                 September
               </option>
-              <option value="October">
+              <option value="10">
                 October
               </option>
-              <option  value="November">
+              <option  value="11">
                 November
               </option>
-              <option value="December">
+              <option value="12">
                 December
               </option>
             </select>
