@@ -3,7 +3,8 @@ import SessionErrorsIndex from './session_errors_index';
 import { 
     validateSignup,
     validateLogin,
-    formatState } from '../../util/session_form_util'
+    formatState } from '../../util/session_form_util';
+import { Link } from 'react-router-dom';
 
 export default class SessionForm extends React.Component {
     constructor(props) {
@@ -213,7 +214,27 @@ export default class SessionForm extends React.Component {
         );
     }
 
-
+    renderInsteadOption(isSignup) {
+        if (isSignup) {
+            return (
+                <footer className='login-instead'>
+                    <p>Already have an account? <Link to='/login'>Log in</Link></p>
+                </footer>
+            )
+        } else {
+            return (
+              <footer className="signup-instead">
+                <p>
+                  Don't have an account?
+                </p>
+                <Link to='/signup'>
+                    
+                    <button>Sign up for Tilda</button>
+                </Link>
+              </footer>
+            );
+        }
+    }
 
 
     render() {
@@ -230,11 +251,10 @@ export default class SessionForm extends React.Component {
                 {this.renderHeader(isSignup)}
                 <SessionErrorsIndex errors={errors} />
                 {formFields}
-                <br />
                 {policy}
                 <button className="submit-button">{prettyFormType}</button>
               </form>
-
+                {this.renderInsteadOption(isSignup)}
           </div>
         );
     }

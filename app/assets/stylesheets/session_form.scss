@@ -9,7 +9,7 @@
     height: 100%; 
     overflow: auto; 
     background-color: rgb(255, 255, 255); 
-
+        color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,12 +28,21 @@
         background-color: $blue;
         border-bottom: 1px solid grey;
     }
+
+        a {
+        color: $blue;
+        cursor: pointer;
+    }
+
+    a:hover {
+        color: $light-blue;
+    }
 }
 
 
 .session-form {
     width: 400px;
-    color: black;
+
     padding: 20px;
     border-radius: 10px;
     display: flex;
@@ -61,14 +70,7 @@
         font-size: inherit;
     }
 
-    a {
-        color: $blue;
-        cursor: pointer;
-    }
 
-    a:hover {
-        color: $light-blue;
-    }
 }
 
 .errors-list {
@@ -177,9 +179,46 @@
 	font-weight:normal;
 }
 
+.policy {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
 .policy > p {
     text-align: center;
     font-size: 10pt;
     padding-bottom: 10px;
 }
 
+.signup-instead {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 400px;
+    margin-top: 40px;
+    border-top: 1px solid $input-gray;
+
+
+
+    p {
+        margin-top: 50px;
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    button {
+        font-weight: 600;
+        margin-top: 17px;
+        width: 320px;
+        background-color: white;
+        color: $input-gray;
+        border: 2px solid $input-gray;
+        border-radius: 50px;
+    }
+
+    button:hover {
+        background-color: $input-gray;
+        color: white;
+    }
+}
