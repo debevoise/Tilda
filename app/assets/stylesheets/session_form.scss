@@ -1,3 +1,6 @@
+$border-gray: rgb(192, 192, 192);
+$input-gray: rgb(114, 114, 114);
+
 .session-form-modal {
     position: fixed; 
     z-index: 1; 
@@ -13,18 +16,22 @@
     align-items: center;
 
     h1 {
+        width: 100%;
         text-align: center;
-        margin-top: 20px;
-        margin-bottom: 10px;
+        padding-top: 20px;
+        margin-bottom: 20px;
         font-weight: 800;
         font-size: 40px;
-        padding-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 10px;
+        padding-bottom: 20px;
         color: black;
+        border-bottom: 1px solid grey;
     }
 }
 
 .session-form {
-    max-width: 400px;
+    width: 400px;
     color: black;
     padding: 20px;
     border-radius: 10px;
@@ -46,33 +53,89 @@
         font-style: inherit;
         font-size: inherit;
     }
+}
+
+.radio-input {
+
+    float: left;
+    display: inline-block;
+    // top: 20px;
+    
+}
+
+.gender-options {
+    display: flex;
+    align-items: center;
 
     label {
-            margin-right: 20px;
+        color: $input-gray;
     }
+}
 
-    .radio-input {
-        padding-top: 20px;
-        float: left;
-        display: inline-block;
-        height: 16px;
-        top: -2px;
-        
-    }
-
-    
+.gender-options input {
+    height: initial;
 }
 
 .session-form li {
     display: flex;
-
+    list-style: none;
     input {
         flex-grow: 1;
     }
 }
 
-.gender-options {
-    // display: flex;        
-    // justify-content: left; 
+.birthdate-input {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+    
+
+    select {
+        flex-grow: 3;
+    }
+}
+
+.birthdate-input > input {
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 20%;
+}
+
+.gender-options > label {
+    margin-right: 15px;
+}
+
+
+// Resource based off of this prototype: https://www.filamentgroup.com/lab/select-css.html
+.month-select {
+    box-sizing: border-box;
+	display: block;
+	font-size: inherit;
+	font-family: inherit;
+    color: $input-gray;
+    border-color: $border-gray;
+    height: 51px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 0px;
+
+	padding: .6em 1.4em .5em .8em;
+	box-sizing: border-box;
+	margin: 0;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: rgba(0,0,0,0);
+	background-repeat: no-repeat, repeat;
+	background-position: right .7em top 50%, 0 0;
+	background-size: .65em auto, 100%;
+}
+.month-select::-ms-expand {
+	display: none;
+}
+
+.month-select option {
+	font-weight:normal;
 }
 

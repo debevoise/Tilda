@@ -40,7 +40,6 @@ export default class SessionForm extends React.Component {
         return (
           <>
           <li>
-
             <input
                 type="text"
                 onChange={this.update("email")}
@@ -65,7 +64,6 @@ export default class SessionForm extends React.Component {
         const {gender} = this.state;
         return (
           <li className="gender-options">
-              Please select your gender
             <label>
               Female
               <input
@@ -104,9 +102,9 @@ export default class SessionForm extends React.Component {
         const { month, day, year } = this.state;
         return (
           <li>
-          <label>
-            When were you born?
-            <select className='month-select' value={this.state.month} onChange={this.update("month")}>
+
+            <div className='birthdate-input'>
+            <select className='month-select' value={month} onChange={this.update("month")}>
               <option value="">Month</option>
               <option value="01">
                 January
@@ -157,7 +155,7 @@ export default class SessionForm extends React.Component {
               placeholder="Year"
               value={year}
               />
-          </label>
+          </div>
           </li>
         );
     }
@@ -228,7 +226,7 @@ export default class SessionForm extends React.Component {
 
         return (
           <div className="session-form-modal">
-            <section>
+            
               <h1 className="session-form-header">Tilda</h1>
               <form className="session-form" onSubmit={this.handleSubmit}>
                 <h2>{prettyFormType} to Tilda</h2>
@@ -237,7 +235,7 @@ export default class SessionForm extends React.Component {
                 <br />
                 <button className="submit-button">{prettyFormType}</button>
               </form>
-            </section>
+
           </div>
         );
     }
