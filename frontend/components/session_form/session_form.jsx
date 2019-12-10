@@ -20,7 +20,7 @@ export default class SessionForm extends React.Component {
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.clearErrors = this.clearErrors.bind(this);
+		this.loginGuest = this.loginGuest.bind(this)
     }
 
     update(field) {
@@ -57,7 +57,8 @@ export default class SessionForm extends React.Component {
         if (this.props.isSignup) this.validateAllFields();
         let submitState = formatState(this.state);
         this.props.processForm(submitState);
-    }
+	}
+	
 
     renderLoginFormFields() {
         let { email, password } = this.state;
@@ -181,11 +182,18 @@ export default class SessionForm extends React.Component {
     }
 
     renderHeader (isSignup) {
-      let headerText = isSignup ? 
-        'Sign up to Tilda with your Email Address' : 'To continue, log in to Tilda';
-      return (
-        <h2>{headerText}</h2>
-      )
+		let headerText = isSignup ? 
+			'Sign up to Tilda with your Email Address' : 'To continue, log in to Tilda';
+		if (!isSignup) return <h2>{headerText}</h2>;
+		
+		return (
+			<>  
+				{this.renderGuestLogin()}
+				
+				<h2 className='signup-header'>{headerText}</h2>
+
+			</>
+		)
     }
 
     renderSignupFormFields() {
@@ -254,11 +262,6 @@ export default class SessionForm extends React.Component {
         );
     }
 
-    clearErrors() {
-    
-       this.setState({ errors: [] });
-    }
-
     renderInsteadOption(isSignup) {
         if (isSignup) {
             return (
@@ -274,14 +277,29 @@ export default class SessionForm extends React.Component {
         } else {
             return (
               <footer className="signup-instead">
-                <p>Don't have an account?</p>
+                <h2>Don't have an account?</h2>
                 <Link onClick={this.props.clearSessionErrors} to="/signup">
-                  <button>Sign up for Tilda</button>
+                  <button>Sign up to Tilda</button>
+					
                 </Link>
+				{this.renderGuestLogin()}
               </footer>
             );
         }
-    }
+	}
+	
+	loginGuest() {
+		return e => {
+			e.preventDefault();
+			this.props.signInAsGuest();
+		}
+	}
+
+	renderGuestLogin() {
+		return (
+			<button className='guest-login' onClick={this.loginGuest()}>Log in as guest</button>
+		)
+	}
 
 
     render() {
@@ -293,9 +311,10 @@ export default class SessionForm extends React.Component {
 		let errorsList = !isSignup ? <SessionErrorsIndex errors={errors} /> : null;
         return (
           <div className="session-form-modal">
-            
-            <h1 className="session-form-header"><TildaLogo/></h1>
-    
+            <h1 className="session-form-header">
+              <TildaLogo />
+            </h1>
+
             <form className="session-form" onSubmit={this.handleSubmit}>
               {this.renderHeader(isSignup)}
               {errorsList}
