@@ -1,5 +1,4 @@
-$border-gray: rgb(192, 192, 192);
-$input-gray: rgb(114, 114, 114);
+@import 'tilda';
 
 .session-form-modal {
     position: fixed; 
@@ -25,10 +24,12 @@ $input-gray: rgb(114, 114, 114);
         text-transform: uppercase;
         letter-spacing: 10px;
         padding-bottom: 20px;
-        color: black;
+        color: white;
+        background-color: $blue;
         border-bottom: 1px solid grey;
     }
 }
+
 
 .session-form {
     width: 400px;
@@ -39,10 +40,16 @@ $input-gray: rgb(114, 114, 114);
     flex-direction: column;
     align-items: center;
 
+    h2 {
+        font-weight: 600;
+        padding-bottom: 15px;
+    }
+
     li {
         flex-grow: 1;
         width: 100%;
-        padding-top: 10px ;
+        padding-top: 7px ;
+        padding-bottom: 7px ;
     }
 
     input {
@@ -53,6 +60,31 @@ $input-gray: rgb(114, 114, 114);
         font-style: inherit;
         font-size: inherit;
     }
+
+    a {
+        color: $blue;
+        cursor: pointer;
+    }
+
+    a:hover {
+        color: $light-blue;
+    }
+}
+
+.errors-list {
+    box-sizing: border-box;
+    padding: 6px;
+    margin-bottom: 6px;
+    display: block;
+    width: 100%;
+    background-color: $error-orange
+}
+
+.errors-list > li {
+    display: inline-block !important;
+    padding-left: 10px;
+    text-align: center;
+    color: white;
 }
 
 .radio-input {
@@ -87,17 +119,23 @@ $input-gray: rgb(114, 114, 114);
 .birthdate-input {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    
-    
+    justify-content: left;
+     
+}
 
-    select {
-        flex-grow: 3;
-    }
+.birthdate-block {
+    display: flex;
+    flex-direction: column;
+
+   
+}
+
+.birthdate-block > div {
+    margin-bottom: 5px;
 }
 
 .birthdate-input > input {
-    padding-left: 12px;
+    margin-left: 12px;
     padding-right: 12px;
     width: 20%;
 }
@@ -137,5 +175,11 @@ $input-gray: rgb(114, 114, 114);
 
 .month-select option {
 	font-weight:normal;
+}
+
+.policy > p {
+    text-align: center;
+    font-size: 10pt;
+    padding-bottom: 10px;
 }
 

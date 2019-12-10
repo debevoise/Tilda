@@ -1,3 +1,10 @@
+//GLOBAL COLORS
+$border-gray: rgb(192, 192, 192);
+$input-gray: rgb(114, 114, 114);
+$blue: #026faa;
+$light-blue: #008ad4;
+$error-orange: #db613c;
+
 html, body, #root {
     height: 100%;
 }
@@ -27,9 +34,11 @@ footer {
 }
 
 a {
-    color: rgb(160, 160, 160)
+    color: rgb(160, 160, 160);
+    text-decoration: none;
 }
 
 a:hover {
     color: white;
+    text-decoration: none;
 }

@@ -102,62 +102,53 @@ export default class SessionForm extends React.Component {
         const { month, day, year } = this.state;
         return (
           <li>
+            <div className='birthdate-block'>
 
-            <div className='birthdate-input'>
-            <select className='month-select' value={month} onChange={this.update("month")}>
-              <option value="">Month</option>
-              <option value="01">
-                January
-              </option>
-              <option value="02">
-                Febuary
-              </option>
-              <option value="03">
-                March
-              </option>
-              <option value="04">
-                April
-              </option>
-              <option value="05">
-                May
-              </option>
-              <option value="06">
-                June
-              </option>
-              <option value="07">
-                July
-              </option>
-              <option  value="08">
-                August
-              </option>
-              <option value="09">
-                September
-              </option>
-              <option value="10">
-                October
-              </option>
-              <option  value="11">
-                November
-              </option>
-              <option value="12">
-                December
-              </option>
-            </select>
-            <input
-              type="number"
-              onChange={this.update("day")}
-              placeholder="Day"
-              value={day}
-              />
-            <input
-              type="number"
-              onChange={this.update("year")}
-              placeholder="Year"
-              value={year}
-              />
-          </div>
+            <div >Date of birth</div>
+            <div className="birthdate-input">
+              <select
+                className="month-select"
+                value={month}
+                onChange={this.update("month")}
+                >
+                <option value="">Month</option>
+                <option value="01">January</option>
+                <option value="02">Febuary</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+              <input
+                type="number"
+                onChange={this.update("day")}
+                placeholder="Day"
+                value={day}
+                />
+              <input
+                type="number"
+                onChange={this.update("year")}
+                placeholder="Year"
+                value={year}
+                />
+            </div>
+            </div>
           </li>
         );
+    }
+
+    renderHeader (isSignup) {
+      let headerText = isSignup ? 
+        'Sign up to Tilda with your Email Address' : 'To continue, log in to Tilda';
+      return (
+        <h2>{headerText}</h2>
+      )
     }
 
     renderSignupFormFields() {
@@ -165,7 +156,6 @@ export default class SessionForm extends React.Component {
         return (
             <>
             <li>
-
                 <input
                 type="text"
                 onChange={this.update("name")}
@@ -209,12 +199,21 @@ export default class SessionForm extends React.Component {
         )
     }
 
-    // resetFields() {
-    //     let emptyState = {};
-    //     let fields = Object.keys(this.state);
-    //     fields.forEach(field => (emptyState[field] = ""));
-    //     this.setState(emptyState);
-    // }
+    renderPolicy() {
+        return (
+          <div className="policy">
+            <p>
+              By clicking on Sign up, you agree to Tilda's <a>Terms and Conditions of Use</a>.
+            </p>
+            <p>
+              To learn more about how Tilda collects, uses, shares and
+              protects your personal data please read Tilda's <a>Privacy Policy</a>.
+            </p>
+          </div>
+        );
+    }
+
+
 
 
     render() {
@@ -222,17 +221,17 @@ export default class SessionForm extends React.Component {
         let formFields = isSignup ? 
             this.renderSignupFormFields() : this.renderLoginFormFields();
         let prettyFormType = isSignup ? 'Sign Up' : 'Log In';
-
-
+        let policy = isSignup ? this.renderPolicy() : null;
         return (
           <div className="session-form-modal">
             
-              <h1 className="session-form-header">Tilda</h1>
+              <h1 className="session-form-header">Tilda~</h1>
               <form className="session-form" onSubmit={this.handleSubmit}>
-                <h2>{prettyFormType} to Tilda</h2>
+                {this.renderHeader(isSignup)}
                 <SessionErrorsIndex errors={errors} />
                 {formFields}
                 <br />
+                {policy}
                 <button className="submit-button">{prettyFormType}</button>
               </form>
 

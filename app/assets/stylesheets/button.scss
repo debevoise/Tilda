@@ -1,17 +1,30 @@
+@import 'tilda';
+
 button {
-    background-color: #4CAF50; /* Green */
+    background-color: $blue; /* Green */
+    transition-duration: 100ms;
     border: none;
     color: white;
     padding: 15px 32px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
 }
+button:hover {
+    transform: scale(1.03);
+    transition-duration: 100ms;
+    background-color: $light-blue;
+}
 
 .submit-button {
     width: 225px;
+    margin-top: 10px;
     padding: 16px 48px;
     max-width: 320px;
+    font-weight: 600;
+    border-radius: 50px;
 }
