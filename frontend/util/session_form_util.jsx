@@ -1,5 +1,10 @@
 import React from 'react';
 
+export const guestUser = { 
+    email: 'tildaguest@email.com',
+    password: 'tildaguest'
+}
+
 export const formatState = (state) => {
     const newState = Object.assign({}, state);
     newState.email = newState.email.toLowerCase();
@@ -45,7 +50,7 @@ const validGender = gender => {
 }
 
 const validPassword = password => {
-    return (password.length >= 8)
+    return (password.length >= 8);
 }
 
 export const isValidField = (field, value) => {

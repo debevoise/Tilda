@@ -14,6 +14,8 @@
     flex-direction: column;
     align-items: center;
 
+    
+
     h1 {
         width: 100%;
         text-align: center;
@@ -27,22 +29,38 @@
         color: white;
         background-color: $blue;
         border-bottom: 1px solid grey;
+
+        a > div {
+            display: inline-block;
+        }
     }
 
-        a {
-        color: $blue;
-        cursor: pointer;
-    }
-
-    a:hover {
-        color: $light-blue;
-    }
+    
 
     footer {
         margin-bottom: 30px;
     }
 }
 
+.session-form-modal a {
+    
+        color: $blue;
+        cursor: pointer;
+
+}
+
+
+.session-form-modal a:hover {
+    color: $light-blue;
+}
+
+.session-form-modal > h1 > a {
+    color: white;
+}
+
+.session-form-modal > h1 > a:hover {
+    color: white;
+}
 
 .session-form {
     width: 400px;
@@ -193,6 +211,12 @@
     text-align: center;
     font-size: 10pt;
     padding-bottom: 10px;
+}
+
+.error-message {
+    padding-top: 5px;
+    color: $error-orange;
+    font-size: 11pt;
 }
 
 .signup-instead {

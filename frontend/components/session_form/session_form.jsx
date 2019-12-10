@@ -5,6 +5,7 @@ import {
     formatState } from '../../util/session_form_util';
 import { Link } from 'react-router-dom';
 import FormError from './form_error';
+import TildaLogo from './tildalogo';
 
 export default class SessionForm extends React.Component {
     constructor(props) {
@@ -41,9 +42,19 @@ export default class SessionForm extends React.Component {
 		}
 	}
 
+	validateAllFields() {
+		const signupFields = ['day', 'month', 'year', 'name', 'email', 'gender', 'password'];
+		const { fieldErrors } = this.state
+		signupFields.forEach(field => {
+			let value = isValidField(field, this.state[field])
+			fieldErrors[field] = value;
+		})
+		this.setState({ fieldErrors });
+	}
+
     handleSubmit(e) {
         e.preventDefault();
-        
+        if (this.props.isSignup) this.validateAllFields();
         let submitState = formatState(this.state);
         this.props.processForm(submitState);
     }
@@ -78,40 +89,42 @@ export default class SessionForm extends React.Component {
     renderGenderButtons() {
         const {gender} = this.state;
         return (
-          <li className="gender-options">
-            <label>
-              Female
-              <input
-                className="radio-input"
-                type="radio"
-                value="female"
-                onBlur={this.validate("gender")}
-                onChange={this.update("gender")}
-                checked={gender === "female"}
-              />
-            </label>
-            <label>
-              Male
-              <input
-                className="radio-input"
-                type="radio"
-                value="male"
-                onBlur={this.validate("gender")}
-                onChange={this.update("gender")}
-                checked={gender === "male"}
-              />
-            </label>
-            <label>
-              Non-binary
-              <input
-                className="radio-input"
-                type="radio"
-                value="non-binary"
-                onBlur={this.validate("gender")}
-                onChange={this.update("gender")}
-                checked={gender === "non-binary"}
-              />
-            </label>
+          <li>
+            <div className="gender-options">
+              <label>
+                Female
+                <input
+                  className="radio-input"
+                  type="radio"
+                  value="female"
+                  onBlur={this.validate("gender")}
+                  onChange={this.update("gender")}
+                  checked={gender === "female"}
+                />
+              </label>
+              <label>
+                Male
+                <input
+                  className="radio-input"
+                  type="radio"
+                  value="male"
+                  onBlur={this.validate("gender")}
+                  onChange={this.update("gender")}
+                  checked={gender === "male"}
+                />
+              </label>
+              <label>
+                Non-binary
+                <input
+                  className="radio-input"
+                  type="radio"
+                  value="non-binary"
+                  onBlur={this.validate("gender")}
+                  onChange={this.update("gender")}
+                  checked={gender === "non-binary"}
+                />
+              </label>
+            </div>
             <FormError field="gender" state={this.state} />
           </li>
         );
@@ -281,15 +294,16 @@ export default class SessionForm extends React.Component {
         return (
           <div className="session-form-modal">
             
-              <h1 className="session-form-header">Tilda~</h1>
-              <form className="session-form" onSubmit={this.handleSubmit}>
-                {this.renderHeader(isSignup)}
-                {errorsList}
-                {formFields}
-                {policy}
-                <button className="submit-button">{prettyFormType}</button>
-              </form>
-                {this.renderInsteadOption(isSignup)}
+            <h1 className="session-form-header"><TildaLogo/></h1>
+    
+            <form className="session-form" onSubmit={this.handleSubmit}>
+              {this.renderHeader(isSignup)}
+              {errorsList}
+              {formFields}
+              {policy}
+              <button className="submit-button">{prettyFormType}</button>
+            </form>
+            {this.renderInsteadOption(isSignup)}
           </div>
         );
     }
