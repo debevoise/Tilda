@@ -1,10 +1,8 @@
 import React from 'react';
 import SessionErrorsIndex from './session_errors_index';
 import { 
-    validDay, 
-    validEmail, 
-    validPassword, 
-    validYear,
+    validateSignup,
+    validateLogin,
     formatState } from '../../util/session_form_util'
 
 export default class SessionForm extends React.Component {
@@ -27,8 +25,6 @@ export default class SessionForm extends React.Component {
             this.setState({
                 [field]: e.currentTarget.value
             }); 
-            //TODO
-            console.log(this.state)
         }
     }
 

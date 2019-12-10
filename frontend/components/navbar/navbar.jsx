@@ -1,10 +1,10 @@
 import React from 'react';
-import GreetingContainer from "../greeting/greeting_container";
+import GreetingContainer from "../greeting_bar/greeting_container";
 
 const NavBar = (props) => {
     return (
         <nav id="nav-bar">
-            <GreetingContainer />
+
         </nav>
     );
 }

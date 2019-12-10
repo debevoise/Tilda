@@ -14,5 +14,5 @@ const mdp = dispatch => ({
     logout: () => dispatch(logout())
 })
 
-const greetingContainer = connect(msp, mdp)(Greeting);
-export default greetingContainer;
+const GreetingContainer = connect(msp, mdp)(Greeting);
+export default GreetingContainer;

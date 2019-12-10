@@ -1,0 +1,31 @@
+.greeting-bar {
+    display: flex;
+    padding: 16px 24px;
+    height: 48px;
+
+
+    // background-color: rgba(0,0,0,0.4);
+    align-items: center;
+    justify-content: space-between;
+
+    .nav-arrows, .greeting {
+        display: flex;
+        align-items: center;
+    }
+
+    a {
+        padding: 10px 15px;
+    }
+
+    a:hover {
+        transform: scale(1.06);
+
+    }
+}
+
+
+
+.signup-link {
+    background-color: white;
+    color: black !important;
+}
