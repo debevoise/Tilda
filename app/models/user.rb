@@ -16,9 +16,9 @@
 class User < ApplicationRecord
     include BCrypt
     attr_reader :password
-    validates :name, :email, :password_digest, :session_token, :birth_date, :gender, presence: true
+    validates :name, :email, :password_digest, :session_token, :birth_date, presence: true
     validates :gender, inclusion: { 
-        in: %w(male female non-binary), message: 'Please select a valid gender' }
+        in: %w(male female non-binary) }
     validates :email, :session_token, uniqueness: true
     validates :password, length: { minimum: 8 }, allow_nil: true
     after_initialize :ensure_session_token

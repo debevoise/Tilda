@@ -1,15 +1,15 @@
 import React from 'react';
 import SessionErrorsIndex from './session_errors_index';
 import { 
-    validateSignup,
-    validateLogin,
+	isValidField,
     formatState } from '../../util/session_form_util';
 import { Link } from 'react-router-dom';
+import FormError from './form_error';
 
 export default class SessionForm extends React.Component {
     constructor(props) {
-        super(props);
-        this.state = { email: "", password: "" };
+		super(props);
+        this.state = { email: "", password: "", fieldErrors: {} };
         if (this.props.isSignup) {
             this.state.name = "";
             this.state.gender = "";
@@ -19,6 +19,7 @@ export default class SessionForm extends React.Component {
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.clearErrors = this.clearErrors.bind(this);
     }
 
     update(field) {
@@ -27,7 +28,18 @@ export default class SessionForm extends React.Component {
                 [field]: e.currentTarget.value
             }); 
         }
-    }
+	}
+	
+	validate(field) {
+		return e => {
+			const { fieldErrors } = this.state
+			fieldErrors[field] = isValidField(field, e.currentTarget.value);
+
+			this.setState({
+				fieldErrors
+			})
+		}
+	}
 
     handleSubmit(e) {
         e.preventDefault();
@@ -42,16 +54,18 @@ export default class SessionForm extends React.Component {
           <>
           <li>
             <input
-                type="text"
+				type="text"
+				onBlur={this.validate("email")}
                 onChange={this.update("email")}
                 value={email}
                 placeholder="Email"
                 />
             </li>
-            <li>
 
+            <li>
             <input
-                type="password"
+				type="password"
+				onBlur={this.validate("password")}
                 onChange={this.update("password")}
                 value={password}
                 placeholder="Password"
@@ -71,6 +85,7 @@ export default class SessionForm extends React.Component {
                 className="radio-input"
                 type="radio"
                 value="female"
+                onBlur={this.validate("gender")}
                 onChange={this.update("gender")}
                 checked={gender === "female"}
               />
@@ -81,6 +96,7 @@ export default class SessionForm extends React.Component {
                 className="radio-input"
                 type="radio"
                 value="male"
+                onBlur={this.validate("gender")}
                 onChange={this.update("gender")}
                 checked={gender === "male"}
               />
@@ -91,10 +107,12 @@ export default class SessionForm extends React.Component {
                 className="radio-input"
                 type="radio"
                 value="non-binary"
+                onBlur={this.validate("gender")}
                 onChange={this.update("gender")}
                 checked={gender === "non-binary"}
               />
             </label>
+            <FormError field="gender" state={this.state} />
           </li>
         );
     }
@@ -103,42 +121,47 @@ export default class SessionForm extends React.Component {
         const { month, day, year } = this.state;
         return (
           <li>
-            <div className='birthdate-block'>
-
-            <div >Date of birth</div>
-            <div className="birthdate-input">
-              <select
-                className="month-select"
-                value={month}
-                onChange={this.update("month")}
+            <div className="birthdate-block">
+              <div>Date of birth</div>
+              <div className="birthdate-input">
+                <select
+                  className="month-select"
+                  value={month}
+                  onChange={this.update("month")}
+                  onBlur={this.validate("month")}
                 >
-                <option value="">Month</option>
-                <option value="01">January</option>
-                <option value="02">Febuary</option>
-                <option value="03">March</option>
-                <option value="04">April</option>
-                <option value="05">May</option>
-                <option value="06">June</option>
-                <option value="07">July</option>
-                <option value="08">August</option>
-                <option value="09">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-              </select>
-              <input
-                type="number"
-                onChange={this.update("day")}
-                placeholder="Day"
-                value={day}
+                  <option value="">Month</option>
+                  <option value="01">January</option>
+                  <option value="02">Febuary</option>
+                  <option value="03">March</option>
+                  <option value="04">April</option>
+                  <option value="05">May</option>
+                  <option value="06">June</option>
+                  <option value="07">July</option>
+                  <option value="08">August</option>
+                  <option value="09">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+                <input
+                  type="number"
+                  onChange={this.update("day")}
+                  onBlur={this.validate("day")}
+                  placeholder="Day"
+                  value={day}
                 />
-              <input
-                type="number"
-                onChange={this.update("year")}
-                placeholder="Year"
-                value={year}
+                <input
+                  type="number"
+                  onChange={this.update("year")}
+                  onBlur={this.validate("year")}
+                  placeholder="Year"
+                  value={year}
                 />
-            </div>
+              </div>
+              <FormError field="month" state={this.state} />
+              <FormError field="day" state={this.state} />
+              <FormError field="year" state={this.state} />
             </div>
           </li>
         );
@@ -155,34 +178,38 @@ export default class SessionForm extends React.Component {
     renderSignupFormFields() {
         let { email, password, name, gender } = this.state;
         return (
-            <>
+          <>
             <li>
-                <input
+              <input
                 type="text"
                 onChange={this.update("name")}
+                onBlur={this.validate("name")}
                 placeholder="What should we call you?"
                 value={name}
-                />
+              />
+              <FormError field="name" state={this.state} />
             </li>
             <li>
-
-                <input
+              <input
                 type="text"
                 onChange={this.update("email")}
+                onBlur={this.validate("email")}
                 placeholder="Email"
                 value={email}
-                />
+              />
+              <FormError field="email" state={this.state} />
             </li>
             {this.renderBirthDateFields()}
             {this.renderGenderButtons()}
             <li>
-                <input
-                    type="password"
-                    onChange={this.update("password")}
-                    placeholder='Password'
-                    value={password}
-                    />
-
+              <input
+                type="password"
+                onChange={this.update("password")}
+                onBlur={this.validate("password")}
+                placeholder="Password"
+                value={password}
+              />
+              <FormError field="password" state={this.state} />
             </li>
           </>
         );
@@ -214,22 +241,29 @@ export default class SessionForm extends React.Component {
         );
     }
 
+    clearErrors() {
+    
+       this.setState({ errors: [] });
+    }
+
     renderInsteadOption(isSignup) {
         if (isSignup) {
             return (
-                <footer className='login-instead'>
-                    <p>Already have an account? <Link to='/login'>Log in</Link></p>
-                </footer>
-            )
+              <footer className="login-instead">
+                <p>
+                  Already have an account?{" "}
+                  <Link to="/login" onClick={this.props.clearSessionErrors}>
+                    Log in
+                  </Link>
+                </p>
+              </footer>
+            );
         } else {
             return (
               <footer className="signup-instead">
-                <p>
-                  Don't have an account?
-                </p>
-                <Link to='/signup'>
-                    
-                    <button>Sign up for Tilda</button>
+                <p>Don't have an account?</p>
+                <Link onClick={this.props.clearSessionErrors} to="/signup">
+                  <button>Sign up for Tilda</button>
                 </Link>
               </footer>
             );
@@ -242,14 +276,15 @@ export default class SessionForm extends React.Component {
         let formFields = isSignup ? 
             this.renderSignupFormFields() : this.renderLoginFormFields();
         let prettyFormType = isSignup ? 'Sign Up' : 'Log In';
-        let policy = isSignup ? this.renderPolicy() : null;
+		let policy = isSignup ? this.renderPolicy() : null;
+		let errorsList = !isSignup ? <SessionErrorsIndex errors={errors} /> : null;
         return (
           <div className="session-form-modal">
             
               <h1 className="session-form-header">Tilda~</h1>
               <form className="session-form" onSubmit={this.handleSubmit}>
                 {this.renderHeader(isSignup)}
-                <SessionErrorsIndex errors={errors} />
+                {errorsList}
                 {formFields}
                 {policy}
                 <button className="submit-button">{prettyFormType}</button>
