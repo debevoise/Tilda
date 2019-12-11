@@ -5,3 +5,39 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Song.destroy_all
+Album.destroy_all
+Artist.destroy_all
+
+20.times do
+    Artist.create(
+        name: Faker::Music.band,
+        biography: Faker::Quote.famous_last_words
+    )
+end
+
+Artist.all.each do |artist|
+    3.times do 
+        year = rand(1900..2019)
+        artist.albums.create(
+            title: Faker::Music.album,
+            genre: Faker::Music.genre,
+            year: year
+        )
+    end
+end
+
+Album.all.each do |album| 
+    8.times do
+        album.songs.create(
+            title: Faker::Book.title
+        )
+    end
+end
+
+# Artist.each do |artist|
+#     4.times do
+#         artist.albums.create(title)
+#     end
+# end

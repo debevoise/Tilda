@@ -23,6 +23,13 @@ class User < ApplicationRecord
     validates :password, length: { minimum: 8 }, allow_nil: true
     after_initialize :ensure_session_token
 
+    has_many :likes, dependent: :destroy
+    has_many :artists, through: :likes, source: :likeable, source_type: 'Artist'
+    has_many :albums, through: :likes, source: :likeable, source_type: 'Album'
+    has_many :songs, through: :likes, source: :likeable, source_type: 'Song'
+    # has_many :followed_playlists, through: :likes, source: :likeable, source_type: 'Playlist'
+    # has_many :authored_playlists, class_name: :Playlist
+
     def self.generate_session_token
         SecureRandom.urlsafe_base64
     end

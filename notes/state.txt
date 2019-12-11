@@ -1,0 +1,103 @@
+
+{
+  entities: {
+    songs: {
+      1: {
+        title: 'Walkie Talkie',
+        audioUrl: 'www.audio.com/111',
+        albumId: 3,
+        artistId: 1
+         
+      },
+      2: {
+        title: 'Blue Orchid',
+        audioUrl: 'www.audio.com/222',
+        albumId: 1
+      },
+      3: {
+        title: 'Composite',
+        audioUrl: 'www.audio.com/333',
+        albumId: 3
+      }
+    },
+    albums: {
+      1: {
+        id: 1,
+        name: 'Get Behind Me Satan'
+        artworkUrl: 'www.foo.bar/112233',
+        artistId: 123,
+        songIds: [1, 2, 3]
+      },
+      2: {
+        id: 2,
+        name: 'Shadow Expert',
+        artworkUrl: 'www.foo.bar/445566',
+        artistId: 456,
+        songIds: [4, 5, 6]
+      },
+      3: {
+        id: 3,
+        name: 'Rock Island',
+        artworkUrl: 'www.foo.bar/123456',
+        artistId: 456,
+        songIds = [6, 8],
+      },
+    },
+    artists: {
+      123: {
+        id: 123,
+        name: 'White Stripes',
+        albumIds = [6, 7, 9],
+        songIds = [2, 5, 18]
+      },
+      456: {
+        id: 456,
+        name: 'Palm',
+        songIds = [12, 51, 128]
+      }
+    },
+    users: {
+      1: {
+        id: 1,
+        username: 'slime'
+      },
+      4: {
+        id: 4,
+        username: 'tildaLVR'
+      }
+    },
+    playlists: {
+      10: {
+        name: 'Blimp Tunes for the Masses',
+        userId: 1
+      },
+      11: {
+        name: 'Noise rock only',
+        userId: 4
+      }
+    },
+    playlist-songs: {
+      1: {
+        id: 1,
+        playlist-id: 10,
+        song-id: 2
+      },
+      2: {
+        id: 2,
+        playlist-id: 10,
+        song-id: 3
+      }
+    }
+  },
+  ui: {
+    loading: true/false
+  },
+  errors: {
+    login: ["Incorrect username/password combo"],
+    playlistForm: ["Playlist title body cannot be blank"]
+  },
+  session: {
+    currentUserId: 1
+  }
+}
+```
