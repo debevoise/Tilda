@@ -27,8 +27,8 @@ class User < ApplicationRecord
     has_many :artists, through: :likes, source: :likeable, source_type: 'Artist'
     has_many :albums, through: :likes, source: :likeable, source_type: 'Album'
     has_many :songs, through: :likes, source: :likeable, source_type: 'Song'
-    # has_many :followed_playlists, through: :likes, source: :likeable, source_type: 'Playlist'
-    # has_many :authored_playlists, class_name: :Playlist
+    has_many :followed_playlists, through: :likes, source: :likeable, source_type: 'Playlist'
+    has_many :authored_playlists, class_name: :Playlist
 
     def toggle_like(likeable)
         like = User.last.likes.new

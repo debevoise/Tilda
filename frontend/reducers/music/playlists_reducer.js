@@ -6,6 +6,7 @@ const playlistsReducer = (state = {}, action) => {
         case RECEIVE_PLAYLISTS:
             return action;
         case RECEIVE_PLAYLIST:
+            //TODO
             const newState = Object.assign({}, state);
             const { playlist } = action;
             newState[playlist.id] = playlist;

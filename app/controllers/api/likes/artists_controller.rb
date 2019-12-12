@@ -1,4 +1,4 @@
-class Api::User::ArtistsController < ApplicationController
+class Api::Likes::ArtistsController < ApplicationController
     before_action :ensure_logged_in
     
     def index

@@ -16,28 +16,26 @@ export const unlikeAjax = (likeable) => {
 
 export const fetchLikedArtistsAjax = () => {
     return $.ajax({
-        url: `api/user/artists`
+        url: `api/likes/artists`
     })
 } 
 
 export const fetchLikedAlbumsAjax = () => {
     return $.ajax({
-        url: `api/user/albums`
+        url: `api/likes/albums`
     })
 }
-
-
 
 //NEED AUTHORED PLAYLISTS AS WELL
 export const fetchLikedPlaylistsAjax = () => {
     return $.ajax({
-        url: `api/user/playlists`
+        url: `api/likes/playlists`
     })
 }
 
 export const fetchLikedSongsAjax = () => {
     return $.ajax({
-        url: 'api/user/songs'
+        url: 'api/likes/songs'
     })
 }
 
