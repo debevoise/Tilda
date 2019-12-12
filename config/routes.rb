@@ -11,12 +11,14 @@ Rails.application.routes.draw do
         post :unlike, to: 'songs#unlike', as: 'unlike'
       end
     end
+    
     resources :albums, only: [:show] do
       member do
         post :like, to: 'albums#like', as: 'like'
         post :unlike, to: 'albums#unlike', as: 'unlike'
       end
     end
+
     resources :artists, only: [:show] do 
       member do
         post :like, to: 'artists#like', as: 'like'
@@ -28,9 +30,8 @@ Rails.application.routes.draw do
       resources :artists, only: [:index]
       resources :songs, only: [:index]
       resources :albums, only: [:index]
-      # post '/:likeable_type/:likeable_id'
-      # post '/:likeable_type/:likeable_id'
-      # resources :playlists, only: [:index]
+      resources :likes, only: :index
+      # resources :playlists
     end
   end
 

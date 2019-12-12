@@ -245,7 +245,7 @@ export default class SessionForm extends React.Component {
                 value={name}
               />
               <FormError field="name" state={this.state} />
-              <EmailTakenError errors={this.props.errors}/>
+              
             </li>
             <li>
               <input
@@ -257,6 +257,7 @@ export default class SessionForm extends React.Component {
                 value={email}
               />
               <FormError field="email" state={this.state} />
+              <EmailTakenError errors={this.props.errors} />
             </li>
             {this.renderBirthDateFields()}
             {this.renderGenderButtons()}

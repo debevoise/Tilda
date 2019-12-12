@@ -74,3 +74,10 @@ export const fetchLikedSongs = () => dispatch => {
         errors => dispatch(receiveMusicErrors(errors.responseJSON))
     )
 }
+
+export const fetchLikedPlaylists = () => dispatch => {
+    return fetchLikedPlaylistsAjax().then(
+        playlists => dispatch(receivePlaylists(playlists)),
+        errors => dispatch(receiveMusicErrors(errors.responseJSON))
+    )
+}
