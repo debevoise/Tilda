@@ -114,6 +114,10 @@
     color: white;
 }
 
+.error {
+    border: 1px solid $error-orange !important;
+}
+
 .radio-input {
 
     float: left;
@@ -213,6 +217,7 @@
     text-align: center;
     font-size: 10pt;
     padding-bottom: 10px;
+    line-height: 120%; 
 }
 
 .error-message {
@@ -234,7 +239,7 @@
 
     h2 {
         margin-top: 50px;
-        
+        font-size: 17.3px;
     }
 
     button {
@@ -271,3 +276,6 @@
     border-top: 1px solid $border-gray;
 }
 
+input:focus::-webkit-input-placeholder {
+    color: rgb(180, 180, 180);
+}

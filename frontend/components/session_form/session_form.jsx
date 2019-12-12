@@ -6,6 +6,8 @@ import {
 import { Link } from 'react-router-dom';
 import FormError from './form_error';
 import TildaLogo from './tildalogo';
+import { EmailTakenError } from './error_util';
+
 
 export default class SessionForm extends React.Component {
     constructor(props) {
@@ -21,7 +23,11 @@ export default class SessionForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
 		this.loginGuest = this.loginGuest.bind(this)
-    }
+	}
+	
+	componentWillUnmount() {
+		this.props.clearSessionErrors()
+	}
 
     update(field) {
         return e => {
@@ -29,7 +35,7 @@ export default class SessionForm extends React.Component {
                 [field]: e.currentTarget.value
             }); 
         }
-	}
+	  }
 	
 	validate(field) {
 		return e => {
@@ -52,11 +58,30 @@ export default class SessionForm extends React.Component {
 		this.setState({ fieldErrors });
 	}
 
-    handleSubmit(e) {
-        e.preventDefault();
-        if (this.props.isSignup) this.validateAllFields();
-        let submitState = formatState(this.state);
-        this.props.processForm(submitState);
+	errorClass(field) {
+		const fieldValue = this.state.fieldErrors[field];
+		
+		if (typeof fieldValue === 'boolean' && !fieldValue) {
+			return ' error';
+		} else {
+			return '';
+		}
+	}
+
+	handleSubmit(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		if (this.props.isSignup) {
+			this.validateAllFields();
+			const errorsArray = Object.values(this.state.fieldErrors);
+			let anyErrors = false;
+			errorsArray.forEach(field => {
+				if (!field) anyErrors = true;
+			});
+			if (anyErrors) return;
+		}
+		let submitState = formatState(this.state);
+		this.props.processForm(submitState);
 	}
 	
 
@@ -132,52 +157,56 @@ export default class SessionForm extends React.Component {
     }
 
     renderBirthDateFields() {
-        const { month, day, year } = this.state;
+		const { month, day, year } = this.state;
+		const monthError = this.errorClass('month')
         return (
-          <li>
-            <div className="birthdate-block">
-              <div>Date of birth</div>
-              <div className="birthdate-input">
-                <select
-                  className="month-select"
-                  value={month}
-                  onChange={this.update("month")}
-                  onBlur={this.validate("month")}
-                >
-                  <option value="">Month</option>
-                  <option value="01">January</option>
-                  <option value="02">Febuary</option>
-                  <option value="03">March</option>
-                  <option value="04">April</option>
-                  <option value="05">May</option>
-                  <option value="06">June</option>
-                  <option value="07">July</option>
-                  <option value="08">August</option>
-                  <option value="09">September</option>
-                  <option value="10">October</option>
-                  <option value="11">November</option>
-                  <option value="12">December</option>
-                </select>
-                <input
-                  type="number"
-                  onChange={this.update("day")}
-                  onBlur={this.validate("day")}
-                  placeholder="Day"
-                  value={day}
-                />
-                <input
-                  type="number"
-                  onChange={this.update("year")}
-                  onBlur={this.validate("year")}
-                  placeholder="Year"
-                  value={year}
-                />
-              </div>
-              <FormError field="month" state={this.state} />
-              <FormError field="day" state={this.state} />
-              <FormError field="year" state={this.state} />
-            </div>
-          </li>
+			<li>
+				<div className="birthdate-block">
+				<div>Date of birth</div>
+				<div className={"birthdate-input" }>
+					<select
+					className={"month-select" + this.errorClass('month')}
+					
+					value={month}
+					onChange={this.update("month")}
+					onBlur={this.validate("month")}
+					>
+					<option value="">Month</option>
+					<option value="01">January</option>
+					<option value="02">Febuary</option>
+					<option value="03">March</option>
+					<option value="04">April</option>
+					<option value="05">May</option>
+					<option value="06">June</option>
+					<option value="07">July</option>
+					<option value="08">August</option>
+					<option value="09">September</option>
+					<option value="10">October</option>
+					<option value="11">November</option>
+					<option value="12">December</option>
+					</select>
+					<input
+						type="number"
+						className={this.errorClass('day')}
+						onChange={this.update("day")}
+						onBlur={this.validate("day")}
+						placeholder="Day"
+						value={day}
+					/>
+					<input
+						type="number"
+						className={this.errorClass('year')}
+						onChange={this.update("year")}
+						onBlur={this.validate("year")}
+						placeholder="Year"
+						value={year}
+					/>
+				</div>
+				<FormError field="month" state={this.state} />
+				<FormError field="day" state={this.state} />
+				<FormError field="year" state={this.state} />
+				</div>
+			</li>
         );
     }
 
@@ -197,22 +226,31 @@ export default class SessionForm extends React.Component {
     }
 
     renderSignupFormFields() {
-        let { email, password, name, gender } = this.state;
+		let { email, password, name, gender } = this.state;
+		let emailError = () => {
+			const error = this.errorClass('email')
+			if (error.length > 0) return error;
+			if (this.props.errors.includes('Email has already been taken')) return ' error';
+			return '';
+		} 
         return (
           <>
             <li>
               <input
-                type="text"
+				type="text"
+				className={this.errorClass('name')}
                 onChange={this.update("name")}
                 onBlur={this.validate("name")}
                 placeholder="What should we call you?"
                 value={name}
               />
               <FormError field="name" state={this.state} />
+              <EmailTakenError errors={this.props.errors}/>
             </li>
             <li>
               <input
-                type="text"
+				type="text"
+				className={emailError()}
                 onChange={this.update("email")}
                 onBlur={this.validate("email")}
                 placeholder="Email"
@@ -224,7 +262,8 @@ export default class SessionForm extends React.Component {
             {this.renderGenderButtons()}
             <li>
               <input
-                type="password"
+				type="password"
+				className={this.errorClass('password')}
                 onChange={this.update("password")}
                 onBlur={this.validate("password")}
                 placeholder="Password"

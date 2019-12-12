@@ -2,7 +2,6 @@
 
 button {
     background-color: $blue; /* Green */
-    transition-duration: 100ms;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -13,10 +12,11 @@ button {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    transition: 300ms;
 }
 button:hover {
-    transform: scale(1.03);
-    transition-duration: 100ms;
+
+    transition: 300ms;
     background-color: $light-blue;
 }
 

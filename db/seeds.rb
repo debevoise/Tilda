@@ -36,8 +36,5 @@ Album.all.each do |album|
     end
 end
 
-# Artist.each do |artist|
-#     4.times do
-#         artist.albums.create(title)
-#     end
-# end
+tilda_guest = User.find(14);
+

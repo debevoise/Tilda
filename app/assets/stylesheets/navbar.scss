@@ -1,34 +1,61 @@
+@import 'tilda';
 
 #nav-bar {
     width: 230px;
+    min-width: 230px;
     height: 100%;
     background-color: #030303;
-    padding-top: 24px;
+    padding-top: 27px;
+    display: flex;
+    flex-direction: column;
 }
 
-#nav-bar .logo {
-    height: 40px;
-    padding-bottom: 18px;
+#nav-bar .tilda-logo div {
+    font-size: 30px;
+    color: white;
+    font-weight: 800;
+    letter-spacing: 9px;
+    padding-bottom: 20px;
     padding-left: 24px;
 }
 
 #nav-bar li {
+    box-sizing: border-box;
     font-size: 14px;
     font-weight: 600;
     height: 40px;
     display: flex;
     align-items: center;
-
+    transition: 300ms;
     padding-left: 24px;
     padding-right: 24px;
 }
 
-#nav-bar .active {
-    border-left: 3px solid red;
+#nav-bar .active li {
+    border-left: 3px solid $blue;
+    color: white;
+}
+
+#nav-bar li > div {
+    
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-list .material-icons {
+    font-size: 25px;
+    font-style: rounded;
+}
+
+.nav-list span {
+    margin-left: 15px;
+    letter-spacing: 150%;;
 }
 
 #nav-bar li:hover {
-    background-color: grey;
+    transition: 300ms;
+    color: white;
 }
 
 #nav-bar h3 {

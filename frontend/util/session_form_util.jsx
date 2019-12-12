@@ -85,7 +85,7 @@ export const getErrorMessage = field => {
         case "name":
             return "What should we call you?";
         case "password":
-            return "Enter a password to continue.";
+            return "Password must be 8 characters or longer.";
         case "gender":
             return "Please indicate your gender.";
         }

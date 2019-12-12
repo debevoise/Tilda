@@ -17,9 +17,9 @@ class User < ApplicationRecord
     include BCrypt
     attr_reader :password
     validates :name, :email, :password_digest, :session_token, :birth_date, presence: true
-    validates :gender, inclusion: { 
-        in: %w(male female non-binary) }
+    validates :gender, inclusion: { in: %w(male female non-binary) }
     validates :email, :session_token, uniqueness: true
+    validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
     validates :password, length: { minimum: 8 }, allow_nil: true
     after_initialize :ensure_session_token
 
@@ -29,6 +29,13 @@ class User < ApplicationRecord
     has_many :songs, through: :likes, source: :likeable, source_type: 'Song'
     # has_many :followed_playlists, through: :likes, source: :likeable, source_type: 'Playlist'
     # has_many :authored_playlists, class_name: :Playlist
+
+    def toggle_like(likeable)
+        like = User.last.likes.new
+        like.likeable_type = likeable.class.to_s
+        like.likeable_id = likeable.id
+        like.save
+    end
 
     def self.generate_session_token
         SecureRandom.urlsafe_base64
