@@ -4,6 +4,7 @@
     width: 230px;
     min-width: 230px;
     height: 100%;
+    max-height: 100%;
     background-color: #030303;
     padding-top: 27px;
     display: flex;
@@ -19,24 +20,25 @@
     padding-left: 24px;
 }
 
-#nav-bar li {
+.nav-list li {
     box-sizing: border-box;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     height: 40px;
     display: flex;
     align-items: center;
-    transition: 300ms;
+    transition: color 300ms;
     padding-left: 24px;
     padding-right: 24px;
 }
 
-#nav-bar .active li {
+.nav-list .active li {
     border-left: 3px solid $blue;
     color: white;
+    padding-left: 21px;
 }
 
-#nav-bar li > div {
+.nav-list li > div {
     
     display: flex;
     align-items: center;
@@ -54,7 +56,7 @@
 }
 
 #nav-bar li:hover {
-    transition: 300ms;
+    transition: color 300ms;
     color: white;
 }
 

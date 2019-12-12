@@ -1,0 +1,58 @@
+@import 'tilda';
+
+.playlist-index {
+    width: 100%;
+    flex-shrink: 0;
+    flex-direction: column;
+}
+
+.playlist-index > h2 {
+    margin-top: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 8pt;
+    color: #a0a0a0;
+}
+
+
+.playlist-index-item div {
+    font-weight: 400;
+    flex-grow: 1;
+    
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+
+.playlist-index-item {
+    box-sizing: border-box;
+    font-size: 13px;
+    font-weight: 400;
+    height: 32px;
+    display: flex;
+    align-items: center;
+
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.playlist-index .active li {
+    padding-left: 21px;
+    border-left: 3px solid $blue;
+
+}
+
+.playlist-index .scrollable {
+    height: 100%;
+    overflow-y: auto;
+}
+
+
+
+
+

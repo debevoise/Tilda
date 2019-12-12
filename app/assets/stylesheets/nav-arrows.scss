@@ -1,0 +1,16 @@
+.nav-arrows { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 85px;
+}
+
+.nav-arrows span {
+    display: inline-block;
+    background-color: black;
+    font-size: 0px;
+    padding: 6px;
+    border-radius: 50%;
+    cursor: pointer;
+}

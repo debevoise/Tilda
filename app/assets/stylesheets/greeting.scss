@@ -1,3 +1,5 @@
+@import 'tilda';
+
 .greeting-bar {
     display: flex;
     padding: 16px 24px;
@@ -8,13 +10,9 @@
     align-items: center;
     justify-content: space-between;
 
-    .nav-arrows, .greeting {
+    .nav-arrows, .greeting, .profile-icon {
         display: flex;
         align-items: center;
-    }
-
-    a {
-        padding: 10px 15px;
     }
 
     a:hover {
@@ -22,9 +20,51 @@
     }
 }
 
-
-
-.signup-link {
+.login-link {
     background-color: white;
     color: black !important;
 }
+
+.profile-icon  i {
+    display: inline-block;
+    background-color: $blue;
+    font-size: 18px;
+    
+    padding: 4px;
+    border-radius: 50%;
+    
+}
+
+.profile-icon span {
+    margin-right: 12px;
+    margin-left: 12px;
+}
+
+.profile-icon {
+
+    background-color: black;
+    font-size: 10pt;
+    padding: 5px 8px;
+    border-radius: 26px;
+    cursor: pointer;
+}
+
+.logout-greeting {
+    color: $light-blue;
+    font-size: 10pt;
+    cursor: pointer;
+    transform: none;
+    padding: 0 15px;
+}
+
+.login-link, .signup-link {
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 8px 34px;
+    border-radius: 26px;
+    cursor: pointer;
+}
+
+
+
