@@ -3,11 +3,12 @@ import React from 'react';
 const MediaPlayer = (props) => {
     return (
         <footer id='media-player'>
-            <NowPlaying />
+            {/* <NowPlaying />
             <PlayerControls />
-            <PlayerControlsRight />
+            <PlayerControlsRight /> */}
         </footer>
     )
 }
 
 export default MediaPlayer;
+

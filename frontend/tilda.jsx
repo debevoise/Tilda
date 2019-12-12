@@ -4,10 +4,13 @@ import configureStore from './store/store'
 
 //TODO testing
 import * as SessionApiUtil from './util/session_api_util'
+import * as MusicApiUtil from './util/music_api_util'
 import Root from './components/root';
-window.login = SessionApiUtil.login
-window.signup = SessionApiUtil.signup
-window.logout = SessionApiUtil.logout
+window.fetchLikedSongs = MusicApiUtil.fetchLikedSongsAjax;
+window.fetchLikedAlbums = MusicApiUtil.fetchLikedAlbumsAjax;
+window.fetchLikedArtists = MusicApiUtil.fetchLikedArtistsAjax;
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');

@@ -18,6 +18,18 @@ export default class PlaylistIndex extends React.Component {
             { name: "Blimp tunes for the masses", id: Math.random() }, 
             { name: "Blimp tunes for the masses", id: Math.random() },
             { name: "Blimp tunes for the masses", id: Math.random() },
+            { name: "Blimp tunes for the masses", id: Math.random() },
+            { name: "Blimp tunes for the masses", id: Math.random() },
+            { name: "Blimp tunes for the masses", id: Math.random() },
+            { name: "Blimp tunes for the masses", id: Math.random() },
+            { name: "Blimp tunes for the masses", id: Math.random() },
+            { name: "Blimp tunes for the masses", id: Math.random() },
+            { name: "Blimp tunes for the masses", id: Math.random() },
+            { name: "Blimp tunes for the masses", id: Math.random() },
+            { name: "Blimp tunes for the masses", id: Math.random() },
+            { name: "Blimp tunes for the masses", id: Math.random() },
+            { name: "Blimp tunes for the masses", id: Math.random() },
+            { name: "Blimp tunes for the masses", id: Math.random() },
     
         ]
         

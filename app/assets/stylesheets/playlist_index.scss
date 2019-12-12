@@ -2,8 +2,8 @@
 
 .playlist-index {
     width: 100%;
-    flex-shrink: 0;
     flex-direction: column;
+
 }
 
 .playlist-index > h2 {
@@ -48,7 +48,7 @@
 }
 
 .playlist-index .scrollable {
-    height: 100%;
+
     overflow-y: auto;
 }
 

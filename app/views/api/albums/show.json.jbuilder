@@ -4,6 +4,10 @@ json.album do
     json.songIds @album.songs.pluck(:id)
 end
 
+json.artist do
+    json.partial! 'api/artists/artist', artist: @album.artist
+end 
+
 @album.songs.includes(:album).each do |song|
   json.songs do
     json.set! song.id do
