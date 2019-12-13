@@ -8,6 +8,7 @@ $error-orange: #db613c;
 
 html {
     background-color: #111111;
+    scrollbar-color: $light-blue;
 }
 
 html, body, #root {
@@ -17,9 +18,6 @@ html, body, #root {
 
 }
 
-#root {
-
-}
 
 #root {
 
@@ -27,19 +25,14 @@ html, body, #root {
     min-height: 100%;
     position: relative;
     color: white;
-    // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-family: 'IBM Plex Sans';
+    // font-family: 
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
 
     display: grid;
     grid-template-rows: 1fr auto;
     grid-template-columns: auto 1fr;
     grid-template-areas: 'nav-bar content-window' 'media-player media-player';
 }
-
-// main {  
-//     flex-grow: 1;
-//     display: flex;
-// }
 
 #nav-bar, #content-window, #media-player {
     box-sizing: border-box;
@@ -60,6 +53,7 @@ html, body, #root {
 
 #content-window {
     grid-area: content-window;
+    min-height: 0;
 }
 
 a {

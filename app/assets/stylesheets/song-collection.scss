@@ -1,20 +1,49 @@
+.song-collection {
+    display: flex;
+}
+
+.song-collection button {
+    border-radius: 50px;
+    padding: 10px 50px;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
 .song-list {
-    
+    width: 65%;
+
+}
+
+.collection-display {
+    padding-right: 14px;
+    height: 100%;
+    width: 30%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.collection-art {
+    width: 100%;
+    padding-top: 100%;
+    background-color: rgb(247, 138, 234); 
+    margin-bottom: 20px;
 }
 
 .song {
-    margin-top: 9.8px;
+    margin-top: 4px;
     flex-grow: 1;
-
+    font-weight: 300;
+    padding-top: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 7px;
     display: flex;
     flex-direction: column;
-
+    transition: background-color 300ms, color 100ms;
     font-size: 13.5px
 }
-
-
 
 .song-title {
     font-size: 15px;
@@ -38,6 +67,13 @@
 
 .song:hover .song-options {
     color: white;
+    transition: color 100ms;
+}
+
+
+.song:hover {
+    transition: background-color 300ms;
+    background-color: rgb(85, 85, 85);
 }
 
 .song-second-row {

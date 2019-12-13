@@ -26,10 +26,27 @@ export default class SongCollection extends React.Component {
             if (typeof songs[id] === 'undefined') return null;
             return <SongContainer key={key} song={songs[id]}/>;
         })
+        const numSongs = songList.length;
      
         return (
             <div className='song-collection'>
-                
+                <div className='collection-display'>
+                    <div className='collection-art'></div>
+                    <h2>{collection.name}</h2>
+                    <button>Play</button>
+                    <h3 className='song-count'>{numSongs} songs</h3>
+                    <div className='like-collection'>
+                        <i className="material-icons">
+                            favorite
+                        </i>
+                        <i className="material-icons">
+                            favorite_border
+                        </i>
+                        <i className="material-icons">
+                            more_horiz
+                        </i>
+                    </div>
+                </div>
                 
                 <ul className='song-list'>
                     {songList}

@@ -1,11 +1,21 @@
 #content-window {
-    flex-grow: 1;
+    grid-area: content-window;
+    min-height: 0;
     position: relative;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
+
+
 
 #content-window .content {
     padding: 0px 32px;
+
+    min-height: 0;
+    overflow-y: auto;
+
+    padding-top: 70px;
 }
 
 
