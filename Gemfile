@@ -28,7 +28,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Simon installed these:
 gem 'jquery-rails'
-
+gem 'faker'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -46,7 +46,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'annotate'
-  gem 'faker'
+
 end
 
 group :development do
