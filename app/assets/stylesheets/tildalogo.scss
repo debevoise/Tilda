@@ -1,0 +1,6 @@
+@import 'tilda';
+#nav-bar .tilda-logo div {
+    background: linear-gradient(to right, $error-orange, white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

@@ -12,9 +12,9 @@ const songsReducer = (state = {}, action) => {
         case RECEIVE_SONGS:
             return action;
         case RECEIVE_ALBUM:
-            return Object.assign({}, state, action.songs);
+            return Object.assign({}, state, action.payload.songs);
         case RECEIVE_PLAYLIST:
-            return Object.assign({}, state, action.songs)
+            return Object.assign({}, state, action.payload.songs)
         default:
             return state;
     }

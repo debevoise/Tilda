@@ -21,7 +21,8 @@
 .playlist-index-item div {
     font-weight: 400;
     flex-grow: 1;
-    
+    padding-top: 3px;
+    padding-bottom: 3px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

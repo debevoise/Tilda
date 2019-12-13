@@ -2,8 +2,6 @@ import React from 'react';
 import PlaylistIndexItem from './playlist_index_item';
 
 export default class PlaylistIndex extends React.Component {
-
-
     componentDidMount() {
         this.props.fetchAuthoredPlaylists()
         this.setState({})
@@ -21,9 +19,6 @@ export default class PlaylistIndex extends React.Component {
                 <ul className='scrollable'>
                     {indexLis}
                 </ul>
-
-
-
             </div>
         )
     }

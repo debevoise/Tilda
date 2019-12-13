@@ -32,9 +32,9 @@ export const receivePlaylists = playlists => ({
     playlists
 })
 
-export const receivePlaylist = playlist => ({
+export const receivePlaylist = payload => ({
     type: RECEIVE_PLAYLIST,
-    playlist
+    payload
 })
 
 export const receiveArtists = artists => ({
@@ -42,9 +42,9 @@ export const receiveArtists = artists => ({
     artists
 })
 
-export const receiveArtist = artist => ({
+export const receiveArtist = payload => ({
     type: RECEIVE_ARTIST,
-    artist
+    payload
 })
 
 export const receiveAlbums = albums => ({
@@ -52,9 +52,9 @@ export const receiveAlbums = albums => ({
     albums
 })
 
-export const receiveAlbum = album => ({
+export const receiveAlbum = payload => ({
     type: RECEIVE_ALBUM,
-    album
+    payload
 })
 
 export const receiveSongs = songs => ({

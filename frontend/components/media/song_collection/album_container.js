@@ -7,9 +7,9 @@ const msp = (state, { match }) => {
     const albumId = parseInt(match.params.albumId);
     const { albums, songs } = state.entities.music;
     const { likes } = state.entities.users;
-
+    const collection = albums[albumId] || {};
     return {
-        collection: albums[albumId],
+        collection,
         songs,
         likes,
         type: 'Album'

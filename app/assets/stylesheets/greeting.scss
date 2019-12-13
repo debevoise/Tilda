@@ -1,14 +1,16 @@
 @import 'tilda';
 
 .greeting-bar {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
     display: flex;
     padding: 16px 24px;
-    height: 48px;
-
-
-    // background-color: rgba(0,0,0,0.4);
     align-items: center;
     justify-content: space-between;
+    // background-color: rgba(0,0,0,0.4);
+    align-items: center;
+    
 
     .nav-arrows, .greeting, .profile-icon {
         display: flex;

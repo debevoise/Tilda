@@ -7,9 +7,10 @@ const playlistsReducer = (state = {}, action) => {
             return action.playlists;
         case RECEIVE_PLAYLIST:
             const newState = Object.assign({}, state);
-            const { playlist } = action;
+            const { playlist } = action.payload;
             newState[playlist.id] = playlist;
             return newState;
+
         default:
             return state;
     }

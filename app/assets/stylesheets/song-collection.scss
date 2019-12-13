@@ -1,0 +1,51 @@
+.song-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.song {
+    margin-top: 9.8px;
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    font-size: 13.5px
+}
+
+
+
+.song-title {
+    font-size: 15px;
+    flex-grow: 1;
+}
+
+.song-first-row {
+    flex-grow: 1;
+    display: flex;
+    height: auto;
+    align-items: center;
+}
+
+.song-options {
+    width: 51px;
+    color: rgba(0, 0, 0, 0);
+    text-align: center;
+    cursor: pointer;
+    padding-right: 15px;
+}
+
+.song:hover .song-options {
+    color: white;
+}
+
+.song-second-row {
+    a {
+        padding-top: 0px;
+        cursor: pointer; 
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}

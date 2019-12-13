@@ -1,15 +1,16 @@
 import { connect } from 'react-redux';
-import SongCollection from './song_collection';
+
 import { like } from '../../../actions/like_actions';
 import { fetchPlaylist } from '../../../actions/music_actions';
+import SongCollection from './song_collection';
 
 const msp = (state, {match}) => {
-    const playlistId = parseInt(match.params.playlistId);
+    const playlistId = parseInt(match.params.id);
     const { playlists, songs } = state.entities.music;
     const { likes } = state.entities.users;
-
+    const collection = playlists[playlistId] || {};
     return {
-        collection: playlists[playlistId],
+        collection,
         songs,
         likes,
         type: 'Playlist'
