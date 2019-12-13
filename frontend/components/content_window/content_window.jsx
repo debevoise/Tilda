@@ -10,7 +10,7 @@ const ContentWindow = (props) => {
     return (
       <section id="content-window">
         <GreetingBar />
-        <div class='content'>
+        <div className='content'>
           <Route path='/playlists/:id' component={PlaylistContainer}/>
         </div>
       </section>

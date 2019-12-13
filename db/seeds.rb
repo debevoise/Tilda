@@ -12,9 +12,9 @@ Artist.destroy_all
 
 User.create(
     name: 'Tilda Guest', 
-    email: 'tilda@email.com', 
+    email: 'tildaguest@email.com', 
     password: 'tildaguest', 
-    birthdate: '04/06/1995', 
+    birth_date: '04/06/1995', 
     gender: 'non-binary')
 
 20.times do

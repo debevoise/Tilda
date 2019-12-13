@@ -2,8 +2,9 @@
 
 .playlist-index {
     width: 100%;
+    display: flex;
     flex-direction: column;
-
+    min-height: 0;
 }
 
 .playlist-index > h2 {

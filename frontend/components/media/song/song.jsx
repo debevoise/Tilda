@@ -15,7 +15,7 @@ export default class Song extends React.Component {
         let albumInfo = null;
         if (typeof album !== 'undefined') {
             albumInfo = <>
-                <span class="second-line-separator">•</span>
+                <span className="second-line-separator">•</span>
                 <a className='song-album'>{album}</a>
             </>
         }
@@ -23,7 +23,7 @@ export default class Song extends React.Component {
             <li className='song'>
                 <div className='song-first-row'>
                     <div className='song-title'>{song.title}</div>
-                    <i class="material-icons song-options">more_horiz</i>
+                    <i className="material-icons song-options">more_horiz</i>
                     <div className='song-timestamp'>6:66</div>
                 </div>
                 <div className='song-second-row'>

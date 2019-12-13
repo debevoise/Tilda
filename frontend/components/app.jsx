@@ -13,7 +13,7 @@ const App = () => {
 
     return (
       <>
-        <main>
+
           <NavBar />
           <ContentWindow />
 
@@ -27,7 +27,7 @@ const App = () => {
             path="/signup"
             component={SignupFormContainer}
           />
-        </main>
+
         <MediaPlayer />
       </>
     );

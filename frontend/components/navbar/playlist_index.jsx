@@ -15,7 +15,7 @@ export default class PlaylistIndex extends React.Component {
         return(
             <div className='playlist-index'>
                 <h2>Playlists</h2>
-
+                
                 <ul className='scrollable'>
                     {indexLis}
                 </ul>
