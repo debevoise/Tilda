@@ -19,7 +19,6 @@ export default class Song extends React.Component {
                 <a className='song-album'>{album}</a>
             </>
         }
-        debugger
         return (
             <li className='song'>
                 <div className='song-first-row'>
