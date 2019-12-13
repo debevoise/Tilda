@@ -4,36 +4,13 @@ import PlaylistIndexItem from './playlist_index_item';
 export default class PlaylistIndex extends React.Component {
 
 
+    componentDidMount() {
+        this.props.fetchAuthoredPlaylists()
+        this.setState({})
+    }
 
     render() {
-        const dummyPlaylists = [
-            { name: "Blimp tunes for the overflow masses", id: 2 }, 
-            { name: "Blimp tunes for the masses", id: Math.random() }, 
-            { name: "Blimp tunes for the masses", id: Math.random() }, 
-            { name: "Blimp tunes for the masses", id: Math.random() }, 
-            { name: "Blimp tunes for the masses", id: Math.random() },
-
-                        { name: "Blimp tunes for the masses", id: Math.random() }, 
-            { name: "Blimp tunes for the masses", id: Math.random() }, 
-            { name: "Blimp tunes for the masses", id: Math.random() }, 
-            { name: "Blimp tunes for the masses", id: Math.random() },
-            { name: "Blimp tunes for the masses", id: Math.random() },
-            { name: "Blimp tunes for the masses", id: Math.random() },
-            { name: "Blimp tunes for the masses", id: Math.random() },
-            { name: "Blimp tunes for the masses", id: Math.random() },
-            { name: "Blimp tunes for the masses", id: Math.random() },
-            { name: "Blimp tunes for the masses", id: Math.random() },
-            { name: "Blimp tunes for the masses", id: Math.random() },
-            { name: "Blimp tunes for the masses", id: Math.random() },
-            { name: "Blimp tunes for the masses", id: Math.random() },
-            { name: "Blimp tunes for the masses", id: Math.random() },
-            { name: "Blimp tunes for the masses", id: Math.random() },
-            { name: "Blimp tunes for the masses", id: Math.random() },
-            { name: "Blimp tunes for the masses", id: Math.random() },
-    
-        ]
-        
-        const indexLis = dummyPlaylists.map((playlist, idx) => {
+        const indexLis = this.props.playlists.map((playlist, idx) => {
             return <PlaylistIndexItem playlist={playlist} key={idx}/>
         })
 

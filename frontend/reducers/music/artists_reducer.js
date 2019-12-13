@@ -6,7 +6,7 @@ const artistsReducer = (state = {}, action) => {
     const newState = Object.assign({}, state);
     switch (action.type) {
         case RECEIVE_ARTISTS:
-            return action;
+            return action.artists;
         case RECEIVE_ARTIST:
             newState[artist.id] = artist;
             return newState;

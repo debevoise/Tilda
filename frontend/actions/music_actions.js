@@ -3,11 +3,13 @@ import {
     fetchLikedAlbumsAjax, 
     fetchLikedSongsAjax, 
     fetchLikedPlaylistsAjax, 
-    like, 
-    unlike
+    fetchAuthoredPlaylistsAjax,
+    fetchAlbumAjax,
+    fetchPlaylistAjax,
+    fetchArtistAjax
 } from '../util/music_api_util'
 
-export const RECEIVE_MUSIC_ERRORS = 'RECEIVE_MUSIC_ERRORS'
+
 
 export const RECEIVE_ARTISTS = "RECEIVE_ARTISTS"
 export const RECEIVE_ARTIST = "RECEIVE_ARTIST"
@@ -18,9 +20,21 @@ export const RECEIVE_SONG = "RECEIVE_SONG"
 export const RECEIVE_PLAYLISTS = "RECEIVE_PLAYLISTS"
 export const RECEIVE_PLAYLIST = "RECEIVE_PLAYLIST"
 
+export const RECEIVE_MUSIC_ERRORS = 'RECEIVE_MUSIC_ERRORS'
+
 export const receiveMusicErrors = errors => ({
     type: RECEIVE_MUSIC_ERRORS,
     errors
+})
+
+export const receivePlaylists = playlists => ({
+    type: RECEIVE_PLAYLISTS,
+    playlists
+})
+
+export const receivePlaylist = playlist => ({
+    type: RECEIVE_PLAYLIST,
+    playlist
 })
 
 export const receiveArtists = artists => ({
@@ -54,6 +68,46 @@ export const receiveSong = song  => ({
 })
 
 //THUNK ACTION CREATORS
+//---Fetch Single
+
+export const fetchArtist = id => dispatch => {
+    return fetchArtistAjax(id).then(
+        payload => dispatch(receiveArtist(payload)),
+        errors => dispatch(receiveMusicErrors(errors.responseJSON))
+    )
+}
+
+export const fetchAlbum = id => dispatch => {
+    return fetchAlbumAjax(id).then(
+        payload => dispatch(receiveAlbum(payload)),
+        errors => dispatch(receiveMusicErrors(errors.responseJSON))
+    )
+}
+
+export const fetchPlaylist = id => dispatch => {
+    return fetchPlaylistAjax(id).then(
+        payload => dispatch(receivePlaylist(payload)),
+        errors => dispatch(receiveMusicErrors(errors.responseJSON))
+    )
+}
+
+
+//---Fetch Multiple
+export const fetchAuthoredPlaylists = () => dispatch => {
+    return fetchAuthoredPlaylistsAjax().then(
+        playlists => dispatch(receivePlaylists(playlists)),
+        errors => dispatch(receiveMusicErrors(errors.responseJSON))
+    )
+}
+
+export const fetchLikedPlaylists = () => dispatch => {
+    return fetchLikedPlaylistsAjax().then(
+        playlists => dispatch(receivePlaylists(playlists)),
+        errors => dispatch(receiveMusicErrors(errors.responseJSON))
+    )
+}
+
+
 export const fetchLikedArtists = () => dispatch => {
     return fetchLikedArtistsAjax().then(
         artists => dispatch(receiveArtists(artists)),
@@ -75,9 +129,5 @@ export const fetchLikedSongs = () => dispatch => {
     )
 }
 
-export const fetchLikedPlaylists = () => dispatch => {
-    return fetchLikedPlaylistsAjax().then(
-        playlists => dispatch(receivePlaylists(playlists)),
-        errors => dispatch(receiveMusicErrors(errors.responseJSON))
-    )
-}
+
+

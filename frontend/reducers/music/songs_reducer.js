@@ -8,7 +8,6 @@ import { RECEIVE_SONGS, RECEIVE_PLAYLIST, RECEIVE_ALBUM } from "../../actions/mu
 
 const songsReducer = (state = {}, action) => {
     Object.freeze(state);
-    // let newState;
     switch (action.type) {
         case RECEIVE_SONGS:
             return action;

@@ -27,7 +27,7 @@ class Api::ArtistsController < ApplicationController
 
         if @like
             @like.destroy
-            render 'api/likes/likes'
+            render 'api/likes/index'
         else
             render json: ['Could not complete your request'], status: 422
         end

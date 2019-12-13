@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 			end
 		end
 
-		resources :playlists, only: [:create, :update, :show, :destroy] do
+		resources :playlists, only: [:create, :update, :index, :show, :destroy] do
 			member do
 				post :like, to: 'playlists#like', as: 'like'
 				post :unlike, to: 'playlists#unlike', as: 'unlike'

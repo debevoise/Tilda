@@ -1,15 +1,20 @@
 class Api::PlaylistsController < ApplicationController
     before_action :ensure_logged_in, except: [:show]
     PLAYLISTTYPE = 'Playlist'    
-
+                                                                                                            
     def create
         @playlist = current_user.playlists.new(playlist_params)
 
         if @playlist.save 
-            render 'api/playlists/playlist'
+            render 'api/playlists/show'
         else
             render json: ['Could not create playlist'], status: 422
         end
+    end
+
+    def index
+        @playlists = current_user.authored_playlists
+        render 'api/playlists/index'
     end
 
     def update
@@ -17,7 +22,7 @@ class Api::PlaylistsController < ApplicationController
         @playlist.update(playlist_params)
 
         if @playlist.save
-            render 'api/playlist/playlist'
+            render 'api/playlist/show'
         else
             render json: ['Could not update playlist'], status: 422
         end
@@ -25,7 +30,7 @@ class Api::PlaylistsController < ApplicationController
 
     def show
         @playlist = Playlist.find(params[:id])
-        render 'api/playlist/playlist'
+        render 'api/playlists/show'
     end
 
     def like 
@@ -49,7 +54,7 @@ class Api::PlaylistsController < ApplicationController
 
         if @like
             @like.destroy
-            render 'api/likes/likes'
+            render 'api/likes/show'
         else
             render json: ['Could not complete your request'], status: 422
         end

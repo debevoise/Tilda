@@ -10,6 +10,13 @@ Song.destroy_all
 Album.destroy_all
 Artist.destroy_all
 
+User.create(
+    name: 'Tilda Guest', 
+    email: 'tilda@email.com', 
+    password: 'tildaguest', 
+    birthdate: '04/06/1995', 
+    gender: 'non-binary')
+
 20.times do
     Artist.create(
         name: Faker::Music.band,
@@ -37,4 +44,17 @@ Album.all.each do |album|
 end
 
 tilda_guest = User.find(14);
+
+def createPlaylist(user)
+    pl = user.authored_playlists.create(name: Faker::Restaurant.name)
+    10.times do
+        randsong = Song.all.sample
+        pl.add_song!(randsong)
+    end
+end
+
+5.times do
+    createPlaylist(tilda_guest)
+end
+
 
