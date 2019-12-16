@@ -5,7 +5,7 @@ export default class SongCollection extends React.Component {
     componentDidMount() {
         const { id } = this.props.match.params;
         this.props.fetchCollection(id);
-
+        
     }
 
     componentDidUpdate(prevProps) {
@@ -27,12 +27,13 @@ export default class SongCollection extends React.Component {
             return <SongContainer key={key} song={songs[id]}/>;
         })
         const numSongs = songList.length;
+        const nameHeader = collection.name || collection.title;
      
         return (
             <div className='song-collection'>
                 <div className='collection-display'>
                     <div className='collection-art'></div>
-                    <h2>{collection.name}</h2>
+                    <h2>{nameHeader}</h2>
                     <button>Play</button>
                     <h3 className='song-count'>{numSongs} songs</h3>
                     <div className='like-collection'>

@@ -1,28 +1,35 @@
 import React from 'react';
+import CreatePlaylist from './create_playlist_modal';
+import Modal from '../modal/modal';
 
 export default class CreatePlaylistButton extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { show: false }
+        this.state = { active: false }
+        this.closeModal = this.closeModal.bind(this);
+        this.showModal = this.showModal.bind(this);
     }
 
-    showModal() {
-        this.setState({ show: true })
+    showModal(e) {
+        this.setState({ active: true });
     }
 
-    hideModal() {
-        this.setState({ show: false })
+    closeModal(e) {
+        e.stopPropagation();
+        this.setState({ active: false })
     }
 
     render() {
         return (
-            <button className='create-playlist'>
+            <div className='create-playlist' onClick={this.showModal}>
                 <i className="material-icons">
                     add_box
                 </i>
                 <span>Create Playlist</span>
-            </button>
+                <Modal active={this.state.active} handleClose={this.closeModal}>
+                    <CreatePlaylist closeModal={this.closeModal} />
+                </Modal>
+            </div>
         )
     }
-
 }

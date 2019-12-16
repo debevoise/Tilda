@@ -6,7 +6,10 @@ import {
     fetchAuthoredPlaylistsAjax,
     fetchAlbumAjax,
     fetchPlaylistAjax,
-    fetchArtistAjax
+    fetchArtistAjax,
+    createPlaylistAjax,
+    removeSongFromPlaylistAjax,
+    addSongToPlaylistAjax
 } from '../util/music_api_util'
 
 
@@ -69,6 +72,28 @@ export const receiveSong = song  => ({
 
 //THUNK ACTION CREATORS
 //---Fetch Single
+
+export const createPlaylist = playlist => dispatch => {
+    return createPlaylistAjax(playlist).then(
+        playlist => dispatch(receivePlaylist(playlist)),
+        errors => dispatch(receiveMusicErrors(errors.responseJSON))
+    )
+}
+
+export const removeSongFromPlaylist = (playlistId, songId) => dispatch => {
+    return removeSongFromPlaylistAjax(playlistId, songId).then(
+        playlist => dispatch(receivePlaylist(playlist)),
+        errors => dispatch(receiveMusicErrors(errors.responseJSON))
+    )
+}
+
+export const addSongToPlaylist = (playlistId, songId) => dispatch => {
+    return addSongToPlaylistAjax(playlistId, songId).then(
+        playlist => dispatch(receivePlaylist(playlist)),
+        errors => dispatch(receiveMusicErrors(errors.responseJSON))
+    )
+}
+
 
 export const fetchArtist = id => dispatch => {
     return fetchArtistAjax(id).then(

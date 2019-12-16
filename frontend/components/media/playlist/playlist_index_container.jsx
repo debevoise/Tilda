@@ -1,9 +1,10 @@
 import PlaylistIndex from "./playlist_index";
 import { connect } from 'react-redux';
-import { fetchAuthoredPlaylists } from "../../actions/music_actions";
+import { fetchAuthoredPlaylists } from "../../../actions/music_actions";
 
 const msp = (state) => ({
-    playlists: Object.values(state.entities.music.playlists)
+    playlists: Object.values(state.entities.music.playlists),
+    modal: false
 })
 
 const mdp = dispatch => ({

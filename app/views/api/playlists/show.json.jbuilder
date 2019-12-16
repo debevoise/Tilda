@@ -10,3 +10,6 @@ end
   end
 end
 
+json.creator do
+    @playlist.user.name
+end

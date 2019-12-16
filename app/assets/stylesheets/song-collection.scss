@@ -5,8 +5,15 @@
 .song-collection button {
     border-radius: 50px;
     padding: 10px 50px;
+    margin-bottom: 10px;
     font-size: 9pt;
     text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.song-collection .song-count {
+    text-transform: uppercase;
+    font-size: 9pt;
     letter-spacing: 2px;
 }
 
@@ -24,11 +31,20 @@
     align-items: center;
 }
 
+.song-collection h2 {
+    padding: 10px 0px;
+    font-weight: 600px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
 .collection-art {
     width: 100%;
     padding-top: 100%;
     background-color: rgb(247, 138, 234); 
     margin-bottom: 20px;
+    max-width: 320px;
+    max-height: 320px;
 }
 
 .song {
@@ -76,6 +92,10 @@
     background-color: rgb(85, 85, 85);
 }
 
+.like-collection {
+    padding: 20px;
+}
+
 .song-second-row {
     a {
         padding-top: 0px;
@@ -84,5 +104,9 @@
 
     a:hover {
         text-decoration: underline;
+    }
+
+    .second-line-separator {
+        padding: 0 5px;
     }
 }

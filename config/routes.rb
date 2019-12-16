@@ -31,6 +31,8 @@ Rails.application.routes.draw do
 			member do
 				post :like, to: 'playlists#like', as: 'like'
 				post :unlike, to: 'playlists#unlike', as: 'unlike'
+				post :add, to: 'playlists#add', as: 'add'
+				post :remove, to: 'playlists#remove', as: 'remove'
 			end
 		end
 

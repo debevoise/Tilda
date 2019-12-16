@@ -11,13 +11,13 @@
 
 class Playlist < ApplicationRecord
   validates :name, presence: :true
-  validates :name, uniqueness: { scope: :user_id }
+  # validates :name, uniqueness: { scope: :user_id }
 
   belongs_to :user
   has_many :playlist_songs
   has_many :songs, through: :playlist_songs
 
-  def add_song!(song)
+  def add_song(song)
     self.playlist_songs.create(song_id: song.id)
   end
 end

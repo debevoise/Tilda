@@ -3,12 +3,12 @@ class Api::PlaylistsController < ApplicationController
     PLAYLISTTYPE = 'Playlist'    
                                                                                                             
     def create
-        @playlist = current_user.playlists.new(playlist_params)
+        @playlist = current_user.authored_playlists.new(playlist_params)
 
         if @playlist.save 
             render 'api/playlists/show'
         else
-            render json: ['Could not create playlist'], status: 422
+            render json: @playlist.errors.full_messages, status: 422
         end
     end
 
@@ -24,13 +24,37 @@ class Api::PlaylistsController < ApplicationController
         if @playlist.save
             render 'api/playlist/show'
         else
-            render json: ['Could not update playlist'], status: 422
+            render json: @playlist.errors.full_messages, status: 422
         end
     end
 
     def show
         @playlist = Playlist.find(params[:id])
         render 'api/playlists/show'
+    end
+
+    def add
+        @playlist = current_user.playlists.find(params[:id])
+        song = Song.find(params[:songId])
+        if @playlist && song
+            @playlist.add_song(song)
+            render 'api/playlist/show'
+        else
+            render json: [ 'Something went wrong...' ], status: 422
+        end
+    end
+    
+
+    def remove
+        @playlist = current_user.playlists.find(params[:id])
+        ps = @playlist.playlist_songs.find_by(song_id: params[:songId])
+        if ps
+            ps.destroy
+            render 'api/playlist/show'
+        else
+            render json: [ 'Something went wrong...' ], status: 422
+        end
+
     end
 
     def like 

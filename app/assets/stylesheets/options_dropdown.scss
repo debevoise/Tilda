@@ -1,0 +1,24 @@
+.options-dropdown {
+    background-color: rgb(50, 50, 50);
+    padding: 7px 0px;
+    width: 200px;
+    border-radius: 5px;
+    li {
+        padding: 3px 20px; 
+        min-height: 30px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 200ms;
+    }
+
+    li:hover {
+        background-color: rgb(92, 92, 92);
+        transition: background-color 200ms;
+    }
+
+
+}
+
+
+

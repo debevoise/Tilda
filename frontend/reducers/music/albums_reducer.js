@@ -7,11 +7,13 @@ const albumsReducer = (state = {}, action) => {
         case RECEIVE_ALBUMS:
             return action;
         case RECEIVE_ALBUM:
-            const {album} = action;
+            const {album} = action.payload;
             newState = Object.assign({}, state);
             newState[album.id] = album;
             return newState;
         case RECEIVE_ARTIST:
+
+            //TODO check format of state( payload etc )
             newState = Object.assign({}, action.albums, state);
             return newState;
         default:

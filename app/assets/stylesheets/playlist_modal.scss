@@ -1,0 +1,72 @@
+@import 'tilda';
+
+input {
+    outline: none;
+}
+
+.create-playlist-modal {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.create-playlist-form  {
+    box-sizing: border-box;
+    width: 100%;
+
+    // height: 68px;
+    padding: 32px 0px;
+    background-color: #282828;
+    display: flex;
+    flex-direction: column;
+    align-content: left;
+}
+
+.create-playlist-form input {
+    height: 60px;
+    
+    width: 100%;
+    min-width: 580px;
+    caret-color: $blue;
+    background-color: transparent;
+    border: none;
+    font-size: 48px;
+    margin-top: 8px;
+    color: white;
+}
+
+.create-playlist-form label {
+    font-size: 14px;
+    padding: 0px 32px;
+}
+
+
+.create-playlist-form label, input {
+    display: block;
+}
+
+.button-footer {
+    padding: 28px 0px;
+    width: 330px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-footer button {
+    margin-top: 14px;
+    font-size: 9pt;
+}
+
+.cancel-button {
+    background-color: black;
+    border: 2px solid white;
+}
+
+.cancel-button:hover {
+    box-sizing: border-box;
+    background-color: black;
+}
+
+
+

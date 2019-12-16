@@ -18,6 +18,33 @@
     color: #a0a0a0;
 }
 
+.create-playlist {
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    color: #a0a0a0;
+    margin: 4px 0px;
+    cursor: pointer;
+    padding: 13px 20px;
+    transition: color 300ms;
+    i.material-icons {
+        font-size: 33pt;
+        padding: none;
+    }
+
+    span {
+        margin-left: 8px;
+    }
+}
+
+.create-playlist:hover {
+    color: white;
+    transition: color 300ms;
+}
+
 
 .playlist-index-item div {
     font-weight: 400;

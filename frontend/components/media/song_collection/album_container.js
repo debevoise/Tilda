@@ -4,10 +4,11 @@ import { like } from '../../../actions/like_actions';
 import { fetchAlbum } from '../../../actions/music_actions';
 
 const msp = (state, { match }) => {
-    const albumId = parseInt(match.params.albumId);
+
+    const id = parseInt(match.params.id);
     const { albums, songs } = state.entities.music;
     const { likes } = state.entities.users;
-    const collection = albums[albumId] || {};
+    const collection = albums[id] || {};
     return {
         collection,
         songs,
@@ -18,6 +19,7 @@ const msp = (state, { match }) => {
 
 const mdp = dispatch => ({
     like: (type, id) => dispatch(like(type, id)),
+    unlike: (type, id) => dispatch(unlike(type, id)),
     fetchCollection: (id) => dispatch(fetchAlbum(id))
 })
 

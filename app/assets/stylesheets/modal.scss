@@ -1,0 +1,60 @@
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.7);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.modal-content h1 {
+    font-size: 30pt;
+    font-weight: 700;
+    padding: 24px 0px;
+}
+
+.modal-content button {
+    transition-duration: 200ms;
+    padding: 11px 44px;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 2pt;
+    border-radius: 50px;
+}
+
+.modal-content button:hover {
+    transition-duration: 200ms;
+    transform: scale(1.05);
+    transition-duration: 200ms;
+}
+
+
+
+.modal-close {
+    background-color: transparent;
+    transition-duration: 200ms;
+    .hide-icon {
+        font-size: 50pt;
+    }
+}
+
+.modal-close:hover {
+    background-color: transparent;
+    transform: scale(1.05);
+    transition-duration: 200ms;
+}
+
