@@ -4,14 +4,14 @@ import TildaLogo from '../session_form/tildalogo';
 import NavList from './navlist'
 
 import { ProtectedRoute } from '../../util/route_util';
-import PlaylistIndexContainer from '../media/playlist/playlist_index_container';
+import PlaylistNavContainer from '../media/playlist/playlist_nav_container';
 
 const NavBar = (props) => {
     return (
         <nav id="nav-bar">
             <TildaLogo />
             <NavList />
-            <ProtectedRoute to='/' component={PlaylistIndexContainer}/>
+            <ProtectedRoute to='/' component={PlaylistNavContainer}/>
             
         </nav>
     );

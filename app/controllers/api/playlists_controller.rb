@@ -34,11 +34,11 @@ class Api::PlaylistsController < ApplicationController
     end
 
     def add
-        @playlist = current_user.playlists.find(params[:id])
+        @playlist = current_user.authored_playlists.find(params[:id])
         song = Song.find(params[:songId])
         if @playlist && song
             @playlist.add_song(song)
-            render 'api/playlist/show'
+            render 'api/playlists/show'
         else
             render json: [ 'Something went wrong...' ], status: 422
         end
@@ -46,11 +46,11 @@ class Api::PlaylistsController < ApplicationController
     
 
     def remove
-        @playlist = current_user.playlists.find(params[:id])
+        @playlist = current_user.authored_playlists.find(params[:id])
         ps = @playlist.playlist_songs.find_by(song_id: params[:songId])
         if ps
             ps.destroy
-            render 'api/playlist/show'
+            render 'api/playlists/show'
         else
             render json: [ 'Something went wrong...' ], status: 422
         end

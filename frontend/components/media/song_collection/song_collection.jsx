@@ -18,13 +18,17 @@ export default class SongCollection extends React.Component {
     }
 
     render() {
-        const { songs, collection } = this.props;
+        const { songs, collection, authored } = this.props;
         if (typeof collection.songIds === 'undefined') { 
             return null; 
         }
         const songList = collection.songIds.map((id, key) => {
             if (typeof songs[id] === 'undefined') return null;
-            return <SongContainer key={key} song={songs[id]}/>;
+
+            return <SongContainer 
+                key={key} 
+                authored={authored}
+                song={songs[id]}/> 
         })
         const numSongs = songList.length;
         const nameHeader = collection.name || collection.title;

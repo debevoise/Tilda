@@ -13,7 +13,8 @@ const msp = (state, { match }) => {
         collection,
         songs,
         likes,
-        type: 'Album'
+        type: 'Album',
+        authored: false
     }
 }
 

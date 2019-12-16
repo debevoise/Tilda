@@ -35,7 +35,7 @@ export default class OptionsDropdown extends React.Component {
             top: y,
             left: x
         }
-        debugger
+
         return (
             <ul 
                 className='options-dropdown'

@@ -4,7 +4,7 @@ import { connect } from 'react-router-dom'
 import { defaultCipherList } from 'constants';
 
 
-const PlaylistModalItem = ({ playlist, songId }) => {
+const PlaylistAddItem = ({ playlist, songId }) => {
     let { id, name, songIds } = playlist;
     let count = songIds.length
     let songCount = count === 1 ? count + ' Song' : count + ' Songs'

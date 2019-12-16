@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import OptionsDropdown from '../../options_dropdown/options_dropdown';
 import Modal from '../../modal/modal';
-import AddToPlaylist from '../playlist/add_to_playlist_container';
+import PlaylistAddContainer from '../playlist/playlist_add_container';
+
 
 export default class Song extends React.Component { 
     constructor(props) {
@@ -12,9 +13,9 @@ export default class Song extends React.Component {
 
         this.closeDropdown = this.closeDropdown.bind(this);
         this.showDropdown = this.showDropdown.bind(this);
-
         this.showModal = this.showModal.bind(this)
         this.closeModal = this.closeModal.bind(this)
+
     }
 
     showDropdown(e) {
@@ -39,9 +40,21 @@ export default class Song extends React.Component {
     }
 
     render() {
-        const {song} = this.props;
-        let { album, albumId, artist, artistId } = song;
+        const {song, authored, removeSongFromPlaylist } = this.props;
+        let { album, albumId, artist, artistId, id } = song;
         let albumInfo = null;
+
+        let removeOption = (typeof authored === 'number') ? (
+            <li onClick={
+                (e) => removeSongFromPlaylist(authored, id)
+                    .then(() => this.closeDropdown(e))}>
+                Remove song from this playlist
+            </li>
+        ) : null
+
+
+
+
         if (typeof album !== 'undefined') {
             albumInfo = <>
                 <span className="second-line-separator">•</span>
@@ -69,6 +82,7 @@ export default class Song extends React.Component {
                         <li onClick={this.showModal}>
                             Add song to playlist
                         </li>
+                        {removeOption}
                         <li>
                             Add to liked songs
                         </li>
@@ -77,7 +91,7 @@ export default class Song extends React.Component {
                         </li>
                 </OptionsDropdown>
                 <Modal active={this.state.modalActive} handleClose={this.closeModal}>
-                    <AddToPlaylist />
+                    <PlaylistAddContainer closeModal={this.closeModal} songId={id} />
                 </Modal>
                 
                 

@@ -4,13 +4,13 @@ const playlistsReducer = (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_PLAYLISTS:
-            return action.playlists;
+            const { playlists } = action;
+            return Object.assign({}, state, playlists);
         case RECEIVE_PLAYLIST:
             const newState = Object.assign({}, state);
             const { playlist } = action.payload;
             newState[playlist.id] = playlist;
             return newState;
-
         default:
             return state;
     }
