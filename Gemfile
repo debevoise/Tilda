@@ -29,6 +29,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Simon installed these:
 gem 'jquery-rails'
 gem 'faker'
+gem 'aws-sdk', '~> 3'
+gem 'taglib-ruby'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

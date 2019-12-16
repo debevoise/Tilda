@@ -14,6 +14,7 @@
 class Album < ApplicationRecord
     validates :title, presence: true
     
+    has_one_attached :artwork
     has_many :songs, dependent: :destroy
     belongs_to :artist
     has_many :likes, as: :likeable

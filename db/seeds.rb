@@ -6,6 +6,34 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Dir.foreach('/Users/work/Desktop/active_storage_demo/simon_music_seeds/') do |song|
+  next if song == '.' or filename == '..'
+  # Do work on the remaining files & directories
+end
+
+require 'taglib'
+
+# Load a file
+TagLib::FileRef.open('/Users/work/Desktop/active_storage_demo/simon_music_seeds/02 The World It Softly Lulls.m4a') do |fileref|
+  unless fileref.null?
+    
+    tag = fileref.tag
+    puts tag
+    
+    puts tag.title   #=> "Wake Up"
+    puts tag.artist  #=> "Arcade Fire"
+    puts tag.album   #=> "Funeral"
+    puts tag.year    #=> 2004
+    puts tag.track   #=> 7
+    puts tag.genre   #=> "Indie Rock"
+    puts tag.comment #=> nil
+
+    puts properties = fileref.audio_properties
+    puts properties.length  #=> 335 (song length in seconds)
+  end
+end 
+
+
 Song.destroy_all
 Album.destroy_all
 Artist.destroy_all

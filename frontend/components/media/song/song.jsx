@@ -19,15 +19,16 @@ export default class Song extends React.Component {
     }
 
     showDropdown(e) {
+        if (this.props.authored === false) return;
         const optionXY = { x: e.pageX - 200, y: e.pageY }
         e.preventDefault();
-        e.stopPropagation();
-        this.setState({ optionXY })
+        // e.stopPropagation();
+        this.setState({ optionXY });
     }
 
     closeDropdown(e) {
-        e.stopPropagation();
-        this.setState({ optionXY: null })
+        // e.stopPropagation();
+        this.setState({ optionXY: null });
     }
 
     showModal(e) {

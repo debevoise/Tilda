@@ -7,15 +7,15 @@ import SongCollection from './song_collection';
 const msp = (state, {match}) => {
     const playlistId = parseInt(match.params.id);
     const { playlists, songs } = state.entities.music;
+    let authored = false;
     const currentUser = state.entities.users[state.session.id]
-    const { likes } = currentUser;
+    const likes = (currentUser) ? currentUser.likes : null;
+
     const collection = playlists[playlistId] || {};
-    let authored;
-    if (currentUser.authored_playlists.includes(playlistId)) {
+    
+    if (currentUser && currentUser.authored_playlists.includes(playlistId)) {
         authored = playlistId
-    } else {
-        authored = false;
-    }
+    } 
 
     return {
         collection,
