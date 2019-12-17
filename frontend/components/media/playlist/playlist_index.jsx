@@ -9,6 +9,8 @@ export default class PlaylistIndex extends React.Component {
         // this.setState({})
     }
 
+    
+
     //MUST MANUALLY PASS SONG ID THROUGH!!!!!!!
     render() {
         let indexLis;
@@ -32,7 +34,7 @@ export default class PlaylistIndex extends React.Component {
         } else if (mode === 'navbar') {
             indexLis = playlistIds.map((playlistId, idx) => {
                 let playlist = playlists[playlistId];
-              
+                
                 if (typeof playlist === 'undefined') { return null }
                 return <PlaylistIndexItem playlist={playlist} key={idx} />
             })

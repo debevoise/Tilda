@@ -4,7 +4,8 @@ import { fetchAuthoredPlaylists } from "../../../actions/music_actions";
 
 const msp = (state) => {
     const currentUserId = state.session.id;
-    const playlistIds = state.entities.users[currentUserId].authored_playlists
+    const playlistIds = 
+        state.entities.users[currentUserId].authored_playlists
     
     return {
         playlists: state.entities.music.playlists,

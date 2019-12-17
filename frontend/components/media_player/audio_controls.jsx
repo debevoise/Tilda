@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MediaPlayer = (props) => {
+const AudioControlBar = (props) => {
     return (
         <footer id='media-player'>
             {/* <NowPlaying />
@@ -10,5 +10,5 @@ const MediaPlayer = (props) => {
     )
 }
 
-export default MediaPlayer;
+export default AudioControlBar;
 

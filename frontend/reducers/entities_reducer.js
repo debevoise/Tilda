@@ -7,4 +7,4 @@ const entitiesReducer = combineReducers({
     music: musicReducer
 })
 
-export default entitiesReducer;
+export default entitiesReducer; 

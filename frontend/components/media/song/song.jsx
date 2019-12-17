@@ -42,9 +42,12 @@ export default class Song extends React.Component {
 
     render() {
         const {song, authored, removeSongFromPlaylist } = this.props;
-        let { album, albumId, artist, artistId, id } = song;
+        let { album, albumId, artist, artistId, length, id } = song;
         let albumInfo = null;
-
+        let seconds = length % 60;
+        if (seconds < 10) seconds = '0' + seconds;
+        let time = Math.floor(length / 60) + ":" + seconds; 
+        
         let removeOption = (typeof authored === 'number') ? (
             <li onClick={
                 (e) => removeSongFromPlaylist(authored, id)
@@ -53,23 +56,23 @@ export default class Song extends React.Component {
             </li>
         ) : null
 
-
-
-
         if (typeof album !== 'undefined') {
             albumInfo = <>
                 <span className="second-line-separator">•</span>
                 <Link className='song-album' to={`/albums/${albumId}`}>{album}</Link>
             </>
         }
+
         return (
-            <li className='song' onContextMenu={this.showDropdown}>
+            <li className='song' 
+                onDoubleClick={() => this.props.playSong(song)}
+                onContextMenu={this.showDropdown}>
                 <div className='song-first-row'>
                     <div className='song-title'>{song.title}</div>
                     <i 
                         className="material-icons song-options"
                         onClick={this.showDropdown}>more_horiz</i>
-                    <div className='song-timestamp'>6:66</div>
+                    <div className='song-timestamp'>{time}</div>
                 </div>
                 <div className='song-second-row'>
                     <Link className='song-artist' to={`/artists/${artistId}`}>
