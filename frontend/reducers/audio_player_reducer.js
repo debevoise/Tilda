@@ -45,6 +45,7 @@ const audioPlayerReducer = (state = defaultState, action) => {
         //     newState.userQueue = songs;
         //     return newState;
         case PLAY_COLLECTION_FROM_IDX: 
+            newState.active = true;
             newState.actionId = newState.actionId + 1;
             const { songs, idx } = action;
             newState.currentSong = songs[idx];

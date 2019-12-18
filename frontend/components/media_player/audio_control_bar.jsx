@@ -19,6 +19,7 @@ export default class AudioControlBar extends React.Component {
         this.play = this.play.bind(this)
         this.playNextSong = this.playNextSong.bind(this)
         this.playPreviousSong = this.playPreviousSong.bind(this)
+        this.setCurrentTime = this.setCurrentTime.bind(this)
         //history is a stack, queues are......queues
     }
 
@@ -101,14 +102,16 @@ export default class AudioControlBar extends React.Component {
         })
     }
 
-    setCurrentTime(time) {
+    setCurrentTime(e) {
+        let time = Math.ceil(e.timeStamp / 1000)
         this.setState({currentTime: time})
     }
     
     
     render() {   
-        debugger
-        
+        let duration = (this.audio && this.audio.duration) ? 
+            Math.ceil(this.audio.duration) : 0;
+
         return (
             <footer id='media-player'>
                 <audio id='audio-player'
@@ -121,14 +124,15 @@ export default class AudioControlBar extends React.Component {
                     Your browser does not support html audio.
                 </audio>
                 
-                {/* <AudioControlsMid 
+                <AudioControlsMid 
                     playNext={this.playNextSong}
                     playPrev={this.playPreviousSong}
                     pause={this.pause}
                     play={this.play}
                     currentTime={this.state.currentTime}
-                    
-                /> */}
+                    duration={duration}
+                    active={this.state.active}
+                />
                 {/* <AudioControlsLeft />
                 
                 <AudioControlsRight /> */}

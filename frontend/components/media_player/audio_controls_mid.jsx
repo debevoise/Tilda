@@ -14,7 +14,7 @@ export default class AudioControlsMid extends React.Component {
     }
 
     getProgress() {
-        let { duration, currentTime } = this.props.audio;
+        let { duration, currentTime } = this.props;
         if (duration === 0) return 0;
         if (currentTime > duration) return 100;
         return 100 * (currentTime / duration);
@@ -23,7 +23,7 @@ export default class AudioControlsMid extends React.Component {
     render() {
         let { duration, currentTime } = this.props;
         let progress = this.getProgress().toString();
-        let playPauseIcon = paused ? 'play_circle_outline' : 'pause_circle_outline'
+        let playPauseIcon = this.props.active ? 'play_circle_outline' : 'pause_circle_outline'
 
         return (
             <div className='ac-mid'>
