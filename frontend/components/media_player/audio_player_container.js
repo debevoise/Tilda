@@ -10,6 +10,7 @@ const msp = ({audioPlayer}) => {
         currentSong, 
         playerQueue, 
         userQueue, 
+        resetTime,
         history } = audioPlayer;
     
     return {
@@ -18,7 +19,8 @@ const msp = ({audioPlayer}) => {
         currentSong,
         playerQueue,
         userQueue,
-        history
+        history,
+        resetTime
     }
 }
 

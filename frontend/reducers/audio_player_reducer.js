@@ -7,6 +7,7 @@ const defaultState = Object.freeze({
     currentSong: {},
     playerQueue: [],
     userQueue: [],
+    resetTime: null,
     history: []
 })
 
@@ -51,6 +52,7 @@ const audioPlayerReducer = (state = defaultState, action) => {
             newState.currentSong = songs[idx];
             newState.history = songs.slice(0, idx)
             newState.playerQueue = songs.slice(idx + 1)
+            newState.resetTime = true;
             return newState;
         case TOGGLE_PLAY_PAUSE:
             newState.actionId = newState.actionId + 1;

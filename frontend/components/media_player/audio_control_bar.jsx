@@ -32,9 +32,14 @@ export default class AudioControlBar extends React.Component {
             currentSong,
             playerQueue,
             userQueue,
+            resetTime,
             history } = this.props;
 
         if (prevProps.actionId === actionId) return;
+        
+        if (this.state.currentSong === currentSong && resetTime && this.hasAudio()) {
+            this.audio.currentTime = 0;
+        } 
 
         this.setState({
             active,
@@ -46,6 +51,10 @@ export default class AudioControlBar extends React.Component {
 
     }
 
+    hasAudio() {
+        return this.audio && this.audio.src
+    }
+
     pause() {
         this.setState({active: false})
     }
@@ -55,7 +64,7 @@ export default class AudioControlBar extends React.Component {
     }
 
     playNextSong() {
-        const { history, currentSong, playerQueue, userQueue, active } = this.state
+        let { history, currentSong, playerQueue, userQueue, active } = this.state
         if (currentSong.id) history.push(currentSong);
 
         if (userQueue.length !== 0) {
@@ -106,11 +115,19 @@ export default class AudioControlBar extends React.Component {
         let time = Math.ceil(e.timeStamp / 1000)
         this.setState({currentTime: time})
     }
+
+    setPlayStatus() {
+        if (typeof this.audio === 'undefined') return
+        (this.state.active && this.audio.src) ? this.audio.play() : this.audio.pause()
+    }
     
     
     render() {   
         let duration = (this.audio && this.audio.duration) ? 
             Math.ceil(this.audio.duration) : 0;
+        let currentTime = (this.hasAudio()) ? Math.floor(this.audio.currentTime) : 0;
+        this.setPlayStatus()
+        
 
         return (
             <footer id='media-player'>
@@ -129,7 +146,7 @@ export default class AudioControlBar extends React.Component {
                     playPrev={this.playPreviousSong}
                     pause={this.pause}
                     play={this.play}
-                    currentTime={this.state.currentTime}
+                    currentTime={currentTime}
                     duration={duration}
                     active={this.state.active}
                 />

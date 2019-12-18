@@ -4,7 +4,7 @@ import * as PlayerComponentUtil from '../../util/player_component_util'
 export default class AudioControlsMid extends React.Component {
     constructor(props) {
         super(props);
-        
+        this.togglePlayPause = this.togglePlayPause.bind(this)
     } 
 
 
@@ -20,10 +20,16 @@ export default class AudioControlsMid extends React.Component {
         return 100 * (currentTime / duration);
     }
 
+    togglePlayPause(e) {
+        e.preventDefault()
+        const { active, play, pause } = this.props;
+        (active) ? pause() : play()
+    }
+
     render() {
-        let { duration, currentTime } = this.props;
+        let { duration, currentTime, active } = this.props;
         let progress = this.getProgress().toString();
-        let playPauseIcon = this.props.active ? 'play_circle_outline' : 'pause_circle_outline'
+        let playPauseIcon = active ? 'pause_circle_outline' : 'play_circle_outline'
 
         return (
             <div className='ac-mid'>
@@ -38,7 +44,7 @@ export default class AudioControlsMid extends React.Component {
                             skip_previous
                         </i>
                     </button>
-                    <button className='play-pause'>
+                    <button className='play-pause' onClick={this.togglePlayPause}>
                         <i className="material-icons">
                             {playPauseIcon}
                         </i>
