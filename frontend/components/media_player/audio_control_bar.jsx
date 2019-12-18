@@ -1,5 +1,6 @@
 import React from 'react';
 import AudioControlsMid from './audio_controls_mid';
+import AudioControlsLeft from './audio_controls_left';
 
 export default class AudioControlBar extends React.Component {
     constructor(props) {
@@ -8,25 +9,26 @@ export default class AudioControlBar extends React.Component {
         this.state = {
             active: false,
             currentSong: {},
-            currentTime: 0,
             playerQueue: [],
             history: [],
             userQueue: [],
+            currentTime: 0,
             volume: 100
         }
+        //history is a stack, queues are......queues
 
         this.pause = this.pause.bind(this)
         this.play = this.play.bind(this)
         this.playNextSong = this.playNextSong.bind(this)
         this.playPreviousSong = this.playPreviousSong.bind(this)
         this.setCurrentTime = this.setCurrentTime.bind(this)
-        //history is a stack, queues are......queues
+        this.getCurrentTime = this.getCurrentTime.bind(this)
     }
 
 
     componentDidUpdate(prevProps) {
-        debugger
-        const {
+
+        let {
             actionId,
             active,
             currentSong,
@@ -76,6 +78,7 @@ export default class AudioControlBar extends React.Component {
             currentSong = {};
         }
 
+        this.audio.currentTime = 0;
         this.setState({
             currentTime: 0,
             history,
@@ -87,10 +90,12 @@ export default class AudioControlBar extends React.Component {
     }
 
     playPreviousSong() {
-        const { history, currentSong, userQueue, currentTime } = this.state
+        let { history, currentSong, userQueue } = this.state
+        let currentTime = this.audio.currentTime
+
         if (currentSong.id) {
             if (currentTime > 5 || history.length === 0) {
-                this.setState({currentTime: 0})
+                this.audio.currentTime = 0
                 return;
             }
 
@@ -103,31 +108,33 @@ export default class AudioControlBar extends React.Component {
             }
         }
 
+       
         this.setState({
-            currentTime: 0,
             history,
             currentSong,
             userQueue,
         })
     }
 
-    setCurrentTime(e) {
-        let time = Math.ceil(e.timeStamp / 1000)
-        this.setState({currentTime: time})
-    }
 
     setPlayStatus() {
         if (typeof this.audio === 'undefined') return
         (this.state.active && this.audio.src) ? this.audio.play() : this.audio.pause()
+    }
+
+    getCurrentTime(e) {
+        let currentTime = Math.floor(this.audio.currentTime)
+
+        this.setState({ currentTime})
     }
     
     
     render() {   
         let duration = (this.audio && this.audio.duration) ? 
             Math.ceil(this.audio.duration) : 0;
-        let currentTime = (this.hasAudio()) ? Math.floor(this.audio.currentTime) : 0;
+        // let currentTime = (this.hasAudio()) ? Math.floor(this.audio.currentTime) : 0;
         this.setPlayStatus()
-        
+        let {currentSong } = this.state;
 
         return (
             <footer id='media-player'>
@@ -135,24 +142,25 @@ export default class AudioControlBar extends React.Component {
                     onEnded={this.playNextSong}
                     onTimeUpdate={this.setCurrentTime}
                     ref={audio =>  this.audio = audio }
-                    src={this.state.currentSong.songFile}
+                    src={currentSong.songFile}
                     autoPlay
                     >
                     Your browser does not support html audio.
                 </audio>
                 
+                <AudioControlsLeft song={currentSong}/>
                 <AudioControlsMid 
                     playNext={this.playNextSong}
                     playPrev={this.playPreviousSong}
                     pause={this.pause}
                     play={this.play}
-                    currentTime={currentTime}
+
+                    currentTime={this.state.currentTime}
                     duration={duration}
                     active={this.state.active}
                 />
-                {/* <AudioControlsLeft />
-                
-                <AudioControlsRight /> */}
+
+                {/* <AudioControlsRight />  */}
             </footer>
          )
     }

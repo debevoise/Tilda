@@ -1,9 +1,21 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
-export default class AudioControlsLeft extends React.Component {
+const AudioControlsLeft = (props) => {
 
+    // TODO: Attach album artwork
+    const { song } = props;
+    if (!song) return (
+        <div className='ac-left'>
+            
+        </div>
+    )
 
-    render() {
-        
-    }
+    return (
+        <div className='ac-left'>
+            <Link 
+                to={`/artist/${song.artistId}`}
+                className='now-playing-artist'>song.artist</Link>
+        </div>
+    )
 }

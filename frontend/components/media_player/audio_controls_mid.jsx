@@ -27,7 +27,7 @@ export default class AudioControlsMid extends React.Component {
     }
 
     render() {
-        let { duration, currentTime, active } = this.props;
+        let { duration, currentTime, active, playNext, playPrev } = this.props;
         let progress = this.getProgress().toString();
         let playPauseIcon = active ? 'pause_circle_outline' : 'play_circle_outline'
 
@@ -40,7 +40,7 @@ export default class AudioControlsMid extends React.Component {
                         </i>
                     </button>
                     <button>
-                        <i className="material-icons">
+                        <i className="material-icons" onClick={playPrev}>
                             skip_previous
                         </i>
                     </button>
@@ -50,7 +50,7 @@ export default class AudioControlsMid extends React.Component {
                         </i>
                     </button>
                     <button>
-                        <i className="material-icons">
+                        <i className="material-icons" onClick={playNext}>
                             skip_next
                         </i>
                     </button>
