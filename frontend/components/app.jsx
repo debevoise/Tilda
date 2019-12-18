@@ -8,8 +8,8 @@ import NavBar from './navbar/navbar';
 import ContentWindow from './content_window/content_window';
 // import SessionModal from './session_form/session_modal';
 
-import AudioPlayerContainer from './media_player/audio_player_container';
-import AudioControlBar from './media_player/audio_control_bar';
+import AudioControlBar from './media_player/audio_player_container';
+// import AudioControlBar from './media_player/audio_control_bar';
 
 const App = () => {
 	const MainContent = () => (
@@ -23,11 +23,6 @@ const App = () => {
 
     return (
 		<>
-			<ProtectedRoute
-				path="/"
-				component={AudioPlayerContainer}
-			/>
-			<AudioPlayerContainer />
 			<Switch>
 				<AuthRoute
 					exact
@@ -41,7 +36,7 @@ const App = () => {
 				/>
 				<Route path='/' component={MainContent}/>
 			</Switch>
-{/* Moved audio element to root.html.erb */}
+
 		</>
     );
 }

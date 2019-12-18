@@ -2,7 +2,7 @@
 import { PLAY_SONG, PLAY_SONGS, PAUSE_MUSIC, TOGGLE_PLAY_PAUSE, PLAY_NEXT_SONG, PLAY_COLLECTION_FROM_IDX } from "../actions/audio_player_actions";
 
 const defaultState = Object.freeze({
-    actionId: 0,
+    actionId: 1,
     active: false,
     currentSong: {},
     playerQueue: [],

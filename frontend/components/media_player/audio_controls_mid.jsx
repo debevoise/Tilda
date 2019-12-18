@@ -4,8 +4,6 @@ import * as PlayerComponentUtil from '../../util/player_component_util'
 export default class AudioControlsMid extends React.Component {
     constructor(props) {
         super(props);
-
-        const player = document.getElementById('audio-player');
         
         if (!player) {
             this.state = {
