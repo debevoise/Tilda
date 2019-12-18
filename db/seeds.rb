@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'taglib'
+# require 'taglib'
 require 'open-uri'
 require 'aws-sdk-s3'
 
@@ -142,19 +142,19 @@ song4.song_file.attach(io: file4, filename: 'indiscipline.mp3')
 
 
 
-# tilda_guest = User.find_by_email('tildaguest@email.com');
+tilda_guest = User.find_by_email('tildaguest@email.com');
 
-# def createPlaylist(user)
-#     pl = user.authored_playlists.create(name: Faker::Restaurant.name)
-#     15.times do
-#         randsong = Song.all.sample
-#         pl.add_song(randsong)
-#     end
-# end
+def createPlaylist(user)
+    pl = user.authored_playlists.create(name: Faker::Restaurant.name)
+    15.times do
+        randsong = Song.all.sample
+        pl.add_song(randsong)
+    end
+end
 
-# 14.times do
-#     createPlaylist(tilda_guest)
-# end
+14.times do
+    createPlaylist(tilda_guest)
+end
 
 # 20.times do
 #     Artist.create(
