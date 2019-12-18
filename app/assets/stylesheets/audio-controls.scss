@@ -1,0 +1,75 @@
+#media-player button {
+    background-color: rgba(0,0,0,0);
+    color: #a0a0a0;
+
+}
+
+#media-player button:hover {
+    background-color: rgba(0,0,0,0);
+    color: white;
+}
+
+button:focus { outline: none; }
+
+#media-player {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ac-mid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+     min-width: 40%;
+}
+
+.ac-mid button {
+   
+    padding: 0px;
+}
+
+.audio-controls {
+    min-width: 224px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.audio-controls .play-pause i {
+    font-size: 36px;
+}
+
+.progress-container {
+    
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .progress-bar {
+        flex-grow: 1;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        progress {
+            flex-grow: 1;
+            height:  4px;
+        }
+        
+        .player-position {
+            background-color: transparent;
+            padding: 6px;
+            margin: 0px;
+            border-radius: 50%;
+            position: absolute;
+        }
+    }
+    
+    span {
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin: 0 5px;
+        color: #a0a0a0;
+    }
+}

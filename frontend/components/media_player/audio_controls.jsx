@@ -1,11 +1,13 @@
 import React from 'react';
+import AudioControlsMid from './audio_controls_mid';
 
 const AudioControlBar = (props) => {
     return (
         <footer id='media-player'>
-            {/* <NowPlaying />
-            <PlayerControls />
-            <PlayerControlsRight /> */}
+            <AudioControlsMid />
+            {/* <AudioControlsLeft />
+            
+            <AudioControlsRight /> */}
         </footer>
     )
 }

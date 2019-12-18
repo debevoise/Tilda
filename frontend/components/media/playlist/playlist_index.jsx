@@ -40,6 +40,7 @@ export default class PlaylistIndex extends React.Component {
             })
         }
         
+        const className = (mode === 'navbar') ? 'scrollable' : 'add-to-playlist';
         const header = (mode === 'navbar') ? (
             <>
             <h2>Playlists</h2>
@@ -50,7 +51,7 @@ export default class PlaylistIndex extends React.Component {
         return(
             <div className='playlist-index'>
                 {header}
-                <ul className='scrollable'>
+                <ul className={className}>
                     {indexLis}
                 </ul>
             </div>

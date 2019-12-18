@@ -25,7 +25,7 @@ class GreetingBar extends React.Component {
             a = (scrollHeight > 175) ? 1 : (scrollHeight / 175);
         } 
         const style = { backgroundColor: `rgba(14,26,32,${a})` };
-        console.log(a)
+        
         return (
             <header className='greeting-bar' style={style}>
                 <NavArrows />

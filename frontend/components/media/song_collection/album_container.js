@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import SongCollection from './song_collection';
 import { like } from '../../../actions/like_actions';
 import { fetchAlbum } from '../../../actions/music_actions';
+import { playCollectionFromIdx } from '../../../actions/audio_player_actions';
 
 const msp = (state, { match }) => {
 
@@ -21,7 +22,8 @@ const msp = (state, { match }) => {
 const mdp = dispatch => ({
     like: (type, id) => dispatch(like(type, id)),
     unlike: (type, id) => dispatch(unlike(type, id)),
-    fetchCollection: (id) => dispatch(fetchAlbum(id))
+    fetchCollection: (id) => dispatch(fetchAlbum(id)),
+    playCollectionFromIdx: (songArray, idx) => dispatch(playCollectionFromIdx(songArray, idx))
 })
 
 

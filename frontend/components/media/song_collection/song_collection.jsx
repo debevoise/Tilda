@@ -17,6 +17,12 @@ export default class SongCollection extends React.Component {
         }
     }
 
+    playCollectionFromIndex(idx) {
+        const {collection, songs } = this.props;
+        const songArray = collection.songIds.map(id => songs[id]);
+        
+    }
+
     render() {
         const { songs, collection, authored } = this.props;
         if (typeof collection.songIds === 'undefined') { 

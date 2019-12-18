@@ -10,7 +10,6 @@ const PlaylistAddItem = (props) => {
     let count = songIds.length
     let songCount = count === 1 ? count + ' Song' : count + ' Songs';
     if (typeof id === 'undefined') {
-        console.log(playlist);
         return null;
     }
 
@@ -27,7 +26,7 @@ const PlaylistAddItem = (props) => {
                 music_note
                 </i>
             </div>
-            <div>
+            <div className='add-item-footer'>
                 <div className='playlist-name'>{name}</div>
                 <div className='song-count'>{songCount}</div>
             </div>

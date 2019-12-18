@@ -1,0 +1,69 @@
+@import 'tilda';
+
+.modal-content > .playlist-index {
+    min-width: 70%;
+}
+
+.modal-content .add-to-playlist {
+    margin-top: 15px;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    min-height: 300px; 
+    padding: 0 30px;
+
+    li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 250px;
+        height: 300px;
+        cursor: pointer;
+
+        .playlist-art {
+            display: block;
+            width: 200px;
+            max-width: 200px;
+            height: 200px;
+            max-height: 200px;
+            background-image: radial-gradient(white, $error-orange);
+            background-color: $error-orange;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 300ms;
+
+            i { 
+                font-size: 80px; 
+            }
+        }
+
+
+    
+    }
+
+    li:hover .playlist-art i {
+  
+        color: $blue;
+        transition: color 300ms;
+
+    }
+
+    .add-item-footer {
+        margin-top: 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        div {
+            display: inline-block;
+            flex-grow: 0;
+        }
+    }
+
+
+}
+
+// .add-to-playlist {
+//     min-width: 70%;
+// }

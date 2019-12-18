@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import AudioPlayer from './audio_player';
+import { pauseMusic, playNextSong } from '../../actions/audio_player_actions';
 
 const msp = ({audioPlayer}) => ({
     active: audioPlayer.active,
@@ -7,7 +8,8 @@ const msp = ({audioPlayer}) => ({
 })
 
 const mdp = dispatch => ({
-    playNextSong: () => dispatch(playNextSong())
+    playNextSong: () => dispatch(playNextSong()),
+    pauseMusic: () => dispatch(pauseMusic())
 })
 
 const AudioPlayerContainer = connect(msp, mdp)(AudioPlayer);
