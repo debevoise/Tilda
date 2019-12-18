@@ -127,6 +127,12 @@ export default class AudioControlBar extends React.Component {
 
         this.setState({ currentTime})
     }
+
+    setCurrentTime(time) {
+        this.audio.currentTime = time;
+
+        this.setState({ currentTime: time })
+    }
     
     
     render() {   
@@ -140,7 +146,7 @@ export default class AudioControlBar extends React.Component {
             <footer id='media-player'>
                 <audio id='audio-player'
                     onEnded={this.playNextSong}
-                    onTimeUpdate={this.setCurrentTime}
+                    onTimeUpdate={this.getCurrentTime}
                     ref={audio =>  this.audio = audio }
                     src={currentSong.songFile}
                     autoPlay
@@ -154,7 +160,7 @@ export default class AudioControlBar extends React.Component {
                     playPrev={this.playPreviousSong}
                     pause={this.pause}
                     play={this.play}
-
+                    setTime={this.setCurrentTime}
                     currentTime={this.state.currentTime}
                     duration={duration}
                     active={this.state.active}

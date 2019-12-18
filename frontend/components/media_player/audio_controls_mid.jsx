@@ -64,7 +64,7 @@ export default class AudioControlsMid extends React.Component {
                     <span>{PlayerComponentUtil.formatTime(currentTime)}</span>
                     <div className='progress-bar'>
                         <span className='player-position'></span>
-                        <progress max='100' value='30'></progress>
+                        <progress max='100' value={this.getProgress()}></progress>
                     </div>
                     <span>{PlayerComponentUtil.formatTime(duration)}</span>
 

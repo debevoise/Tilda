@@ -13,9 +13,14 @@ const AudioControlsLeft = (props) => {
 
     return (
         <div className='ac-left'>
+            <Link
+                to={`/albums/${song.albumId}`}
+                className='now-playing-artist'>{song.title}</Link>
             <Link 
-                to={`/artist/${song.artistId}`}
-                className='now-playing-artist'>song.artist</Link>
+                to={`/artists/${song.artistId}`}
+                className='now-playing-artist'>{song.artist}</Link>
         </div>
     )
 }
+
+export default AudioControlsLeft;
