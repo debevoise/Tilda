@@ -5,23 +5,6 @@ export default class AudioControlsMid extends React.Component {
     constructor(props) {
         super(props);
         
-        if (!player) {
-            this.state = {
-                duration: 0,
-                currentTime: 0,
-                paused: true
-            }
-        } else {
-            this.player = player;
-            let { duration, currentTime, paused } = this.player;
-            this.state = {
-                duration,
-                currentTime,
-                paused
-            }
-        }
-
-        this.active = true;
     } 
 
 
@@ -31,14 +14,14 @@ export default class AudioControlsMid extends React.Component {
     }
 
     getProgress() {
-        let { duration, currentTime } = this.state;
+        let { duration, currentTime } = this.props.audio;
         if (duration === 0) return 0;
         if (currentTime > duration) return 100;
         return 100 * (currentTime / duration);
     }
 
     render() {
-        let { duration, currentTime, paused } = this.state;
+        let { duration, currentTime } = this.props;
         let progress = this.getProgress().toString();
         let playPauseIcon = paused ? 'play_circle_outline' : 'pause_circle_outline'
 

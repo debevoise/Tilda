@@ -9,8 +9,7 @@ const msp = (state, ownprops) => ({
 
 const mdp = dispatch => ({
     removeSongFromPlaylist: (playlistId, songId) => 
-        dispatch(removeSongFromPlaylist(playlistId, songId)),
-    playSong: (song) => dispatch(playSong(song))
+        dispatch(removeSongFromPlaylist(playlistId, songId))
 })
 
 const SongContainer = connect(msp, mdp)(Song);

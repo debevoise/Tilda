@@ -5,7 +5,7 @@ export default class SongCollection extends React.Component {
     componentDidMount() {
         const { id } = this.props.match.params;
         this.props.fetchCollection(id);
-        
+        this.playCollectionFromIdx = this.playCollectionFromIdx.bind(this)
     }
 
     componentDidUpdate(prevProps) {
@@ -17,10 +17,10 @@ export default class SongCollection extends React.Component {
         }
     }
 
-    playCollectionFromIndex(idx) {
-        const {collection, songs } = this.props;
+    playCollectionFromIdx(idx) {
+        const { collection, songs } = this.props;
         const songArray = collection.songIds.map(id => songs[id]);
-        
+        this.props.playCollectionFromIdx(songArray, idx)
     }
 
     render() {
@@ -28,13 +28,14 @@ export default class SongCollection extends React.Component {
         if (typeof collection.songIds === 'undefined') { 
             return null; 
         }
-        const songList = collection.songIds.map((id, key) => {
+        const songList = collection.songIds.map((id, index) => {
             if (typeof songs[id] === 'undefined') return null;
 
             return <SongContainer 
-                key={key} 
+                key={index} 
                 authored={authored}
-                song={songs[id]}/> 
+                song={songs[id]}
+                playSong={() => this.playCollectionFromIdx(index)}/> 
         })
         const numSongs = songList.length;
         const nameHeader = collection.name || collection.title;

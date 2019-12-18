@@ -22,7 +22,9 @@ export default class AudioControlBar extends React.Component {
         //history is a stack, queues are......queues
     }
 
+
     componentDidUpdate(prevProps) {
+        debugger
         const {
             actionId,
             active,
@@ -105,23 +107,28 @@ export default class AudioControlBar extends React.Component {
     
     
     render() {   
+        debugger
+        
         return (
             <footer id='media-player'>
                 <audio id='audio-player'
                     onEnded={this.playNextSong}
                     onTimeUpdate={this.setCurrentTime}
                     ref={audio =>  this.audio = audio }
-                    src={this.state.currentSong.songFile}>
+                    src={this.state.currentSong.songFile}
+                    autoPlay
+                    >
                     Your browser does not support html audio.
                 </audio>
                 
-                <AudioControlsMid 
+                {/* <AudioControlsMid 
                     playNext={this.playNextSong}
                     playPrev={this.playPreviousSong}
                     pause={this.pause}
                     play={this.play}
-                    currentTime={this.currentTime}
-                />
+                    currentTime={this.state.currentTime}
+                    
+                /> */}
                 {/* <AudioControlsLeft />
                 
                 <AudioControlsRight /> */}
