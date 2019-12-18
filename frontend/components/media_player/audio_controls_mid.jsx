@@ -5,6 +5,7 @@ export default class AudioControlsMid extends React.Component {
     constructor(props) {
         super(props);
         this.togglePlayPause = this.togglePlayPause.bind(this)
+        this.handleProgressChange = this.handleProgressChange.bind(this)
     } 
 
 
@@ -24,6 +25,14 @@ export default class AudioControlsMid extends React.Component {
         e.preventDefault()
         const { active, play, pause } = this.props;
         (active) ? pause() : play()
+    }
+
+    handleProgressChange(e) {
+        e.preventDefault();
+        const width = this.progressBar.getBoundingClientRect().width;
+        const left = this.progressBar.getBoundingClientRect().left;
+        const pos = (e.clientX - left)/width;
+        this.props.setTime(this.props.duration * pos);
     }
 
     render() {
@@ -64,7 +73,11 @@ export default class AudioControlsMid extends React.Component {
                     <span>{PlayerComponentUtil.formatTime(currentTime)}</span>
                     <div className='progress-bar'>
                         <span className='player-position'></span>
-                        <progress max='100' value={this.getProgress()}></progress>
+                        <progress 
+                            onClick={this.handleProgressChange}
+                            max='100' 
+                            ref={progressBar => this.progressBar = progressBar}
+                            value={this.getProgress()}></progress>
                     </div>
                     <span>{PlayerComponentUtil.formatTime(duration)}</span>
 

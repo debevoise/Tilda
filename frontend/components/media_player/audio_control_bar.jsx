@@ -131,7 +131,7 @@ export default class AudioControlBar extends React.Component {
     setCurrentTime(time) {
         this.audio.currentTime = time;
 
-        this.setState({ currentTime: time })
+        this.setState({ currentTime: Math.floor(time) })
     }
     
     
