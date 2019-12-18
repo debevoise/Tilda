@@ -1,6 +1,7 @@
 import React from 'react';
 import AudioControlsMid from './audio_controls_mid';
 import AudioControlsLeft from './audio_controls_left';
+import AudioControlsRight from './audio_controls_right';
 
 export default class AudioControlBar extends React.Component {
     constructor(props) {
@@ -12,8 +13,8 @@ export default class AudioControlBar extends React.Component {
             playerQueue: [],
             history: [],
             userQueue: [],
-            currentTime: 0,
-            volume: 100
+            currentTime: 0
+
         }
         //history is a stack, queues are......queues
 
@@ -133,6 +134,7 @@ export default class AudioControlBar extends React.Component {
 
         this.setState({ currentTime: Math.floor(time) })
     }
+
     
     
     render() {   
@@ -140,7 +142,7 @@ export default class AudioControlBar extends React.Component {
             Math.ceil(this.audio.duration) : 0;
         // let currentTime = (this.hasAudio()) ? Math.floor(this.audio.currentTime) : 0;
         this.setPlayStatus()
-        let {currentSong } = this.state;
+        let {currentSong, playerQueue, userQueue } = this.state;
 
         return (
             <footer id='media-player'>
@@ -165,8 +167,13 @@ export default class AudioControlBar extends React.Component {
                     duration={duration}
                     active={this.state.active}
                 />
+                <AudioControlsRight 
+                    audio={this.audio} 
+                    playerQueue={playerQueue} 
+                    userQueue={userQueue}
+                />
 
-                {/* <AudioControlsRight />  */}
+                
             </footer>
          )
     }
