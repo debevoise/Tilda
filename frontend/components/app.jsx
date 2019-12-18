@@ -7,15 +7,16 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util'
 import NavBar from './navbar/navbar';
 import ContentWindow from './content_window/content_window';
 // import SessionModal from './session_form/session_modal';
-import AudioControls from './media_player/audio_controls';
+
 import AudioPlayerContainer from './media_player/audio_player_container';
+import AudioControlBar from './media_player/audio_control_bar';
 
 const App = () => {
 	const MainContent = () => (
 		<>
 			<NavBar />
 			<ContentWindow />
-			<AudioControls />
+			<AudioControlBar/>
 		</>
 	)
 

@@ -41,7 +41,5 @@ export default class AudioPlayer extends React.Component {
     }
     
     
-    render() {
-        return null;
-    }
+
 }
