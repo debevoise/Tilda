@@ -43,7 +43,6 @@ export default class SearchResults extends React.Component {
         let albumCards = searchAlbums.map((album, i) => {
 
             let owner = this.props.entities.music.artists[album.artist_id] || {}
-            debugger
             return <MusicCard cardtype="album" key={i} musicItem={album} owner={owner}/>;
         });
         return (

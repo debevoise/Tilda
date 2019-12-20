@@ -5,6 +5,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import PlaylistContainer from '../media/song_collection/playlist_container';
 import AlbumContainer from '../media/song_collection/album_container';
 import SearchResultsContainer from '../search/search_results_container';
+import CollectionsIndex from '../collections/collections_index';
 
 
 
@@ -12,10 +13,12 @@ const ContentWindow = (props) => {
     return (
       <section id="content-window">
         <GreetingBar />
+
         <div className='content'>
           <Route path='/playlists/:id' component={PlaylistContainer}/>
           <Route path='/albums/:id' component={AlbumContainer}/>
           <Route path='/search' component={SearchResultsContainer} />
+          <Route path='/collections' component={CollectionsIndex} />
         </div>
       </section>
     );

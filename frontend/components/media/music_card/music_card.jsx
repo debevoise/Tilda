@@ -15,7 +15,6 @@ const MusicCard = props => {
             break;
         case 'album':
             name = props.musicItem.title;
-            debugger
             owner = props.owner.name;
             artwork = (
               <img
