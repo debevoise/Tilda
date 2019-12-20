@@ -15,15 +15,10 @@ class SearchBar extends React.Component {
         this.debounce = this.debounce.bind(this)
     }
 
-    // debouncedSearch(query) {
-    //     let {search} = this.props
-    //     this.debounce(search, 500)(query);
-    // }
-
     updateSearch(e) {
         e.preventDefault();
         let query = e.currentTarget.value;
-        let {search, history} = this.props;
+        let { history} = this.props;
         this.setState({ query })
         history.push('/search/' + query)
         this.debouncedSearch(query);
@@ -33,8 +28,6 @@ class SearchBar extends React.Component {
         let timeout;
         
         return (...args) => {
-            // let context = this;
-
             let cb = () => {
                 timeout = null;
                 fn(...args)
@@ -46,7 +39,7 @@ class SearchBar extends React.Component {
     }
 
     render() {
-        // const debouncedUpdate = _.debounce(this.updateSearch, 1000)
+
         const clearButton = this.state.query.length > 0 ? (
           <span onClick={() => this.setState({query: ''})}>
             <i className="material-icons">close</i>

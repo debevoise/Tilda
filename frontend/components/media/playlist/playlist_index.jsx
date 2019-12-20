@@ -9,9 +9,7 @@ export default class PlaylistIndex extends React.Component {
         // this.setState({})
     }
 
-    
 
-    //MUST MANUALLY PASS SONG ID THROUGH!!!!!!!
     render() {
         let indexLis;
         let { playlists, playlistIds, mode } = this.props;

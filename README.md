@@ -48,6 +48,12 @@ playNextSong() {
 }
 ```
 
+### Audio Player
+
+![Audio Player](https://media.giphy.com/media/f8aPdCmEMG4ynHTeWh/giphy.gif)
+
+
+
 ## Frontend and Backend User Auth
 
 On my signup and login pages, I use frontend input validations to ensure that all fields meet signup requirements. Users cannot submit a signup form unless all validations are met. On submission, my user model checks that all fields are met and checks if an email has already been taken. Passwords are salted and hashed using BCrypt and are never saved as plain text. 
@@ -70,6 +76,68 @@ end
 
 ```
 
+### Example of Sign Up and Frontend Validations
+
+![Sign up page](https://media.giphy.com/media/LRqmrGK4tw0hhjRwta/giphy.gif)
 
 
 
+## Creating and Editing Playlists
+
+Tilda features an interactive way to create playlists and add songs to them. As users browse albums or playlists, they can open a dropdown from a song link and select 'Add to Playlist' which opens a modal of a user's authored playlists. 
+
+### Creating playlists
+
+![Creating Playlists](https://media.giphy.com/media/QBjaZXa0SdT3HqHfiz/giphy.gif)
+
+### Adding songs to playlists
+
+![Adding Song to Playlist](https://media.giphy.com/media/J6DOu1wyFyiMDWTBzk/giphy.gif)
+
+
+## Search 
+
+Tilda's search bar features real time search results as users type, with a debounced input field to prevent excessive requests to the backend.
+
+![Search](https://media.giphy.com/media/lS6pMsfj7E5sQTlgwB/giphy.gif)
+
+```jsx
+class SearchBar extends React.Component {
+    constructor(props) {
+        super(props)
+
+        let { query } = this.props.match.params;
+        (query) ? this.props.search(query) : query = '';
+        
+        this.state = { query }
+        this.updateSearch = this.updateSearch.bind(this);
+        this.debouncedSearch = this.debounce(this.props.search, 200)
+        this.debounce = this.debounce.bind(this)
+    }
+
+    updateSearch(e) {
+        e.preventDefault();
+        let query = e.currentTarget.value;
+        let { history} = this.props;
+        this.setState({ query })
+        history.push('/search/' + query)
+        this.debouncedSearch(query);
+    }
+
+    debounce(fn, time) {
+        let timeout;
+        
+        return (...args) => {
+            let cb = () => {
+                timeout = null;
+                fn(...args)
+            }
+
+            clearTimeout(timeout);
+            timeout = setTimeout(cb, time);
+        }
+    }
+
+    // Cont...
+}
+```
