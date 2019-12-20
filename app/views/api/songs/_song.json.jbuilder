@@ -4,3 +4,4 @@ json.artistId song.artist.id
 json.album song.album.title
 json.albumId song.album.id
 json.songFile url_for(song.song_file)
+json.artwork url_for(song.album.artwork)

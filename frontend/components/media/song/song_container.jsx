@@ -4,7 +4,8 @@ import { removeSongFromPlaylist } from '../../../actions/music_actions';
 import { playSong } from '../../../actions/audio_player_actions';
 
 const msp = (state, ownprops) => ({
-    type: 'Song'
+    type: 'Song',
+    loggedIn: !!(state.session.id)
 })
 
 const mdp = dispatch => ({

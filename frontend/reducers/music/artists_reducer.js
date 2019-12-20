@@ -1,4 +1,5 @@
 import { RECEIVE_ARTISTS, RECEIVE_ARTIST, RECEIVE_ALBUM } from "../../actions/music_actions";
+import { RECEIVE_SEARCH } from "../../actions/search_actions";
 
 const artistsReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -8,7 +9,7 @@ const artistsReducer = (state = {}, action) => {
     const newState = Object.assign({}, state);
     switch (action.type) {
         case RECEIVE_ARTISTS:
-            return action.artists;
+            return Object.assign({}, state, action.artists);
         case RECEIVE_ARTIST:
             //TODO -- figure out what receive artist state looks like
             artist = payload.artist;
@@ -18,6 +19,8 @@ const artistsReducer = (state = {}, action) => {
             artist = payload.artist;
             newState[artist.id] = artist;
             return newState;
+        case RECEIVE_SEARCH: 
+            return Object.assign({}, state, payload.artists)
         default:
             return state;
     }

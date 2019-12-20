@@ -47,6 +47,12 @@
     max-height: 320px;
 }
 
+.collection-img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+}
+
 .song {
     margin-top: 4px;
     flex-grow: 1;

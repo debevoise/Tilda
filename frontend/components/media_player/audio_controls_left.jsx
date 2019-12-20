@@ -10,15 +10,21 @@ const AudioControlsLeft = (props) => {
             
         </div>
     )
+    
+    const image = song.artwork ? <img className='now-playing-artwork' src={song.artwork}></img> : null;
 
     return (
         <div className='ac-left'>
-            <Link
-                to={`/albums/${song.albumId}`}
-                className='now-playing-artist'>{song.title}</Link>
-            <Link 
-                to={`/artists/${song.artistId}`}
-                className='now-playing-artist'>{song.artist}</Link>
+            {image}
+            <div className='now-playing-links'>
+
+                <Link
+                    to={`/albums/${song.albumId}`}
+                    className='now-playing-song'>{song.title}</Link>
+                <Link 
+                    to={`/artists/${song.artistId}`}
+                    className='now-playing-artist'>{song.artist}</Link>
+            </div>
         </div>
     )
 }

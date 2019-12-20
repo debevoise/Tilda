@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 	namespace :api, defaults: { format: :json } do
 		resources :users, only: [:create] 
 		resource :session, only: [:create, :destroy, :show]
-		
+
+		get '/search/:query', to: 'searches#search'
+		resource :search, only: :show
+
 		resources :songs, only: [:show] do
 			member do
 				post :like, to: 'songs#like', as: 'like'

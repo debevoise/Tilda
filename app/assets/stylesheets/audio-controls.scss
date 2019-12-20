@@ -1,3 +1,9 @@
+@import 'tilda';
+
+// #content-window {
+//     background-image: linear-gradient(to right, #030303, rgb(54, 0, 0));
+// }
+
 #media-player button {
     background-color: rgba(0,0,0,0);
     color: #a0a0a0;
@@ -7,6 +13,7 @@
 #media-player button:hover {
     background-color: rgba(0,0,0,0);
     color: white;
+
 }
 
 button:focus { outline: none; }
@@ -14,6 +21,38 @@ button:focus { outline: none; }
 #media-player {
     display: flex;
     justify-content: space-between;
+}
+.ac-left, .ac-right {
+    min-width: 200px;
+    width: 300px;
+    padding: 0px 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.ac-left a {
+    display: block;
+}
+
+.ac-left a:hover {
+    text-decoration: underline;
+}
+
+.now-playing-song {
+    color: white;
+    padding-bottom: 7px;
+}
+
+.now-playing-artist {
+    font-size: 10pt;
+}
+
+.now-playing-artwork {
+    margin: 12px;
+    width: 60px;
+    height: 60px;
+    border: none;
 }
 
 .ac-mid {
@@ -24,10 +63,26 @@ button:focus { outline: none; }
      min-width: 40%;
 }
 
+
 .ac-mid button {
    
     padding: 0px;
 }
+
+.ac-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ac-right progress {
+    margin-left: 8px;
+        
+}
+
+.ac-right i {
+    color: #a0a0a0;
+}
+
 
 .audio-controls {
     min-width: 224px;
@@ -39,6 +94,11 @@ button:focus { outline: none; }
 .audio-controls .play-pause i {
     font-size: 36px;
 }
+
+.media-bar progress:hover {
+    color: $blue;
+}
+
 
 .progress-container {
     

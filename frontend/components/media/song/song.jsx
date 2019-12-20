@@ -19,7 +19,7 @@ export default class Song extends React.Component {
     }
 
     showDropdown(e) {
-        if (this.props.authored === false) return;
+        if (!this.props.loggedIn) return
         const optionXY = { x: e.pageX - 200, y: e.pageY }
         e.preventDefault();
         // e.stopPropagation();

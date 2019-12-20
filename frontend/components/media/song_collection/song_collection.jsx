@@ -1,7 +1,16 @@
 import React from 'react';
 import SongContainer from '../song/song_container';
+import { generateGradient } from '../../../util/color_util';
 
 export default class SongCollection extends React.Component {
+    constructor(props) {
+
+        super(props);
+        this.style = {
+          backgroundImage: generateGradient()
+        };
+    }
+    
     componentDidMount() {
         const { id } = this.props.match.params;
         this.props.fetchCollection(id);
@@ -14,6 +23,9 @@ export default class SongCollection extends React.Component {
         const prevUrl = prevProps.match.url;
         if (url !== prevUrl) {
             this.props.fetchCollection(id);
+            this.style = {
+              backgroundImage: generateGradient()
+            };
         }
     }
 
@@ -39,21 +51,27 @@ export default class SongCollection extends React.Component {
         })
         const numSongs = songList.length;
         const nameHeader = collection.name || collection.title;
-     
+        
+
+        const artwork = collection.artwork ? (
+          <img className="collection-img" src={collection.artwork} alt="" />
+        ) : (
+          <div className="collection-art" style={this.style}></div>
+        );
         return (
             <div className='song-collection'>
                 <div className='collection-display'>
-                    <div className='collection-art'></div>
+                    {artwork}
                     <h2>{nameHeader}</h2>
-                    <button>Play</button>
+                    <button onClick={() => this.playCollectionFromIdx(0)}>Play</button>
                     <h3 className='song-count'>{numSongs} songs</h3>
                     <div className='like-collection'>
                         <i className="material-icons">
                             favorite
                         </i>
-                        <i className="material-icons">
+                        {/* <i className="material-icons">
                             favorite_border
-                        </i>
+                        </i> */}
                         <i className="material-icons">
                             more_horiz
                         </i>

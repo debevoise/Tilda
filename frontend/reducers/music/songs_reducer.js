@@ -1,4 +1,5 @@
 import { RECEIVE_SONGS, RECEIVE_PLAYLIST, RECEIVE_ALBUM } from "../../actions/music_actions";
+import { RECEIVE_SEARCH } from "../../actions/search_actions";
 
 //TODO implement receive playlist, extract playlist songs
 // case RECEIVE_SONG:
@@ -14,7 +15,9 @@ const songsReducer = (state = {}, action) => {
         case RECEIVE_ALBUM:
             return Object.assign({}, state, action.payload.songs);
         case RECEIVE_PLAYLIST:
-            return Object.assign({}, state, action.payload.songs)
+            return Object.assign({}, state, action.payload.songs);
+        case RECEIVE_SEARCH:
+            return Object.assign({}, state, action.payload.songs);
         default:
             return state;
     }

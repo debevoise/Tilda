@@ -6,27 +6,36 @@ export default class AudioControlsRight extends React.Component {
         super(props);
 
         this.handleVolumeChange = this.handleVolumeChange.bind(this)
-        this.getVolume = this.getVolume.bind(this)
+        // this.getVolume = this.getVolume.bind(this)
+
+        this.state = { volume: 1 }
     }
     
     handleVolumeChange(e) {
         e.preventDefault();
-        if (!this.props.audio) return;
+        
         const width = this.volumeBar.getBoundingClientRect().width;
         const left = this.volumeBar.getBoundingClientRect().left;
         const pos = (e.clientX - left) / width;
-        this.props.audio.volume = pos;
+        this.setState({ volume: pos })
+        
     }
 
 
 
-    getVolume() {
-        if (this.props.audio) return Math.floor(this.props.audio.volume * 100);
-        return 100;
-    }
+    // getVolumePercent() {
+    //     const volume = 
+    //     this.setState({ volume })
+    //     if (this.props.audio) return Math.floor(this.props.audio.volume * 100);
+    //     return 100;
+    // }
 
     render() {
-        let {audio, setVolume} = this.props; 
+        let {audio} = this.props; 
+        
+        if (audio && audio.volume) {
+            audio.volume = this.state.volume;
+        }
         let volume = audio ? audio.volume : 1;
         let volumeIcon;
         switch (volume) {
@@ -40,11 +49,13 @@ export default class AudioControlsRight extends React.Component {
                 volumeIcon = 'volume_up'
                 break;
         }
+
+        
         
         return (
             <div className='ac-right'>
                 <span>
-                    <i class="material-icons">
+                    <i className="material-icons">
                         {volumeIcon}
                     </i>
                 </span>
@@ -52,7 +63,7 @@ export default class AudioControlsRight extends React.Component {
                     onClick={this.handleVolumeChange}
                     max='100'
                     ref={volumeBar => this.volumeBar = volumeBar}
-                    value={this.getVolume()}></progress>
+                    value={this.state.volume * 100}></progress>
             </div>
         );
 

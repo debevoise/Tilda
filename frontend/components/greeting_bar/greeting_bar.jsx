@@ -1,6 +1,8 @@
 import React from 'react';
 import NavArrows from './nav_arrows';
 import GreetingContainer from './greeting_container';
+import { Route } from 'react-router-dom'
+import SearchBar from '../search/search_bar';
 
 class GreetingBar extends React.Component {
     
@@ -28,7 +30,10 @@ class GreetingBar extends React.Component {
         
         return (
             <header className='greeting-bar' style={style}>
-                <NavArrows />
+                <div className='gb-left'>
+                    <NavArrows />
+                    <Route path='/search/:query?' component={SearchBar}/>
+                </div>
                 <GreetingContainer />
             </header>
         )
