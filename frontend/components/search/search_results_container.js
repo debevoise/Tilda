@@ -7,9 +7,9 @@ const msp = state => {
 
     const searchArtists = artistIds.map(id => artists[id]);
     const searchAlbums = albumIds.map(id => albums[id]);
-    const searchSongs = songIds.map(id => songs[id])
-    const searchPlaylists = playlistIds.map(id => playlists[id])
-    const {entities} = state
+    const searchSongs = songIds.map(id => songs[id]);
+    const searchPlaylists = playlistIds.map(id => playlists[id]);
+    const {entities} = state;
 
     return {
         searchArtists, searchAlbums, searchPlaylists, searchSongs, query, entities

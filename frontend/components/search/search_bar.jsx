@@ -11,7 +11,7 @@ class SearchBar extends React.Component {
         
         this.state = { query }
         this.updateSearch = this.updateSearch.bind(this);
-        this.debouncedSearch = this.debounce(this.props.search, 200)
+        this.debouncedSearch = this.debounce(this.props.search, 100)
         this.debounce = this.debounce.bind(this)
     }
 

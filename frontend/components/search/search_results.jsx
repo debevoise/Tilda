@@ -73,7 +73,7 @@ export default class SearchResults extends React.Component {
     renderNoResults() {
         return (
             <h1 className='no-search-results'>
-                No results... try something else.
+                No results... try looking for something else.
             </h1>
         )
     }
