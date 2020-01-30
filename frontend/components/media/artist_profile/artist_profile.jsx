@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, Switch, Route } from 'react-router-dom';
+import ArtistBio from './artist_bio';
 
 export default class ArtistProfile extends React.Component {
     componentDidMount() {
@@ -40,10 +41,11 @@ export default class ArtistProfile extends React.Component {
                 <main>
                     <Switch>
                         <Route path='/artists/:id/about'>
-                            <ArtistBio />
+                            <ArtistBio bio={artist.biography}/>
                         </Route>
                         <Route path='/artists/:id'>
-
+                            Hello {artist.name}
+                            {/* <ArtistMusic /> */}
                         </Route>
                     </Switch>
                 </main>
