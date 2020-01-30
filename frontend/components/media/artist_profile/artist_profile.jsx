@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink, Switch, Route } from 'react-router-dom';
 
 export default class ArtistProfile extends React.Component {
     componentDidMount() {
@@ -14,9 +15,39 @@ export default class ArtistProfile extends React.Component {
 
 
         return (
-            <div>
-                Hello artist {artist.name}
-            </div>
+            <section className='artist-profile'>
+                <header>
+                    <h1>{artist.name}</h1>
+                    <div className='header-buttons'>
+                        <button>Play</button>
+                        <button>Follow</button>
+                    </div>
+                    <nav className='artist-nav'>
+                        <ul>
+                            <NavLink exact to={`/artists/${artist.id}`} >
+                                <li className='nav-select'>
+                                    Overview
+                                </li>
+                            </NavLink>
+                            <NavLink to={`/artists/${artist.id}/about`} className='nav-select'>
+                                <li >
+                                    About
+                                </li>
+                            </NavLink>
+                        </ul>
+                    </nav>
+                </header>
+                <main>
+                    <Switch>
+                        <Route path='/artists/:id/about'>
+                            <ArtistBio />
+                        </Route>
+                        <Route path='/artists/:id'>
+
+                        </Route>
+                    </Switch>
+                </main>
+            </section>
         );
     }
 }
