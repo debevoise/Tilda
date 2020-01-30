@@ -17,7 +17,7 @@ const albumsReducer = (state = {}, action) => {
             return newState;
         case RECEIVE_ARTIST:
             //TODO check format of state( payload etc )
-            newState = Object.assign({}, action.albums, state);
+            newState = Object.assign({}, action.payload.albums, state);
             return newState;
         case RECEIVE_SEARCH:
             let {albums} = action.payload;

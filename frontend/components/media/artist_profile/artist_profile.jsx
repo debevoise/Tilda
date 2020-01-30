@@ -1,15 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class ArtistProfile extends Component {
+export default class ArtistProfile extends React.Component {
     componentDidMount() {
         const { id } = this.props.match.params;
-        this.props.fetchArtist(id);
+        this.props.fetchArtist(id).then(pl => console.log(pl));
+
     }
 
     render() {
-        debugger
+        const { artist } = this.props;
 
-        return null;
+        if (!artist) return null;
+
+
+        return (
+            <div>
+                Hello artist {artist.name}
+            </div>
+        );
     }
 }
 
