@@ -14,14 +14,15 @@ const ContentWindow = (props) => {
     return (
       <section id="content-window">
         <GreetingBar />
-
+        <Route path='/artists/:id' component={ArtistContainer} />
+        
         <div className='content'>
           <Route path='/playlists/:id' component={PlaylistContainer}/>
           <Route path='/albums/:id' component={AlbumContainer}/>
-          <Route path='/artists/:id' component={ArtistContainer}/>
           <Route path='/search' component={SearchResultsContainer} />
           <Route path='/collections' component={CollectionsIndex} />
         </div>
+        
       </section>
     );
 }

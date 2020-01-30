@@ -23,20 +23,22 @@ export default class ArtistProfile extends React.Component {
                         <button>Play</button>
                         <button>Follow</button>
                     </div>
-                    <nav className='artist-nav'>
-                        <ul>
-                            <NavLink exact to={`/artists/${artist.id}`} >
-                                <li className='nav-select'>
-                                    Overview
-                                </li>
+                    <ul className='content-nav-bar'>
+                        
+                            <li >
+                            <NavLink exact to={`/artists/${artist.id}`} className='nav-select'>
+                                Overview
+                                <hr/>
                             </NavLink>
+                            </li>
+                            <li >
                             <NavLink to={`/artists/${artist.id}/about`} className='nav-select'>
-                                <li >
-                                    About
-                                </li>
+                                About
+                                <hr />
                             </NavLink>
-                        </ul>
-                    </nav>
+                            </li>
+
+                    </ul>
                 </header>
                 <main>
                     <Switch>

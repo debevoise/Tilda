@@ -6,10 +6,33 @@ export default class CollectionsIndex extends React.Component {
     render() {
         return (
           <section>
-            <NavLink to="/collections/playlists">Playlists</NavLink>
-            <NavLink to="/collections/artists">Artists</NavLink>
-            <NavLink to="/collections/albums">Albums</NavLink>
-            <NavLink to="/collections/songs">Liked Songs</NavLink>
+            <ul className='content-nav-bar'>
+              <li>
+              <NavLink to="/collections/playlists">
+                  Playlists
+                  <hr />
+              </NavLink>
+              </li>
+              <li>
+              <NavLink to="/collections/artists">
+                  Artists
+                  <hr />
+              </NavLink>
+              </li>
+              <li>
+              <NavLink to="/collections/albums">
+                  Albums
+                  <hr />
+              </NavLink>
+              </li>
+              <li>
+              <NavLink to="/collections/songs">
+                  Liked Songs
+                  <hr />
+              </NavLink>
+              </li>
+            </ul>
+            
             <Redirect from="/collections/" to="/collections/playlists" />
             <Switch>
               <Route path="collections/playlists">Playlists</Route>

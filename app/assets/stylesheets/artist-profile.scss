@@ -1,0 +1,29 @@
+@import 'tilda';
+
+.artist-profile {
+    min-height: 0;
+    overflow-y: auto;
+    
+    header {
+        background-image: linear-gradient($error-orange, #101010);
+        padding: 0px 32px;
+        padding-top: 100px;
+
+        h1 {
+            font-size: 48px;
+            font-weight: 500;
+            line-height: 56px;
+            padding-bottom: 10px;
+        }
+
+        .header-buttons {
+            display: flex;
+
+            
+        }
+    }
+
+    main {
+        padding: 10px 32px;
+    }
+}
