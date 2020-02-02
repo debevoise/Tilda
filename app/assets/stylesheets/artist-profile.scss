@@ -10,20 +10,36 @@
         padding-top: 100px;
 
         h1 {
-            font-size: 48px;
+            font-size: 53px;
             font-weight: 500;
             line-height: 56px;
             padding-bottom: 10px;
         }
 
         .header-buttons {
-            display: flex;
+            margin: 15px 0;
 
-            
+            button:last-of-type {
+                box-sizing: border-box;
+                padding: 10px 42px;
+                background-color: black;
+                border: 2px solid white;
+            }
         }
     }
 
     main {
         padding: 10px 32px;
     }
+}
+
+header button {
+    font-size: 11px;
+    padding: 11px 44px;
+    margin-right: 16px;
+    border-radius: 50px;
+}
+
+header button:hover {
+    transform: scale(1.06)
 }
