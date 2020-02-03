@@ -8,7 +8,7 @@ class GreetingBar extends React.Component {
     
     
     componentDidMount() {
-        const content = document.getElementsByClassName('content')[0];
+        const content = document.getElementsByClassName('content-wrapper')[0];
         
         content.onscroll = () => {
             const { scrollTop } = content;

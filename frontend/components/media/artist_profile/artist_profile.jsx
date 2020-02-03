@@ -7,13 +7,13 @@ export default class ArtistProfile extends React.Component {
     componentDidMount() {
         const { id } = this.props.match.params;
         this.props.fetchArtist(id).then(pl => console.log(pl));
-
     }
 
     render() {
-        const { artist } = this.props;
-        console.log(this.props)
+        const { artist, artistAlbums, songs } = this.props;
+        
         if (!artist) return null;
+        const artistSongs = !artist.song_ids ? [] : artist.song_ids.map((id) => songs[id])
 
         return (
             <section className='artist-profile'>
@@ -24,7 +24,6 @@ export default class ArtistProfile extends React.Component {
                         <button>Follow</button>
                     </div>
                     <ul className='content-nav-bar'>
-                        
                             <li >
                             <NavLink exact to={`/artists/${artist.id}`} className='nav-select'>
                                 Overview
@@ -48,8 +47,9 @@ export default class ArtistProfile extends React.Component {
                         <Route path='/artists/:id'>
                             {/* Hello {artist.name} */}
                             <ArtistMusic 
-                                albums={this.props.artistAlbums} 
-                                songs={this.props.songs} />
+                                albums={artistAlbums}
+                                artist={artist} 
+                                songs={artistSongs} />
                         </Route>
                     </Switch>
                 </main>

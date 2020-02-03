@@ -59,28 +59,27 @@ export default class SongCollection extends React.Component {
           <div className="collection-art" style={this.style}></div>
         );
         return (
-            <div className='song-collection'>
-                <div className='collection-display'>
-                    {artwork}
-                    <h2>{nameHeader}</h2>
-                    <button onClick={() => this.playCollectionFromIdx(0)}>Play</button>
-                    <h3 className='song-count'>{numSongs} songs</h3>
-                    <div className='like-collection'>
-                        <i className="material-icons">
-                            favorite
-                        </i>
-                        {/* <i className="material-icons">
-                            favorite_border
-                        </i> */}
-                        <i className="material-icons">
-                            more_horiz
-                        </i>
+            <div className='content'>            
+                <div className='song-collection'>
+                    <div className='collection-display'>
+                        {artwork}
+                        <h2>{nameHeader}</h2>
+                        <button onClick={() => this.playCollectionFromIdx(0)}>Play</button>
+                        <h3 className='song-count'>{numSongs} songs</h3>
+                        <div className='like-collection'>
+                            <i className="material-icons">
+                                favorite
+                            </i>
+                            <i className="material-icons">
+                                more_horiz
+                            </i>
+                        </div>
                     </div>
+                    
+                    <ul className='song-list'>
+                        {songList}
+                    </ul>
                 </div>
-                
-                <ul className='song-list'>
-                    {songList}
-                </ul>
             </div>
         )
     }

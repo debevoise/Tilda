@@ -11,12 +11,14 @@ import ArtistContainer from '../media/artist_profile/artist_profile_container';
 
 
 const ContentWindow = (props) => {
-    return (
+
+  // debugger
+  return (
       <section id="content-window">
         <GreetingBar />
-        <Route path='/artists/:id' component={ArtistContainer} />
-        
-        <div className='content'>
+
+        <div className='content-wrapper'>
+          <Route path='/artists/:id' component={ArtistContainer} />
           <Route path='/playlists/:id' component={PlaylistContainer}/>
           <Route path='/albums/:id' component={AlbumContainer}/>
           <Route path='/search' component={SearchResultsContainer} />

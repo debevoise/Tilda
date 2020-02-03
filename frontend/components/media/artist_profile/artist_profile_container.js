@@ -7,14 +7,14 @@ const msp = (state, { match }) => {
     const { artists, albums, songs } = state.entities.music;
     const artist = artists[id];
     const artistAlbums = [];
-
-    if (!artist || !artist.album_ids) return { artist: {}, artistAlbums, songs }
+    
+    if (!artist || !artist.album_ids) return { artist: {}, artistAlbums, songs: {} }
     
     artist.album_ids.forEach((id) => {
         if (albums[id]) artistAlbums.push(albums[id])
     });
 
-    return { artist, artistAlbums, }
+    return { artist, artistAlbums, songs }
 }
 
 const mdp = dispatch => {
