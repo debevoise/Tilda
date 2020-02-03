@@ -4,10 +4,17 @@ import ArtistProfile from "./artist_profile"
 
 const msp = (state, { match }) => {
     const id = parseInt(match.params.id);
-    const { artists, albums } = state.entities.music;
+    const { artists, albums, songs } = state.entities.music;
     const artist = artists[id];
+    const artistAlbums = [];
 
-    return { artist }
+    if (!artist || !artist.album_ids) return { artist: {}, artistAlbums, songs }
+    
+    artist.album_ids.forEach((id) => {
+        if (albums[id]) artistAlbums.push(albums[id])
+    });
+
+    return { artist, artistAlbums, }
 }
 
 const mdp = dispatch => {

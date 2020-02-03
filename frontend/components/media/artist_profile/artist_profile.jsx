@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import ArtistBio from './artist_bio';
+import ArtistMusic from './artist_music';
 
 export default class ArtistProfile extends React.Component {
     componentDidMount() {
@@ -11,9 +12,8 @@ export default class ArtistProfile extends React.Component {
 
     render() {
         const { artist } = this.props;
-
+        console.log(this.props)
         if (!artist) return null;
-
 
         return (
             <section className='artist-profile'>
@@ -46,8 +46,10 @@ export default class ArtistProfile extends React.Component {
                             <ArtistBio bio={artist.biography}/>
                         </Route>
                         <Route path='/artists/:id'>
-                            Hello {artist.name}
-                            {/* <ArtistMusic /> */}
+                            {/* Hello {artist.name} */}
+                            <ArtistMusic 
+                                albums={this.props.artistAlbums} 
+                                songs={this.props.songs} />
                         </Route>
                     </Switch>
                 </main>
