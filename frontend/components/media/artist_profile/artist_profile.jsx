@@ -45,7 +45,6 @@ export default class ArtistProfile extends React.Component {
                             <ArtistBio bio={artist.biography}/>
                         </Route>
                         <Route path='/artists/:id'>
-                            {/* Hello {artist.name} */}
                             <ArtistMusic 
                                 albums={artistAlbums}
                                 artist={artist} 

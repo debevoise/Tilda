@@ -10,20 +10,26 @@ const ArtistMusic = ({ songs, albums, artist }) => {
             </li>
         )
     })
-    
-    console.log(albums);
+
     let albumList = !albums ? null : albums.map(album => {
         return (
-            <li key={album.id} className='album'>
-                <Link to={`albums/${album.id}`} className='album-link'>
-                    <img src={album.artwork} alt="album artwork" className='album-artwork'/>
-                    <footer>{album.title}</footer>
-                </Link>
-                <div>
-                    {artist.name}
-                </div>
-            </li>
-        )
+          <li key={album.id} className="album">
+            <Link to={`/albums/${album.id}`} className="album-link">
+              <img
+                src={album.artwork}
+                alt="album artwork"
+                className="album-artwork"
+              />
+              <div className="play-overlay">
+                <i className="material-icons">
+                    play_circle_outline
+                </i>
+              </div>
+              <footer>{album.title}</footer>
+            </Link>
+            <div className="artist-name">{artist.name}</div>
+          </li>
+        );
     })
 
     return (

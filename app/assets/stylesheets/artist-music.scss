@@ -1,0 +1,80 @@
+.artist-music .song {
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+}
+
+
+.albums-list  {
+    display: flex;
+    flex-wrap: wrap;   
+}
+
+.album {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.album:last-of-type {
+    margin-right: 0;
+}
+
+.album .artist-name {
+    color: gray;
+}
+
+.album .album-link {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    .album-artwork {
+        width: 190px;
+        height: auto;
+        padding-bottom: 6px; 
+    }
+    
+    footer {
+        text-align: center;
+        padding: 5px 0;
+        color: white;
+    }
+}
+
+.play-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -5px;
+  right: 0;
+  height: 190px;
+  width: 190px;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: #161616c0;
+
+  i {
+    color: white;
+    font-size: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
+
+.album .album-link:hover {
+    text-decoration: underline;
+}
+
+.album .album-link:hover .play-overlay {
+    opacity: 1;
+}
