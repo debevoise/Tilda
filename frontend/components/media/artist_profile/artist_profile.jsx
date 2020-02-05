@@ -24,7 +24,7 @@ export default class ArtistProfile extends React.Component {
             <header>
               <h1>{artist.name}</h1>
               <div className="header-buttons">
-                <button>Play</button>
+                <button onClick={()=> playCollectionFromIdx(artistSongs, 0)}>Play</button>
                 <button>Follow</button>
               </div>
               <ul className="content-nav-bar">
