@@ -9,16 +9,18 @@
 
 #content-window .content {
     max-width: 100%;
-    padding: 0px 32px;
+    padding: 94px 32px 20px;
     
     min-height: 0;
     overflow-y: auto;
 
-    padding-top: 94px;
+
+
 }
 
 #content-window .content-wrapper {
     min-height: 0;
+    height: 100%;
     overflow-y: auto;
 }
 

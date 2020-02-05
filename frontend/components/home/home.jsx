@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from '../loading/loading';
 
 export default class Home extends Component {
     componentDidMount() {
@@ -10,7 +11,9 @@ export default class Home extends Component {
     }
     
     render() {
-        if (!this.props.home) return null;
+        return <Loading />
+
+        if (!this.props.home) return <Loading />;
 
         return (
             <div className='content'>
