@@ -10,49 +10,61 @@ export default class ArtistProfile extends React.Component {
     }
 
     render() {
-        const { artist, artistAlbums, songs } = this.props;
-        
+        const { 
+            artist, 
+            artistAlbums, 
+            songs,
+            playCollectionFromIdx } = this.props;
+
         if (!artist) return null;
         const artistSongs = !artist.song_ids ? [] : artist.song_ids.map((id) => songs[id])
 
         return (
-            <section className='artist-profile'>
-                <header>
-                    <h1>{artist.name}</h1>
-                    <div className='header-buttons'>
-                        <button>Play</button>
-                        <button>Follow</button>
-                    </div>
-                    <ul className='content-nav-bar'>
-                            <li >
-                            <NavLink exact to={`/artists/${artist.id}`} className='nav-select'>
-                                Overview
-                                <hr/>
-                            </NavLink>
-                            </li>
-                            <li >
-                            <NavLink to={`/artists/${artist.id}/about`} className='nav-select'>
-                                About
-                                <hr />
-                            </NavLink>
-                            </li>
-
-                    </ul>
-                </header>
-                <main>
-                    <Switch>
-                        <Route path='/artists/:id/about'>
-                            <ArtistBio bio={artist.biography}/>
-                        </Route>
-                        <Route path='/artists/:id'>
-                            <ArtistMusic 
-                                albums={artistAlbums}
-                                artist={artist} 
-                                songs={artistSongs} />
-                        </Route>
-                    </Switch>
-                </main>
-            </section>
+          <section className="artist-profile">
+            <header>
+              <h1>{artist.name}</h1>
+              <div className="header-buttons">
+                <button>Play</button>
+                <button>Follow</button>
+              </div>
+              <ul className="content-nav-bar">
+                <li>
+                  <NavLink
+                    exact
+                    to={`/artists/${artist.id}`}
+                    className="nav-select"
+                  >
+                    Overview
+                    <hr />
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to={`/artists/${artist.id}/about`}
+                    className="nav-select"
+                  >
+                    About
+                    <hr />
+                  </NavLink>
+                </li>
+              </ul>
+            </header>
+            <main>
+              <Switch>
+                <Route path="/artists/:id/about">
+                  <ArtistBio bio={artist.biography} />
+                </Route>
+                <Route path="/artists/:id">
+                  <ArtistMusic
+                    albums={artistAlbums}
+                    artist={artist}
+                    songs={artistSongs}
+                    playCollectionFromIdx={playCollectionFromIdx}
+                  />
+                </Route>
+              </Switch>
+            </main>
+          </section>
         );
     }
 }

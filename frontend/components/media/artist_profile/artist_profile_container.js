@@ -1,6 +1,7 @@
 import { fetchArtist } from "../../../actions/music_actions"
 import { connect } from "react-redux"
 import ArtistProfile from "./artist_profile"
+import { playCollectionFromIdx } from "../../../actions/audio_player_actions";
 
 const msp = (state, { match }) => {
     const id = parseInt(match.params.id);
@@ -19,7 +20,8 @@ const msp = (state, { match }) => {
 
 const mdp = dispatch => {
     return {
-        fetchArtist: (id) => dispatch(fetchArtist(id))
+        fetchArtist: (id) => dispatch(fetchArtist(id)),
+        playCollectionFromIdx: (idx, songs) => dispatch(playCollectionFromIdx(idx, songs))
     }    
 }
 

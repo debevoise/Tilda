@@ -2,13 +2,34 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-const ArtistMusic = ({ songs, albums, artist }) => {
-    let songList = !songs ? null : songs.map((song) => {
-        return ( 
-            <li key={song.id} className='song'>
-                {song.title}
-            </li>
-        )
+const ArtistMusic = ({ songs, albums, artist, playCollectionFromIdx }) => {    
+    let songList = !songs ? null : songs.map((song, idx) => {
+        const {length} = song;        
+        let seconds = length % 60;
+        if (seconds < 10) seconds = "0" + seconds;
+        let time = Math.floor(length / 60) + ":" + seconds; 
+
+        return (
+          <li
+            key={song.id}
+            className="song"
+            onDoubleClick={() => playCollectionFromIdx(songs, idx)}
+          >
+            <div className="song-left">
+              <i className="material-icons inactive">music_note</i>
+              <i className="material-icons active">play_arrow</i>
+              <img
+                src={song.artwork}
+                alt="album artwork"
+                className="song-art"
+              />
+              <span>{song.title}</span>
+            </div>
+            <div className="song-right">
+              <span>{time}</span>
+            </div>
+          </li>
+        );
     })
 
     let albumList = !albums ? null : albums.map(album => {

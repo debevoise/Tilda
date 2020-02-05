@@ -1,7 +1,36 @@
 .artist-music .song {
     display: flex;
     flex-direction: row;
-    padding: 8px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.artist-music .song-left {
+    img {
+        height: 50px;
+        width: auto;
+        margin: 0 10px;
+    }
+}
+
+.song-left, .song-right {
+    display: flex;
+    align-items: center;
+}
+
+.song-left .active {
+    display: none;
+}
+
+.song:hover .active {
+    display: inline;
+}
+
+.song:hover .inactive {
+    display: none;
 }
 
 
@@ -78,3 +107,4 @@
 .album .album-link:hover .play-overlay {
     opacity: 1;
 }
+
