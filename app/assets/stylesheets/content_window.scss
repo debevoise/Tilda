@@ -7,15 +7,19 @@
     flex-direction: column;
 }
 
-
-
 #content-window .content {
+    max-width: 100%;
     padding: 0px 32px;
-
+    
     min-height: 0;
     overflow-y: auto;
 
     padding-top: 100px;
+}
+
+#content-window .content-wrapper {
+    min-height: 0;
+    overflow-y: auto;
 }
 
 

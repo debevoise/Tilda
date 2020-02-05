@@ -68,3 +68,45 @@
     padding-left: 24px;
     padding-top: 24px;
 }
+
+// CONTENT NAV BAR
+
+.content-nav-bar {
+    display: flex;
+    
+    li {
+        margin: 15px 30px 15px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+}
+
+.content-nav-bar a {
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    font-size: 12px;
+    font-weight: 500;
+    transition: 300ms;
+    hr {
+        display: none;
+        width: 30px;
+        height: 2px;
+    }
+}
+
+.content-nav-bar a:hover {
+    color: white;
+    transition: 300ms;
+}
+
+.content-nav-bar a.active {
+    color: white;
+
+    hr {
+        display: flex;
+        color: transparent;
+        background-color: $blue;
+    }
+}

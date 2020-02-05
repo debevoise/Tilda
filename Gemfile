@@ -48,7 +48,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'annotate'
-
+  # gem 'rb-readline'
 end
 
 group :development do

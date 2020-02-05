@@ -2,19 +2,19 @@ import React from 'react';
 import MusicCard from '../media/music_card/music_card';
 
 export default class SearchResults extends React.Component {
-    constructor(props) {
-        super(props)
-
-    }
+    // constructor(props) {
+    //     super(props)
+    // }
 
     renderNoQuery() {
         const { query } = this.props;
         if (query.length === 0) {
             return (
-                
-                <h1>
-                    Search for your new favorite music.
-                </h1>
+                <div className='content'>
+                    <h1>
+                        Search for your new favorite music.
+                    </h1>
+                </div>
             )
         } else {
             return null;
@@ -72,9 +72,12 @@ export default class SearchResults extends React.Component {
 
     renderNoResults() {
         return (
+            <div className='content'>
+
             <h1 className='no-search-results'>
                 No results... try looking for something else.
             </h1>
+            </div>
         )
     }
     
@@ -94,12 +97,14 @@ export default class SearchResults extends React.Component {
         if (noResults) return this.renderNoResults();
 
         return (
-            <section className='search-results'>
-                {this.renderArtists()}
-                {this.renderAlbums()}
-                {/* {this.renderSongs()} */}
-                {this.renderPlaylists()}
-            </section>
+            <div className='content'>
+                <section className='search-results'>
+                    {this.renderArtists()}
+                    {this.renderAlbums()}
+                    {/* {this.renderSongs()} */}
+                    {this.renderPlaylists()}
+                </section>
+            </div>
         );
     }
 }

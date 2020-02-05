@@ -9,7 +9,6 @@ const NavArrows = props => {
             <span className='right-arrow'>
                 <i className="material-icons">keyboard_arrow_right</i>         
             </span>
-
         </div>
     )
 }
