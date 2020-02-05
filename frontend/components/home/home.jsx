@@ -11,7 +11,6 @@ export default class Home extends Component {
     }
     
     render() {
-        return <Loading />
 
         if (!this.props.home) return <Loading />;
 
