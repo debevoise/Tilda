@@ -23,6 +23,7 @@ const ContentWindow = (props) => {
           <Route path='/albums/:id' component={AlbumContainer}/>
           <Route path='/search' component={SearchResultsContainer} />
           <Route path='/collections' component={CollectionsIndex} />
+          {/* <Route path='/' component={HomeContainer} /> */}
         </div>
         
       </section>
