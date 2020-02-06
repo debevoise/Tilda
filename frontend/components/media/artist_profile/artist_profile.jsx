@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import ArtistBio from './artist_bio';
 import ArtistMusic from './artist_music';
+import Loading from '../../loading/loading';
 
 export default class ArtistProfile extends React.Component {
     componentDidMount() {
@@ -16,7 +17,9 @@ export default class ArtistProfile extends React.Component {
             songs,
             playCollectionFromIdx } = this.props;
 
-        if (!artist) return null;
+        if (!artist) return <Loading />;
+        if (!artist.name) return <Loading />;
+
         const artistSongs = !artist.song_ids ? [] : artist.song_ids.map((id) => songs[id])
 
         return (
