@@ -9,11 +9,13 @@ const msp = state => {
 
     const artists = home.artistIds.map(id => music.artists[id])
     const albums = home.albumIds.map(id => music.albums[id])
+    
     const playlists = home.playlistIds.map(id => music.playlists[id])
 
     return {
         home,
         artists,
+        allArtists: music.artists,
         albums,
         playlists
     }

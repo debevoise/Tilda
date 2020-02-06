@@ -12,8 +12,6 @@ import HomeContainer from '../home/home_container';
 
 
 const ContentWindow = (props) => {
-
-  // debugger
   return (
       <section id="content-window">
         <GreetingBar />

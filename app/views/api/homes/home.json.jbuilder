@@ -1,7 +1,7 @@
 json.home do
-    json.artistIds @artists.pluck(:id)
-    json.albumIds @albums.pluck(:id)
-    json.playlistIds @playlists.pluck(:id)
+    json.artistIds @artists.map { |artist| artist.id }
+    json.albumIds @albums.map { |album| album.id }
+    json.playlistIds @playlists.map { |playlist| playlist.id }
 end
 
 json.artists do
@@ -21,11 +21,18 @@ json.playlists do
     end
 end
 
-json.albums do   
-    @albums.each do |album|
+@albums.each do |album|
+    json.albums do   
         json.set! album.id do
             json.partial! 'api/albums/album', album: album
             json.songIds album.songs.pluck(:id)
         end
     end
+    json.artists do
+        json.set! album.artist.id do
+            json.partial! 'api/artists/artist', artist: album.artist
+            json.albumIds album.artist.albums.pluck(:id)
+        end
+    end
 end
+
