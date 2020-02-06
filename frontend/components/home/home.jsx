@@ -30,13 +30,21 @@ export default class Home extends Component {
         return (
             <div className='content'>
                 <main className='home-page'>
-                    <h1>Discover New Music</h1>
-                    <h2>Albums</h2>
-                    <ul>{albumCards}</ul>
-                    <h2>Artists</h2>
-                    <ul>{artistCards}</ul>
-                    <h2>Playlists</h2>
-                    <ul>{playlistCards}</ul>
+                    <header className='home-header'>
+                        <h1>Discover new music!</h1>
+                    </header>
+                    <section>
+                        <h2>Albums</h2>
+                        <ul>{albumCards}</ul>
+                    </section>
+                    <section>   
+                        <h2>Artists</h2>
+                        <ul>{artistCards}</ul>
+                    </section>
+                    <section>
+                        <h2>Playlists</h2>
+                        <ul>{playlistCards}</ul>
+                    </section>
                 </main>
             </div>
         );
