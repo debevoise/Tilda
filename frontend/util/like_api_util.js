@@ -11,3 +11,4 @@ export const unlikeAjax = (type, id) => {
         method: 'POST'
     })
 }
+

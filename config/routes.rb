@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 		resource :session, only: [:create, :destroy, :show]
 
 		get '/search/:query', to: 'searches#search'
+		get '/home', to: 'homes#home'
+
 		resource :search, only: :show
 
 		resources :songs, only: [:show] do

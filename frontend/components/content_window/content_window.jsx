@@ -7,12 +7,11 @@ import AlbumContainer from '../media/song_collection/album_container';
 import SearchResultsContainer from '../search/search_results_container';
 import CollectionsIndex from '../collections/collections_index';
 import ArtistContainer from '../media/artist_profile/artist_profile_container';
+import HomeContainer from '../home/home_container';
 
 
 
 const ContentWindow = (props) => {
-
-  // debugger
   return (
       <section id="content-window">
         <GreetingBar />
@@ -23,6 +22,7 @@ const ContentWindow = (props) => {
           <Route path='/albums/:id' component={AlbumContainer}/>
           <Route path='/search' component={SearchResultsContainer} />
           <Route path='/collections' component={CollectionsIndex} />
+          <Route exact path='/' component={HomeContainer} />
         </div>
         
       </section>
