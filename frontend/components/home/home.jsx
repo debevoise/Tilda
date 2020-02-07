@@ -31,7 +31,7 @@ export default class Home extends Component {
             <div className='content'>
                 <main className='home-page'>
                     <header className='home-header'>
-                        <h1>Discover new music!</h1>
+                        <h1>Welcome to TILDA!</h1>
                     </header>
                     <section>
                         <h2>Albums</h2>

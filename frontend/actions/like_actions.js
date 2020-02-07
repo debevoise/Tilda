@@ -1,4 +1,5 @@
 import { likeAjax } from "../util/like_api_util"
+import { receiveMusicErrors } from "./music_actions";
 
 export const RECEIVE_LIKES = "RECEIVE_LIKES";
 export const RECEIVE_LIKE = "RECEIVE_LIKE";
@@ -24,5 +25,5 @@ export const like = (type, id) => dispatch => {
     return likeAjax(type, id).then(
         like => dispatch(receiveLike(like)),
         err => dispatch(receiveMusicErrors(err.responseJSON))
-    )
+    ).then(res => console.log(res))
 }
