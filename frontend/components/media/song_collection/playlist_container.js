@@ -28,7 +28,7 @@ const msp = (state, {match}) => {
 }
 
 const mdp = dispatch => ({
-    like: (type, id) => dispatch(like(type, id)),
+    like: (id) => dispatch(like('playlists', id)),
     unlike: (type, id) => dispatch(unlike(type, id)),
     fetchCollection: (id) => dispatch(fetchPlaylist(id)),
     playCollectionFromIdx: (songArray, idx) => dispatch(playCollectionFromIdx(songArray, idx))

@@ -20,8 +20,8 @@ const msp = (state, { match }) => {
 }
 
 const mdp = dispatch => ({
-    like: (type, id) => dispatch(like(type, id)),
-    unlike: (type, id) => dispatch(unlike(type, id)),
+    like: (id) => dispatch(like('albums', id)),
+    unlike: (id) => dispatch(unlike('albums', id)),
     fetchCollection: (id) => dispatch(fetchAlbum(id)),
     playCollectionFromIdx: (songArray, idx) => dispatch(playCollectionFromIdx(songArray, idx))
 })

@@ -1,5 +1,6 @@
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_PLAYLIST } from "../actions/music_actions";
+import { RECEIVE_LIKES } from "../actions/like_actions";
 
 const usersReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -8,6 +9,10 @@ const usersReducer = (state = {}, action) => {
         case RECEIVE_CURRENT_USER: 
             let { user } = action;
             nextState[user.id] = user;
+            return nextState;
+        case RECEIVE_LIKES:
+            let { user_id, likes } = action.payload;
+            nextState[user_id].likes = likes; 
             return nextState;
         case RECEIVE_PLAYLIST:
             let { playlist } = action.payload;
