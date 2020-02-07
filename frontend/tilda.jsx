@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }; 
 
         store = configureStore(loggedInState);
-        // delete window.currentUser;
+        delete window.currentUser; // Comment out for current user debugging
     } else {
         const defaultState = {
             errors: { session: [] }
