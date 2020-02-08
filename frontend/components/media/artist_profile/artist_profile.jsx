@@ -11,7 +11,9 @@ export default class ArtistProfile extends React.Component {
     }
 
     render() {
-        const { 
+        const {
+            like,
+            liked, 
             artist, 
             artistAlbums, 
             songs,
@@ -28,7 +30,11 @@ export default class ArtistProfile extends React.Component {
               <h1>{artist.name}</h1>
               <div className="header-buttons">
                 <button onClick={()=> playCollectionFromIdx(artistSongs, 0)}>Play</button>
-                <button>Follow</button>
+                <button 
+                  className={!liked ? 'follow-button' : 'follow-button unfollow'}
+                  onClick={()=> like(artist.id)}>
+                    {liked ? 'Unfollow' : 'Follow'}
+                </button>
               </div>
               <ul className="content-nav-bar">
                 <li>

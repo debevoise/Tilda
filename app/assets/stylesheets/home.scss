@@ -1,5 +1,9 @@
 @import 'tilda';
 
+.no-margin-right {
+    margin-right: 0 !important;
+}
+
 .home-page .home-header h1 {
     display: inline-block;
     font-size: 45px !important;

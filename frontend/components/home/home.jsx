@@ -28,7 +28,7 @@ export default class Home extends Component {
         })
 
         return (
-            <div className='content'>
+            <div className='content no-margin-right'>
                 <main className='home-page'>
                     <header className='home-header'>
                         <h1>Welcome to TILDA!</h1>

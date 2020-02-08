@@ -2,12 +2,15 @@
 
 .modal-content > .playlist-index {
     min-width: 70%;
+
+
 }
 
 .modal-content .add-to-playlist {
     margin-top: 15px;
     display: flex;
-    justify-content: left;
+
+    justify-content: center;
     flex-wrap: wrap;
     min-height: 300px; 
     padding: 0 30px;
@@ -20,20 +23,24 @@
         height: 300px;
         cursor: pointer;
 
+        .playlist-name {
+            font-size: 14.5px;
+        }
+
         .playlist-art {
             display: block;
             width: 200px;
             max-width: 200px;
             height: 200px;
             max-height: 200px;
-            background-image: radial-gradient(white, $error-orange);
+            background-image: radial-gradient(rgb(255, 167, 167), $error-orange);
             background-color: $error-orange;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: color 300ms;
 
             i { 
+                transition: color 300ms;
                 font-size: 80px; 
             }
         }
@@ -42,11 +49,14 @@
     
     }
 
+    li:hover .playlist-art{
+        transition: 300ms;
+        background-image: radial-gradient(white, $blue);
+    }
+
     li:hover .playlist-art i {
-  
         color: $blue;
         transition: color 300ms;
-
     }
 
     .add-item-footer {

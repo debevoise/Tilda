@@ -55,3 +55,7 @@ header button:hover {
     padding-bottom: 20px;
 }
 
+.follow-button.unfollow {
+    color: $error-orange;
+    font-weight: 700;
+}

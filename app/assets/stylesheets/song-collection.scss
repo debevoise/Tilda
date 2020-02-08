@@ -35,6 +35,7 @@
     padding: 15px 0px 7px;
     font-weight: 700px;
     font-size: 22px;
+    text-align: center;
 }
 
 .collection-owner {
@@ -78,6 +79,8 @@
     transition: background-color 300ms, color 100ms;
     font-size: 13.5px;
     border-radius: 5px;
+
+
 }
 
 .song-title {
@@ -89,7 +92,9 @@
     flex-grow: 1;
     display: flex;
     height: auto;
+    min-height: 23px;
     align-items: center;
+    cursor: default;
 }
 
 .song-options {
