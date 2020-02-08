@@ -1,4 +1,5 @@
 class Api::SongsController < ApplicationController    
+    before_action :ensure_logged_in, only: :like
 
     def show
         @song = Song.find(params[:id]) 

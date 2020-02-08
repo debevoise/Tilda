@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Song from './song'
 import { removeSongFromPlaylist } from '../../../actions/music_actions';
 import { playSong } from '../../../actions/audio_player_actions';
+import { like } from '../../../actions/like_actions';
 
 const msp = (state, ownprops) => ({
     type: 'Song',
@@ -10,7 +11,8 @@ const msp = (state, ownprops) => ({
 
 const mdp = dispatch => ({
     removeSongFromPlaylist: (playlistId, songId) => 
-        dispatch(removeSongFromPlaylist(playlistId, songId))
+        dispatch(removeSongFromPlaylist(playlistId, songId)),
+    like: (id) => dispatch(like('songs', id))
 })
 
 const SongContainer = connect(msp, mdp)(Song);

@@ -1,4 +1,5 @@
 class Api::ArtistsController < ApplicationController
+    before_action :ensure_logged_in, only: :like
     TYPE = 'Artist'
     
     def show
@@ -41,18 +42,18 @@ class Api::ArtistsController < ApplicationController
     #     end
     # end
 
-    def unlike
-        @like = current_user.likes.find_by(
-            likeable_id: params[:id],
-            likeable_type: ARTISTTYPE
-        )
+    # def unlike
+    #     @like = current_user.likes.find_by(
+    #         likeable_id: params[:id],
+    #         likeable_type: ARTISTTYPE
+    #     )
 
-        if @like
-            @like.destroy
-            render 'api/likes/index'
-        else
-            render json: ['Could not complete your request'], status: 422
-        end
-    end
+    #     if @like
+    #         @like.destroy
+    #         render 'api/likes/index'
+    #     else
+    #         render json: ['Could not complete your request'], status: 422
+    #     end
+    # end
 
 end

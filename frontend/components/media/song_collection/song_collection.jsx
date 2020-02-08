@@ -1,10 +1,10 @@
 import React from 'react';
 import SongContainer from '../song/song_container';
 import { generateGradient } from '../../../util/color_util';
+import { Link } from 'react-router-dom';
 
 export default class SongCollection extends React.Component {
     constructor(props) {
-
         super(props);
         this.style = {
           backgroundImage: generateGradient()
@@ -24,7 +24,7 @@ export default class SongCollection extends React.Component {
         if (url !== prevUrl) {
             this.props.fetchCollection(id);
             this.style = {
-              backgroundImage: generateGradient()
+                backgroundImage: generateGradient()
             };
         }
     }
@@ -35,11 +35,35 @@ export default class SongCollection extends React.Component {
         this.props.playCollectionFromIdx(songArray, idx)
     }
 
+    renderArtistLink() {
+        const {type, owner} = this.props;
+
+        let innerHtml = type === 'Playlist' ? 'Playlist' : (
+            <Link to={`/artists/${owner.id}`}>{owner.name}</Link>
+        )
+        return <h3 className='collection-owner'>{innerHtml}</h3>
+    }
+
+    renderLikeButton() {
+        const { like, liked, collection } = this.props;
+        let klass = liked ? 'unlike' : 'like'; 
+        
+        return (
+            <div className='like-icon'>
+                <i className={`material-icons like`} onClick={() => like(collection.id)}>
+                    {liked ? "favorite" : "favorite_border"}
+                </i>
+            </div>
+        )
+    }
+
     render() {
-        const { songs, collection, authored } = this.props;
+        const { songs, collection, authored, owner, type  } = this.props;
+
         if (typeof collection.songIds === 'undefined') { 
             return null; 
         }
+
         const songList = collection.songIds.map((id, index) => {
             if (typeof songs[id] === 'undefined') return null;
 
@@ -64,15 +88,15 @@ export default class SongCollection extends React.Component {
                     <div className='collection-display'>
                         {artwork}
                         <h2>{nameHeader}</h2>
+                        {this.renderArtistLink()}
                         <button onClick={() => this.playCollectionFromIdx(0)}>Play</button>
                         <h3 className='song-count'>{numSongs} songs</h3>
                         <div className='like-collection'>
-                            <i className="material-icons">
-                                favorite
-                            </i>
-                            <i className="material-icons">
+                        {this.renderLikeButton()}
+                            
+                            {/* <i className="material-icons">
                                 more_horiz
-                            </i>
+                            </i> */}
                         </div>
                     </div>
                     

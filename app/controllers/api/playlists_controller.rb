@@ -92,19 +92,19 @@ class Api::PlaylistsController < ApplicationController
     #     end
     # end
 
-    def unlike
-        @like = current_user.likes.find_by(
-            likeable_id: params[:id],
-            likeable_type: TYPE
-        )
+    # def unlike
+    #     @like = current_user.likes.find_by(
+    #         likeable_id: params[:id],
+    #         likeable_type: TYPE
+    #     )
 
-        if @like
-            @like.destroy
-            render 'api/likes/show'
-        else
-            render json: ['Could not complete your request'], status: 422
-        end
-    end
+    #     if @like
+    #         @like.destroy
+    #         render 'api/likes/show'
+    #     else
+    #         render json: ['Could not complete your request'], status: 422
+    #     end
+    # end
 
 
     private
