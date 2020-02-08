@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Root from './components/root';
 import configureStore from './store/store'
 
 //TODO testing
-import * as SessionApiUtil from './util/session_api_util'
-import * as MusicApiUtil from './util/music_api_util'
-import Root from './components/root';
+// import * as SessionApiUtil from './util/session_api_util'
+// import * as MusicApiUtil from './util/music_api_util'
+
 import { like } from './actions/like_actions';
-window.fetchLikedSongs = MusicApiUtil.fetchLikedSongsAjax;
-window.fetchLikedAlbums = MusicApiUtil.fetchLikedAlbumsAjax;
-window.fetchLikedArtists = MusicApiUtil.fetchLikedArtistsAjax;
+// window.fetchLikedSongs = MusicApiUtil.fetchLikedSongsAjax;
+// window.fetchLikedAlbums = MusicApiUtil.fetchLikedAlbumsAjax;
+// window.fetchLikedArtists = MusicApiUtil.fetchLikedArtistsAjax;
 
 
 

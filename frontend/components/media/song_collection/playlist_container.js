@@ -10,8 +10,9 @@ const msp = (state, {match}) => {
     const { playlists, songs } = state.entities.music;
     let authored = false;
     const currentUser = state.entities.users[state.session.id]
-    const likes = (currentUser) ? currentUser.likes : null;
-
+    let liked = !!(currentUser && currentUser.likes.playlists[playlistId]);
+    // const likes = (currentUser) ? currentUser.likes : null;
+    
     const collection = playlists[playlistId] || {};
     
     if (currentUser && currentUser.authored_playlists.includes(playlistId)) {
@@ -21,15 +22,16 @@ const msp = (state, {match}) => {
     return {
         collection,
         songs,
-        likes,
+        liked,
+        owner: 'Playlist',
         type: 'Playlist',
         authored
     }
 }
 
 const mdp = dispatch => ({
-    like: (type, id) => dispatch(like(type, id)),
-    unlike: (type, id) => dispatch(unlike(type, id)),
+    like: (id) => dispatch(like('playlists', id)),
+    likeSong: (id) => dispatch(like('songs', id)),
     fetchCollection: (id) => dispatch(fetchPlaylist(id)),
     playCollectionFromIdx: (songArray, idx) => dispatch(playCollectionFromIdx(songArray, idx))
 })

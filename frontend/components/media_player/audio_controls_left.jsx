@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 
 const AudioControlsLeft = (props) => {
 
-    // TODO: Attach album artwork
     const { song } = props;
     if (!song) return (
         <div className='ac-left'>

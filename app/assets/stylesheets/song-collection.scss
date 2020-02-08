@@ -32,17 +32,30 @@
 }
 
 .song-collection h2 {
-    padding: 10px 0px;
-    font-weight: 600px;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
+    padding: 15px 0px 7px;
+    font-weight: 700px;
+    font-size: 22px;
+    text-align: center;
 }
+
+.collection-owner {
+    margin-bottom: 25px;
+    color: gray;
+    font-size: 13.5px;
+
+    a:hover {
+        text-decoration: underline;
+        color: gray;
+    }
+}
+
+
 
 .collection-art {
     width: 100%;
     padding-top: 100%;
     background-color: rgb(247, 138, 234); 
-    margin-bottom: 20px;
+
     max-width: 320px;
     max-height: 320px;
 }
@@ -54,7 +67,7 @@
 }
 
 .song {
-    margin-top: 4px;
+    margin-bottom: 4px;
     flex-grow: 1;
     font-weight: 300;
     padding-top: 4px;
@@ -64,7 +77,10 @@
     display: flex;
     flex-direction: column;
     transition: background-color 300ms, color 100ms;
-    font-size: 13.5px
+    font-size: 13.5px;
+    border-radius: 5px;
+
+
 }
 
 .song-title {
@@ -76,15 +92,17 @@
     flex-grow: 1;
     display: flex;
     height: auto;
+    min-height: 23px;
     align-items: center;
+    cursor: default;
 }
 
 .song-options {
-    width: 51px;
+    width: 40px;
     color: rgba(0, 0, 0, 0);
     text-align: center;
     cursor: pointer;
-    padding-right: 15px;
+    padding-right: 10px;
 }
 
 .song:hover .song-options {
@@ -96,11 +114,10 @@
 .song:hover {
     transition: background-color 300ms;
     background-color: rgb(85, 85, 85);
+    
 }
 
-.like-collection {
-    padding: 20px;
-}
+
 
 .song-second-row {
     a {
@@ -116,3 +133,30 @@
         padding: 0 5px;
     }
 }
+
+.like-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+
+    .like {
+        font-size: 27px;
+        transition: 300ms;
+    }
+}
+
+.like-icon:hover {
+    .like {
+        transition: 300ms;
+        color: rgb(177, 25, 25);
+        transform: scale(1.2);
+    }
+}
+
+.collection-display .like-hover {
+    display: none;
+}
+

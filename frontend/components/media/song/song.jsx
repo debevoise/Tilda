@@ -13,13 +13,12 @@ export default class Song extends React.Component {
 
         this.closeDropdown = this.closeDropdown.bind(this);
         this.showDropdown = this.showDropdown.bind(this);
-        this.showModal = this.showModal.bind(this)
-        this.closeModal = this.closeModal.bind(this)
-
+        this.showModal = this.showModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     showDropdown(e) {
-        if (!this.props.loggedIn) return
+        if (!this.props.loggedIn) return;
         const optionXY = { x: e.pageX - 200, y: e.pageY }
         e.preventDefault();
         // e.stopPropagation();
@@ -41,8 +40,9 @@ export default class Song extends React.Component {
     }
 
     render() {
-        const {song, authored, removeSongFromPlaylist } = this.props;
+        const {song, authored, removeSongFromPlaylist, like, likes, loggedIn } = this.props;
         let { album, albumId, artist, artistId, length, id } = song;
+        let liked = !!(likes && likes[id]);
         let albumInfo = null;
         let seconds = length % 60;
         if (seconds < 10) seconds = '0' + seconds;
@@ -71,7 +71,7 @@ export default class Song extends React.Component {
                     <div className='song-title'>{song.title}</div>
                     <i 
                         className="material-icons song-options"
-                        onClick={this.showDropdown}>more_horiz</i>
+                        onClick={this.showDropdown}>{loggedIn ? 'more_horiz' : null}</i>
                     <div className='song-timestamp'>{time}</div>
                 </div>
                 <div className='song-second-row'>
@@ -87,18 +87,17 @@ export default class Song extends React.Component {
                             Add song to playlist
                         </li>
                         {removeOption}
-                        <li>
-                            Add to liked songs
+                        <li onClick={() => { 
+                            like(id); 
+                            this.closeDropdown()
+                        }}>
+                            {liked ? "Remove from liked songs" : "Add to liked songs"}
                         </li>
-                        <li>
-                            Do absolutely nothing
-                        </li>
+
                 </OptionsDropdown>
                 <Modal active={this.state.modalActive} handleClose={this.closeModal}>
                     <PlaylistAddContainer closeModal={this.closeModal} songId={id} />
                 </Modal>
-                
-                
             </li>
         )
     }

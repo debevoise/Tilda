@@ -1,6 +1,6 @@
 class Api::PlaylistsController < ApplicationController
     before_action :ensure_logged_in, except: [:show]
-    PLAYLISTTYPE = 'Playlist'    
+    TYPE = 'Playlist'    
                                                                                                             
     def create
         @playlist = current_user.authored_playlists.new(playlist_params)
@@ -57,32 +57,54 @@ class Api::PlaylistsController < ApplicationController
 
     end
 
-    def like 
+    def like
+        @likes = current_user.likes
+        liked = @likes.find_by(likeable_type: TYPE, likeable_id: params[:id]) 
+        
+        if liked 
+            liked.destroy
+            render 'api/likes/index'
+            return
+        end
+
         @like = current_user.likes.new(
             likeable_id: params[:id],
-            likeable_type: PLAYLISTTYPE
+            likeable_type: TYPE
         )
 
         if @like.save
-            render 'api/likes/show'
+            render 'api/likes/index'
         else
             render json: ['Could not complete your request'], status: 422
         end
     end
 
-    def unlike
-        @like = current_user.likes.find_by(
-            likeable_id: params[:id],
-            likeable_type: PLAYLISTTYPE
-        )
+    # def like 
+    #     @like = current_user.likes.new(
+    #         likeable_id: params[:id],
+    #         likeable_type: TYPE
+    #     )
 
-        if @like
-            @like.destroy
-            render 'api/likes/show'
-        else
-            render json: ['Could not complete your request'], status: 422
-        end
-    end
+    #     if @like.save
+    #         render 'api/likes/show'
+    #     else
+    #         render json: ['Could not complete your request'], status: 422
+    #     end
+    # end
+
+    # def unlike
+    #     @like = current_user.likes.find_by(
+    #         likeable_id: params[:id],
+    #         likeable_type: TYPE
+    #     )
+
+    #     if @like
+    #         @like.destroy
+    #         render 'api/likes/show'
+    #     else
+    #         render json: ['Could not complete your request'], status: 422
+    #     end
+    # end
 
 
     private

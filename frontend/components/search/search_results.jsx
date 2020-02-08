@@ -2,10 +2,6 @@ import React from 'react';
 import MusicCard from '../media/music_card/music_card';
 
 export default class SearchResults extends React.Component {
-    // constructor(props) {
-    //     super(props)
-    // }
-
     renderNoQuery() {
         const { query } = this.props;
         if (query.length === 0) {
@@ -96,7 +92,7 @@ export default class SearchResults extends React.Component {
         if (noResults) return this.renderNoResults();
 
         return (
-            <div className='content'>
+            <div className='content no-margin-right'>
                 <section className='search-results'>
                     {this.renderArtists()}
                     {this.renderAlbums()}

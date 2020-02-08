@@ -1,5 +1,9 @@
 @import 'tilda';
 
+.no-margin-right {
+    margin-right: 0 !important;
+}
+
 .home-page .home-header h1 {
     display: inline-block;
     font-size: 45px !important;
@@ -11,10 +15,28 @@
     border-bottom: 3px groove $blue;
 }
 
+.home-page .home-header h3 {
+    padding-top: 9px;
+    font-size: 13px;
+    font-weight: 300;
+
+    a {
+        color: white;
+        transition: 250ms;
+        text-decoration: underline;
+    }
+
+    a:hover {
+        transition: 250ms;
+        color: $blue;
+    }
+}
+
 .home-page .home-header {
     display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .home-page section {
@@ -23,4 +45,8 @@
         font-weight: 500;
         padding-bottom: 10px;
     }
+}
+
+.music-card-container {
+    
 }

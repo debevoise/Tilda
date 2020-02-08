@@ -28,22 +28,23 @@ export default class Home extends Component {
         })
 
         return (
-            <div className='content'>
+            <div className='content no-margin-right'>
                 <main className='home-page'>
                     <header className='home-header'>
                         <h1>Welcome to TILDA!</h1>
+                        <h3 className='home-links'>Made by <a href="https://www.simondebevoise.com/" rel="noopener noreferrer" target="_blank">Simon DeBevoise</a> | Check out Tilda <a href="https://github.com/debevoise/Tilda" rel="noopener noreferrer" target="_blank">on Github</a></h3>
                     </header>
                     <section>
                         <h2>Albums</h2>
-                        <ul>{albumCards}</ul>
+                        <ul className='music-card-container'>{albumCards}</ul>
                     </section>
                     <section>   
                         <h2>Artists</h2>
-                        <ul>{artistCards}</ul>
+                        <ul className='music-card-container'>{artistCards}</ul>
                     </section>
                     <section>
                         <h2>Playlists</h2>
-                        <ul>{playlistCards}</ul>
+                        <ul className='music-card-container'>{playlistCards}</ul>
                     </section>
                 </main>
             </div>

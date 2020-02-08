@@ -3,17 +3,17 @@ import { receiveMusicErrors } from "./music_actions";
 
 export const RECEIVE_LIKES = "RECEIVE_LIKES";
 export const RECEIVE_LIKE = "RECEIVE_LIKE";
-export const RECEIVE_UNLIKE = "RECEIVE_UNLIKE";
+// export const RECEIVE_UNLIKE = "RECEIVE_UNLIKE";
 
-export const receiveLikes = likes => ({
+export const receiveLikes = payload => ({
     type: RECEIVE_LIKES,
-    likes
+    payload
 })
 
-export const receiveLike = like => ({
-    type: RECEIVE_LIKE,
-    like
-})
+// export const receiveLike = like => ({
+//     type: RECEIVE_LIKE,
+//     like
+// })
 
 // export const receiveUnlikes = unlike => ({
 //     type: RECEIVE_LIKES,
@@ -23,7 +23,7 @@ export const receiveLike = like => ({
 
 export const like = (type, id) => dispatch => {
     return likeAjax(type, id).then(
-        like => dispatch(receiveLike(like)),
+        payload => dispatch(receiveLikes(payload)),
         err => dispatch(receiveMusicErrors(err.responseJSON))
     ).then(res => console.log(res))
 }
