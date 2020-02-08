@@ -41,8 +41,9 @@ export default class Song extends React.Component {
     }
 
     render() {
-        const {song, authored, removeSongFromPlaylist } = this.props;
+        const {song, authored, removeSongFromPlaylist, like, likes } = this.props;
         let { album, albumId, artist, artistId, length, id } = song;
+        let liked = !!(likes && likes[id]);
         let albumInfo = null;
         let seconds = length % 60;
         if (seconds < 10) seconds = '0' + seconds;
@@ -55,6 +56,8 @@ export default class Song extends React.Component {
                 Remove song from this playlist
             </li>
         ) : null
+
+
 
         if (typeof album !== 'undefined') {
             albumInfo = <>
@@ -87,12 +90,15 @@ export default class Song extends React.Component {
                             Add song to playlist
                         </li>
                         {removeOption}
-                        <li>
-                            Add to liked songs
+                        <li onClick={() => { 
+                            like(id); 
+                            this.closeDropdown()
+                        }}>
+                            {liked ? "Remove from liked songs" : "Add to liked songs"}
                         </li>
-                        <li>
+                        {/* <li>
                             Do absolutely nothing
-                        </li>
+                        </li> */}
                 </OptionsDropdown>
                 <Modal active={this.state.modalActive} handleClose={this.closeModal}>
                     <PlaylistAddContainer closeModal={this.closeModal} songId={id} />
