@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 
 export default class Collection extends Component {
+    componentDidMount() {
+        //fetchLikes
+    }
+    
     render() {
-        return null;
+        //collectionName
+        return (
+            <div className=''>Songs</div>
+        );
     }
 }

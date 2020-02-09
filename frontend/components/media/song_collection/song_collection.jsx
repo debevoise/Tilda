@@ -12,6 +12,7 @@ export default class SongCollection extends React.Component {
     }
     
     componentDidMount() {
+
         const { id } = this.props.match.params;
         this.props.fetchCollection(id);
         this.playCollectionFromIdx = this.playCollectionFromIdx.bind(this)
@@ -93,7 +94,6 @@ export default class SongCollection extends React.Component {
                         <h3 className='song-count'>{numSongs} songs</h3>
                         <div className='like-collection'>
                         {this.renderLikeButton()}
-                            
                             {/* <i className="material-icons">
                                 more_horiz
                             </i> */}

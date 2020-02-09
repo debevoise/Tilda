@@ -1,4 +1,4 @@
-import { likeAjax } from "../util/like_api_util"
+import { likeAjax, fetchLikesAjax } from "../util/like_api_util"
 import { receiveMusicErrors } from "./music_actions";
 
 export const RECEIVE_LIKES = "RECEIVE_LIKES";
@@ -27,3 +27,4 @@ export const like = (type, id) => dispatch => {
         err => dispatch(receiveMusicErrors(err.responseJSON))
     ).then(res => console.log(res))
 }
+

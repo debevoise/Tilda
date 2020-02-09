@@ -2,12 +2,18 @@ import { connect } from "react-redux"
 import SongCollection from "../media/song_collection/song_collection"
 
 const msp = state => {
-    return {}
+    
+    
+    return {
+        likes,
+    }
 }
 
 const mdp = dispatch => {
-    return {}
+    return {
+
+    }
 }
 
-const SongCollectionContainer = connect(msp, mdp)(SongCollection);
-export default SongCollectionContainer;
+const LikedSongsContainer = connect(msp, mdp)(SongCollection);
+export default LikedSongsContainer;

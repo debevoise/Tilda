@@ -1,3 +1,5 @@
+@import 'tilda';
+
 .content h1 {
     font-size: 30px;
     height: 36px;
@@ -10,5 +12,27 @@
     flex-wrap: wrap;   
 }
 
+.no-search {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        border-bottom: 2px solid $blue;
+        display: inline-block;
+        margin-bottom: 40px;
+        font-style: italic;
+        font-size: 30px;
+    }
+
+    img {
+        width: 500px;
+        height: auto;
+    }
+}
 
 
