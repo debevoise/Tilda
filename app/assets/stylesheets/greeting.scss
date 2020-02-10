@@ -13,12 +13,17 @@
     align-items: center;
     z-index: 10;
 
+    a {
+        transition: 300ms;
+    }
+
     .gb-left, .greeting, .profile-icon {
         display: flex;
         align-items: center;
     }
 
     a:hover {
+        transition: 300ms;
         transform: scale(1.06);
     }
 }
