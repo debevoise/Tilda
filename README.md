@@ -1,6 +1,6 @@
 # Tilda~
 
-Tilda is an online music streaming platform modeled after Spotify. Users can search for new music, add songs, artists, and albums to their libraries, and create and edit playlists, all while enjoying uninterrupted audio playback. [See Tilda for yourself here](https://www.tilda-music.herokuapp.com).
+Tilda is an online music streaming platform modeled after Spotify. Users can search for new music, add songs, artists, and albums to their libraries, and create and edit playlists, all while enjoying uninterrupted audio playback. [See Tilda for yourself here](https://www.tilda-music.herokuapp.com). 
 
 Tilda is built with a Ruby on Rails and PostgreSQL backend and uses React/Redux to deliver a dynamic frontend user experience. 
 
