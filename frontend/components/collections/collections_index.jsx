@@ -10,7 +10,7 @@ export default class CollectionsIndex extends React.Component {
 
     render() {
         return (
-          <div className='content'>
+          <div className='content no-margin-right'>
             <section>
               <ul className='content-nav-bar'>
                 <li>

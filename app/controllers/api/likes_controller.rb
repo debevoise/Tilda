@@ -13,7 +13,7 @@ class Api::LikesController < ApplicationController
 
     def albums
         # .includes(:songs) -- Try includes if N+1 query
-        @albums = current_user.albums 
+        @albums = current_user.albums.includes(:artist) 
         render 'api/albums/index'
     end
 
@@ -25,7 +25,7 @@ class Api::LikesController < ApplicationController
 
     def playlists
         @playlists = current_user.liked_playlists
-        render 'api/songs/index'
+        render 'api/playlists/index'
     end
     
     

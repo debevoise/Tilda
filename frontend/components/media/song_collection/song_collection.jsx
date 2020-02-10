@@ -74,6 +74,7 @@ export default class SongCollection extends React.Component {
                 song={songs[id]}
                 playSong={() => this.playCollectionFromIdx(index)}/> 
         })
+
         const numSongs = songList.length;
         const nameHeader = collection.name || collection.title;
         
@@ -83,8 +84,9 @@ export default class SongCollection extends React.Component {
         ) : (
           <div className="collection-art" style={this.style}></div>
         );
-        return (
-            <div className='content'>            
+        return (          
+            <div className='content'>
+
                 <div className='song-collection'>
                     <div className='collection-display'>
                         {artwork}
@@ -105,6 +107,7 @@ export default class SongCollection extends React.Component {
                     </ul>
                 </div>
             </div>
+
         )
     }
 }
