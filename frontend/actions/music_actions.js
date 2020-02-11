@@ -50,9 +50,9 @@ export const receiveArtist = payload => ({
     payload
 })
 
-export const receiveAlbums = albums => ({
+export const receiveAlbums = payload => ({
     type: RECEIVE_ALBUMS,
-    albums
+    payload
 })
 
 export const receiveAlbum = payload => ({

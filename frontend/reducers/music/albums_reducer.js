@@ -8,9 +8,8 @@ const albumsReducer = (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_ALBUMS:
-            //TODO does this work?
             
-            return Object.assign({}, action.albums, state);
+            return Object.assign({}, action.payload.albums, state);
         case RECEIVE_ALBUM:
             const {album} = action.payload;
             newState = Object.assign({}, state);

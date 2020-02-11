@@ -1,0 +1,48 @@
+@import 'tilda';
+
+.margin-right {
+    margin-right: 24px;
+}
+
+.like-collection h2 {   
+    font-size: 30px;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+.like-collection.empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-right: 32px;
+
+    .no-likes {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 300px;
+
+        h3 {
+            font-size: 24px;
+            font-style: italic;
+            margin-bottom: 12px;
+            border-bottom: 1px solid $error-orange;
+            padding-bottom: 12px;
+        }
+    }
+}
+
+.like-header {
+    padding-bottom: 15px !important;
+}
+
+.liked-songs-art {
+    // position: absolute;
+    background-image: radial-gradient(purple, rgb(7, 7, 97));
+    i {
+        position: relative;
+    }
+}

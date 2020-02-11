@@ -11,7 +11,7 @@ const songsReducer = (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_SONGS:
-            return action;
+            return Object.assign({}, state, action.songs);
         case RECEIVE_ALBUM:
             return Object.assign({}, state, action.payload.songs);
         case RECEIVE_PLAYLIST:

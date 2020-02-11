@@ -43,17 +43,19 @@ export const fetchLikedPlaylistsAjax = () => {
     })
 }
 
+export const fetchLikedSongsAjax = () => {
+    return $.ajax({
+        url: 'api/likes/songs'
+    })
+}
+
 export const fetchAuthoredPlaylistsAjax = () => {
     return $.ajax({
         url: 'api/playlists'
     })
 }
 
-export const fetchLikedSongsAjax = () => {
-    return $.ajax({
-        url: 'api/likes/songs'
-    })
-}
+
 
 //GET SHOW
 export const fetchAlbumAjax = id => {

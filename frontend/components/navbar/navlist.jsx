@@ -25,7 +25,7 @@ class NavList extends React.Component {
                         </div>   
                     </li>
                 </NavLink>
-                <NavLink to='/collections'>
+                <NavLink to='/collections/'>
                     <li className='library-link'>
                         <div>
                             <i className="material-icons">library_books</i>

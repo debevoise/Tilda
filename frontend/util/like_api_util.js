@@ -1,6 +1,6 @@
-export const fetchLikes = () => {
+export const fetchLikesAjax = (type) => {
     return $.ajax({
-        url: `api/${type}/${id}/like`,
+        url: `api/likes/${type}/`,
         method: 'GET'
     })
 }

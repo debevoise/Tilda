@@ -6,10 +6,14 @@ export default class SearchResults extends React.Component {
         const { query } = this.props;
         if (query.length === 0) {
             return (
-                <div className='content'>
-                    <h1>
-                        Search for your new favorite music.
-                    </h1>
+                <div className='content no-search-container'>
+                    <main className='no-search'>
+                        <h1>
+                            Search for your new favorite music.
+                        </h1>
+                        <img src='https://vinylgif.com/gifs/201411/flipping-some-records.gif' alt=""/>
+                    </main>
+
                 </div>
             )
         } else {
