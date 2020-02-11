@@ -8,7 +8,6 @@
     font-size: 30px;
     font-weight: 500;
     padding-bottom: 10px;
-    
 }
 
 .like-collection.empty {
@@ -37,12 +36,13 @@
 }
 
 .like-header {
-    padding-bottom: 20px;
+    padding-bottom: 15px !important;
 }
 
 .liked-songs-art {
-
+    // position: absolute;
+    background-image: radial-gradient(purple, rgb(7, 7, 97));
     i {
-        display: relative;
+        position: relative;
     }
 }
