@@ -43,7 +43,7 @@ export default class LikedSongs extends Component {
 
                 <div className='song-collection margin-right'>
                     <div className='collection-display'>
-                        <img className="collection-img liked-songs-art" src="https://raw.githubusercontent.com/debevoise/debevoise.github.io/master/resources/heart.png" alt=""/>
+                    <img className="collection-img liked-songs-art" src="https://www.simondebevoise.com/resources/heart.png" alt=""/>
                         
                         <h2 className='like-header'>Liked Songs</h2>
                         <button onClick={() => this.playCollectionFromIdx(0)}>Play</button>
