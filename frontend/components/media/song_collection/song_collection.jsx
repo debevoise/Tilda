@@ -32,6 +32,7 @@ export default class SongCollection extends React.Component {
 
     playCollectionFromIdx(idx) {
         const { collection, songs } = this.props;
+        if (collection.length === 0) return;
         const songArray = collection.songIds.map(id => songs[id]);
         this.props.playCollectionFromIdx(songArray, idx)
     }
@@ -47,7 +48,6 @@ export default class SongCollection extends React.Component {
 
     renderLikeButton() {
         const { like, liked, collection } = this.props;
-        let klass = liked ? 'unlike' : 'like'; 
         
         return (
             <div className='like-icon'>

@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import AudioPlayer from './audio_player';
 import { pauseMusic, playNextSong } from '../../actions/audio_player_actions';
 import AudioControlBar from './audio_control_bar';
 
