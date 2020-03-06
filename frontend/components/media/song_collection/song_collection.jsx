@@ -32,7 +32,7 @@ export default class SongCollection extends React.Component {
 
     playCollectionFromIdx(idx) {
         const { collection, songs } = this.props;
-        if (collection.length === 0) return;
+        if (collection.songIds.length === 0) return;
         const songArray = collection.songIds.map(id => songs[id]);
         this.props.playCollectionFromIdx(songArray, idx)
     }
@@ -60,7 +60,7 @@ export default class SongCollection extends React.Component {
 
     render() {
         const { songs, collection, authored, owner, type  } = this.props;
-
+        debugger
         if (typeof collection.songIds === 'undefined') { 
             return null; 
         }

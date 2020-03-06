@@ -13,8 +13,9 @@ export default class AudioControlBar extends React.Component {
             playerQueue: [],
             history: [],
             userQueue: [],
-            currentTime: 0
-
+            currentTime: 0,
+            shuffle: false,
+            repeat: false
         }
         //history is a stack, queues are......queues
 
