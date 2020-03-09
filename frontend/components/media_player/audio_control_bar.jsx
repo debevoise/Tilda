@@ -19,6 +19,8 @@ export default class AudioControlBar extends React.Component {
         }
         //history is a stack, queues are......queues
 
+
+
         this.pause = this.pause.bind(this)
         this.play = this.play.bind(this)
         this.playNextSong = this.playNextSong.bind(this)

@@ -60,7 +60,7 @@ export default class SongCollection extends React.Component {
 
     render() {
         const { songs, collection, authored, owner, type  } = this.props;
-        debugger
+
         if (typeof collection.songIds === 'undefined') { 
             return null; 
         }
