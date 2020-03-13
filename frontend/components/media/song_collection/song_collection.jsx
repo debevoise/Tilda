@@ -67,7 +67,7 @@ export default class SongCollection extends React.Component {
 
         const songList = collection.songIds.map((id, index) => {
             if (typeof songs[id] === 'undefined') return null;
-
+            
             return <SongContainer 
                 key={index} 
                 authored={authored}

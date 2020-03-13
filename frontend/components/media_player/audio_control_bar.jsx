@@ -69,7 +69,7 @@ export default class AudioControlBar extends React.Component {
     }
 
     playNextSong() {
-        let { history, currentSong, playerQueue, userQueue, active } = this.state
+        let { history, currentSong, playerQueue, userQueue, active } = this.state;
         if (currentSong.id) history.push(currentSong);
 
         if (userQueue.length !== 0) {
@@ -144,7 +144,13 @@ export default class AudioControlBar extends React.Component {
             Math.ceil(this.audio.duration) : 0;
 
         this.setPlayStatus()
-        let {currentSong, playerQueue, userQueue } = this.state;
+        let { currentSong, 
+            currentTime, 
+            active, 
+            playerQueue, 
+            userQueue, 
+            shuffle, 
+            repeat } = this.state;
 
         return (
             <footer id='media-player'>
@@ -164,9 +170,11 @@ export default class AudioControlBar extends React.Component {
                     pause={this.pause}
                     play={this.play}
                     setTime={this.setCurrentTime}
-                    currentTime={this.state.currentTime}
+                    currentTime={currentTime}
                     duration={duration}
-                    active={this.state.active}
+                    active={active}
+                    shuffle={shuffle}
+                    repeat={repeat}
                 />
                 <AudioControlsRight 
                     audio={this.audio} 
